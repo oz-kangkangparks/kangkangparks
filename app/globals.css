@@ -1,0 +1,85 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --color-primary:#FF4F8B;
+  --color-accent:#FFE9F2;
+  --color-ink:#333333;
+}
+
+html, body { 
+  @apply bg-white text-ink antialiased; 
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  font-feature-settings: 'kern' 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.container { @apply max-w-6xl mx-auto px-4; }
+.section { @apply py-16 md:py-24; }
+
+/* 카드 기본 */
+.card { @apply rounded-2xl shadow-lg p-6 bg-white; }
+
+/* 버튼 */
+.btn-primary { 
+  @apply inline-flex items-center justify-center rounded-xl px-5 py-3 bg-primary text-white font-medium hover:opacity-90 transition; 
+  letter-spacing: -0.01em;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center rounded-xl px-5 py-3 bg-white text-primary border border-primary font-medium hover:bg-primary hover:text-white transition;
+  letter-spacing: -0.01em;
+}
+
+/* 유틸 */
+.kicker { 
+  @apply text-sm tracking-wide uppercase text-primary font-medium; 
+  letter-spacing: 0.05em;
+}
+.h1 { 
+  @apply text-4xl md:text-5xl font-bold; 
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.h2 { 
+  @apply text-2xl md:text-3xl font-bold; 
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+.muted { @apply text-gray-500; }
+
+/* 전역 텍스트 스타일링 */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+p, li, span {
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+}
+
+/* 입력 필드 스타일링 */
+input, textarea, select {
+  font-family: inherit;
+  letter-spacing: -0.005em;
+}
+
+/* 부드러운 전환 효과 */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* 헤더 메뉴 강제 표시 */
+@media (min-width: 768px) {
+  .desktop-menu {
+    display: flex !important;
+  }
+}
