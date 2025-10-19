@@ -106,6 +106,7 @@ jobs:
               --network "$NETWORK_NAME" \
               -p "${NEW_PORT}:3000" \
               -e NODE_ENV=production \
+              -e HOSTNAME=0.0.0.0 \
               -e TZ=Asia/Seoul \
               --restart unless-stopped \
               "${PROJECT_NAME}:${NEW_IMAGE_TAG}"

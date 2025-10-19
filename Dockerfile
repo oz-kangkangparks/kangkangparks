@@ -29,6 +29,7 @@ RUN apk add --no-cache curl
 
 ENV NODE_ENV=production
 ENV PORT=3000
+ENV HOSTNAME=0.0.0.0
 
 # 보안을 위한 non-root user 생성
 RUN addgroup --system --gid 1001 nodejs

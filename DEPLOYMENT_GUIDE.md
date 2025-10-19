@@ -159,6 +159,25 @@ npm run build
 ls -la .next/standalone
 ```
 
+### Health Check Unhealthy 상태
+```bash
+# 컨테이너 로그 확인
+docker logs kangkangparks-frontend-green --tail 50
+
+# Health check 상세 정보
+docker inspect kangkangparks-frontend-green | grep -A 20 Health
+
+# 해결 방법: HOSTNAME 환경변수 확인
+docker exec kangkangparks-frontend-green env | grep HOSTNAME
+# 출력: HOSTNAME=0.0.0.0 이어야 함
+
+# 만약 없다면 수동으로 재시작 (이미 Dockerfile에 포함됨)
+docker restart kangkangparks-frontend-green
+```
+
+**원인**: Next.js standalone 서버가 `0.0.0.0`으로 바인딩되지 않아 health check 실패
+**해결**: `HOSTNAME=0.0.0.0` 환경변수 추가 (Dockerfile, deploy.yml에 이미 적용됨)
+
 ---
 
 ## 📝 중요 파일

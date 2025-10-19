@@ -11,6 +11,7 @@ services:
     restart: unless-stopped
     environment:
       - NODE_ENV=production
+      - HOSTNAME=0.0.0.0
       - TZ=Asia/Seoul
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000/"]
