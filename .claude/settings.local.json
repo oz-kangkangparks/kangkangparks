@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "Read(//Users/a/ozcoding/dev/oz-kangkangparks/mvp/yougenebox/customer-frontend/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

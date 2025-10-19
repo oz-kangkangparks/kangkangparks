@@ -1,0 +1,185 @@
+name: Deploy KangKangParks
+
+on:
+  push:
+    branches:
+      - deploy
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create deployment archive
+        run: |
+          tar -czf /tmp/deploy.tar.gz --exclude='.git' --exclude='node_modules' .
+          mv /tmp/deploy.tar.gz ./deploy.tar.gz
+          echo "✅ Deployment archive created"
+
+      - name: Copy files to server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          source: "deploy.tar.gz"
+          target: "/tmp"
+
+      - name: Deploy to Server (Blue-Green Deployment)
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          script: |
+            set -e
+
+            # 환경 변수 정의
+            PROJECT_NAME="kangkangparks-frontend"
+            DEPLOY_PATH="/home/kangkangparks/docker/kangkangparks/website"
+            NGINX_CONF_PATH="/home/kangkangparks/docker/nginx/volumes/conf/kangkangparks.com.conf"
+            NETWORK_NAME="nginx_nginx-proxy"
+            NGINX_UPSTREAM_NAME="kangkangparks-frontend"
+
+            echo "🚀 Starting Blue-Green Deployment for KangKangParks..."
+
+            # 1. 현재 실행 중인 컨테이너 포트 확인 (3010 또는 3011)
+            if docker ps --format '{{.Names}}:{{.Ports}}' | grep -q "${PROJECT_NAME}.*0\.0\.0\.0:3010"; then
+              CURRENT_PORT=3010
+              NEW_PORT=3011
+              OLD_CONTAINER="${PROJECT_NAME}"
+              NEW_CONTAINER="${PROJECT_NAME}-green"
+              OLD_IMAGE_TAG="blue"
+              NEW_IMAGE_TAG="green"
+              echo "📍 Current: Blue (3010) → Deploying: Green (3011)"
+            elif docker ps --format '{{.Names}}:{{.Ports}}' | grep -q "${PROJECT_NAME}-green.*0\.0\.0\.0:3011"; then
+              CURRENT_PORT=3011
+              NEW_PORT=3010
+              OLD_CONTAINER="${PROJECT_NAME}-green"
+              NEW_CONTAINER="${PROJECT_NAME}"
+              OLD_IMAGE_TAG="green"
+              NEW_IMAGE_TAG="blue"
+              echo "📍 Current: Green (3011) → Deploying: Blue (3010)"
+            else
+              # 첫 배포
+              CURRENT_PORT=""
+              NEW_PORT=3010
+              OLD_CONTAINER=""
+              NEW_CONTAINER="${PROJECT_NAME}"
+              NEW_IMAGE_TAG="blue"
+              echo "📍 First deployment → Deploying: Blue (3010)"
+            fi
+
+            # 2. 네트워크 확인
+            if ! docker network ls | grep -q "$NETWORK_NAME"; then
+              echo "❌ Error: Network $NETWORK_NAME not found"
+              exit 1
+            fi
+            echo "✅ Network verified"
+
+            # 3. 이전 실패한 배포 정리 (새 컨테이너만)
+            echo "🧹 Cleaning up previous failed deployment..."
+            docker stop "$NEW_CONTAINER" 2>/dev/null || true
+            docker rm "$NEW_CONTAINER" 2>/dev/null || true
+            docker rmi "${PROJECT_NAME}:${NEW_IMAGE_TAG}" 2>/dev/null || true
+            echo "✅ Cleanup completed"
+
+            # 4. 배포 폴더 생성 및 압축 해제
+            mkdir -p "$DEPLOY_PATH"
+            cd "$DEPLOY_PATH"
+            tar -xzf /tmp/deploy.tar.gz
+            rm -f /tmp/deploy.tar.gz
+            echo "✅ Code extracted"
+
+            # 5. 새 이미지 빌드
+            echo "🔨 Building new image (${NEW_IMAGE_TAG})..."
+            docker build --no-cache --pull -t "${PROJECT_NAME}:${NEW_IMAGE_TAG}" .
+            echo "✅ Image built"
+
+            # 6. 새 컨테이너 기동 (새 포트)
+            echo "🚢 Starting new container on port ${NEW_PORT}..."
+            docker run -d \
+              --name "$NEW_CONTAINER" \
+              --network "$NETWORK_NAME" \
+              -p "${NEW_PORT}:3000" \
+              -e NODE_ENV=production \
+              -e TZ=Asia/Seoul \
+              --restart unless-stopped \
+              "${PROJECT_NAME}:${NEW_IMAGE_TAG}"
+            echo "✅ Container started"
+
+            # 7. Health Check
+            echo "🏥 Running health check..."
+            retry_count=0
+            max_retries=12
+
+            while [ $retry_count -lt $max_retries ]; do
+              if curl -f http://localhost:${NEW_PORT}/ > /dev/null 2>&1; then
+                echo "✅ Health check passed!"
+                break
+              fi
+              echo "⏳ Waiting ($retry_count/$max_retries)..."
+              sleep 5
+              retry_count=$((retry_count + 1))
+            done
+
+            if [ $retry_count -eq $max_retries ]; then
+              echo "❌ Health check failed! Rolling back..."
+              docker stop "$NEW_CONTAINER" || true
+              docker rm "$NEW_CONTAINER" || true
+              docker rmi "${PROJECT_NAME}:${NEW_IMAGE_TAG}" || true
+              exit 1
+            fi
+
+            # 8. nginx upstream 전환 (무중단!)
+            echo "🔄 Switching nginx upstream..."
+            cp "$NGINX_CONF_PATH" "${NGINX_CONF_PATH}.backup"
+
+            if [ -n "$CURRENT_PORT" ]; then
+              # 기존 컨테이너에서 새 컨테이너로 전환
+              sed -i "s/server ${OLD_CONTAINER}:3000/server ${NEW_CONTAINER}:3000/" "$NGINX_CONF_PATH"
+            else
+              # 첫 배포 - nginx upstream을 새 컨테이너로 설정
+              sed -i "s/server ${NGINX_UPSTREAM_NAME}:[0-9]\+/server ${NEW_CONTAINER}:3000/" "$NGINX_CONF_PATH"
+              echo "✅ First deployment - nginx upstream configured"
+            fi
+
+            # nginx reload (0.5초 다운타임)
+            docker exec kangkangparks-nginx-proxy nginx -s reload
+            echo "✅ Nginx switched (< 1s downtime)"
+
+            # 9. 안정화 대기
+            echo "⏳ Stabilizing..."
+            sleep 5
+
+            # 10. 구 컨테이너 정리
+            if [ -n "$OLD_CONTAINER" ]; then
+              echo "🧹 Removing old container..."
+              docker stop "$OLD_CONTAINER" || true
+              docker rm "$OLD_CONTAINER" || true
+              docker rmi "${PROJECT_NAME}:${OLD_IMAGE_TAG}" || true
+              echo "✅ Old container removed"
+            fi
+
+            # 11. 최종 정리
+            echo "🧹 Final cleanup..."
+            docker system prune -f
+
+            # 12. 배포 완료
+            echo "🎉 Deployment completed!"
+            echo "📊 Summary:"
+            echo "  - Active: ${NEW_CONTAINER} (port ${NEW_PORT})"
+            echo "  - Status: $(docker inspect -f '{{.State.Status}}' "$NEW_CONTAINER")"
+            echo "  - Next deployment will use: $([ "$NEW_PORT" == "3010" ] && echo "Green (3011)" || echo "Blue (3010)")"
+
+      - name: Notify Deployment Result
+        if: always()
+        run: |
+          if [ "${{ job.status }}" == "success" ]; then
+            echo "✅ KangKangParks deployment succeeded!"
+          else
+            echo "❌ KangKangParks deployment failed!"
+          fi

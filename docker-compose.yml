@@ -1,0 +1,24 @@
+services:
+  kangkangparks-frontend:
+    container_name: kangkangparks-frontend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3010:3000"
+    networks:
+      - nginx_nginx-proxy
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - TZ=Asia/Seoul
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+
+networks:
+  nginx_nginx-proxy:
+    external: true
