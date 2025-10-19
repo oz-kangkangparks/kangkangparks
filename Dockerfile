@@ -1,5 +1,6 @@
 # Stage 1: Dependencies
 FROM node:20-alpine AS deps
+# sharp 빌드를 위한 필수 패키지 설치
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
