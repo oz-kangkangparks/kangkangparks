@@ -13,9 +13,10 @@ export default function Page(){
       {/* 히어로 섹션 */}
       <section className="section bg-accent">
         <div className="container text-center">
-          <h1 className="text-4xl md:text-6xl font-black tracking-tight">주요 프로젝트</h1>
+          <h1 className="text-4xl md:text-6xl font-black tracking-tight">PortFolio</h1>
           <p className="mt-4 text-lg text-gray-600">
-            포트폴리오를 찾아주셔서 감사합니다. 그동안 참여한 작업과 함께 제공 서비스에 관한 자세한 정보를 확인해보세요.
+            포트폴리오를 찾아주셔서 감사합니다.<br/>
+            그동안 참여한 작업과 함께 제공 서비스에 관한 자세한 정보를 확인해보세요.
           </p>
         </div>
       </section>
@@ -28,10 +29,12 @@ export default function Page(){
               <Link href="/portfolio/beonwh" className="block">
                 <Image 
                   src="/images/projects/beonwh-main.png" 
-                  alt="BEONWH 프로젝트 메인 화면" 
+                  alt="비온후 프로젝트 메인 화면" 
                   width={600} 
                   height={400} 
                   className="rounded-2xl object-contain w-full shadow-lg bg-white p-4 group-hover:shadow-xl transition-all duration-300 cursor-pointer"
+                  priority
+                  quality={75}
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 rounded-2xl transition-all duration-300 flex items-center justify-center">
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-3">
@@ -47,7 +50,7 @@ export default function Page(){
               <div className="inline-block bg-gray-100 px-4 py-2 rounded-full text-sm font-medium mb-4">
                 모바일 앱
               </div>
-              <h2 className="text-3xl font-bold mb-4">BEONWH</h2>
+              <h2 className="text-3xl font-bold mb-4">비온후</h2>
               <p className="text-gray-600 mb-6">
                 날씨 기반 감정 일기 앱으로, 사용자의 감정 상태를 날씨와 연결하여 
                 기록하고 분석할 수 있는 서비스입니다.
@@ -97,6 +100,8 @@ export default function Page(){
                   width={600} 
                   height={400} 
                   className="rounded-2xl object-contain w-full shadow-lg bg-white p-4 group-hover:shadow-xl transition-all duration-300 cursor-pointer"
+                  loading="lazy"
+                  quality={75}
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 rounded-2xl transition-all duration-300 flex items-center justify-center">
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-3">
@@ -124,6 +129,8 @@ export default function Page(){
                   width={600} 
                   height={400} 
                   className="rounded-2xl object-contain w-full shadow-lg bg-white p-4 group-hover:shadow-xl transition-all duration-300 cursor-pointer"
+                  loading="lazy"
+                  quality={75}
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 rounded-2xl transition-all duration-300 flex items-center justify-center">
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-3">
@@ -189,6 +196,8 @@ export default function Page(){
                   width={600} 
                   height={400} 
                   className="rounded-2xl object-contain w-full shadow-lg bg-white p-4 group-hover:shadow-xl transition-all duration-300 cursor-pointer"
+                  loading="lazy"
+                  quality={75}
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 rounded-2xl transition-all duration-300 flex items-center justify-center">
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-3">

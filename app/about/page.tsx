@@ -13,6 +13,7 @@ export default function Page(){
       <section className="section bg-accent">
         <div className="container text-center">
           <h1 className="text-4xl md:text-6xl font-black tracking-tight">ABOUT US</h1>
+          <p className="mt-6 text-lg md:text-xl text-gray-700">아이디어를 기술로 실현하고, 효율을 가치로 바꾸는 AI 개발 파트너가 되겠습니다.</p>
         </div>
       </section>
 
@@ -29,39 +30,27 @@ export default function Page(){
                 width={600} 
                 height={400} 
                 className="rounded-2xl object-cover w-full shadow-lg"
+                priority
+                quality={75}
               />
             </div>
             
             <div className="space-y-6">
               <p className="text-lg leading-relaxed">
-                저희 강강박스는 AI 웹 기반 서비스 개발에 특화된 개발팀입니다. 
-                다년간 쌓은 경험을 바탕으로, 서비스의 아이디어부터 실제 서비스로 
-                완전하는 실행 중심의 개발 파트너로 함께합니다.
+                강강박스는 AI 웹 기반 서비스 개발에 특화된 팀입니다.
+                아이디어 기획부터 설계, 개발, 배포, 운영까지 전 과정을 직접 관리하며 웹·모바일 서비스, 내부 시스템 등 다양한 프로젝트를 수행합니다.
               </p>
               
               <p className="text-lg leading-relaxed">
-                웹 플랫폼, 모바일 서비스, 내부 관리 시스템 등 다양한 
-                프로젝트를 수행하며, 기획 → 설계 → 개발 → 배포 → 운지속으
-                로 과정을 직접 관리합니다.
+                AI API, 음성 처리, 데이터 분석, 자동화 시스템 등 기술을 React, Node.js, PostgreSQL, Tailwind CSS 등과 결합해 빠르고 완성도 높은 솔루션을 제공합니다.
               </p>
               
               <p className="text-lg leading-relaxed">
-                AI API, 음성 처리, 데이터 분석, 자동화 시스템 등 스택을 
-                React, Node.js, PostgreSQL, Tailwind CSS 등 프레임워
-                크와 결합해 스타트업에서부터 서비스 기능한 수준의 솔루션
-                속도 높게 구축합니다.
+                프로젝트 규모와 상관없이 목적과 예산에 맞는 효율적 아키텍처를 설계하고, UI/UX 컨설팅부터 운영까지 전 과정을 지원합니다.
               </p>
               
               <p className="text-lg leading-relaxed">
-                프로젝트 규모와 상관없이, 서비스의 목적과 예산에 맞는 효율적
-                인 아키텍처를 설계하며 개발 초기, UI/UX 컨설팅, 운지속으로 컨
-                의성을 모든 과정을 담당합니다.
-              </p>
-              
-              <p className="text-lg leading-relaxed">
-                저희는 스마트폰컨텐터 SaaS, AI 기반 플랫폼, 관리형 웹 시
-                스템에 다양한 중심의 기술 역량으로 효율적 프로세스를 수행할 수 
-                있는 팀입니다.
+                SaaS, AI 플랫폼, 관리형 웹 시스템 등 다양한 분야에서 효율적 프로세스를 수행할 수 있는 기술 역량을 보유하고 있습니다.
               </p>
             </div>
           </div>

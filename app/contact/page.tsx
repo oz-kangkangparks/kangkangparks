@@ -23,7 +23,7 @@ export default function Page(){
       {/* 히어로 섹션 */}
       <section className="section bg-accent">
         <div className="container text-center">
-          <h1 className="text-4xl md:text-6xl font-black tracking-tight">상담 신청</h1>
+          <h1 className="text-4xl md:text-6xl font-black tracking-tight">Contact Us</h1>
           <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">
             프로젝트에 대해 자세히 알려주세요.<br/>
             최대한 빠르게 연락드리겠습니다.
@@ -140,7 +140,7 @@ export default function Page(){
           <div className="mt-16 text-center">
             <h3 className="text-lg font-semibold mb-4">또는 직접 연락주세요</h3>
             <div className="inline-block bg-accent px-6 py-4 rounded-lg">
-              <p className="text-gray-700">kji@kangkangparks.com</p>
+              <p className="text-gray-700">contact@kangkangparks.com</p>
             </div>
           </div>
         </div>

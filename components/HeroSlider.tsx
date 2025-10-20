@@ -7,21 +7,21 @@ const slides = [
     id: 1,
     kicker: "We Do",
     title: "강강박스",
-    description: "웹사이트, 앱, SaaS, AI 기반 서비스까지 원스톱 제작했다",
+    description: "AI·IoT·소프트웨어로 더 스마트한 세상을 만듭니다",
     background: "bg-accent" // 핑크톤
   },
   {
     id: 2,
     kicker: "We Show",
     title: "RESULTS",
-    description: "웹사이트, 앱, SaaS, AI 기반 서비스까지 원스톱 제작했다",
+    description: "AI·IoT·소프트웨어로 더 스마트한 세상을 만듭니다",
     background: "bg-gradient-to-r from-accent to-yellow-200" // 왼쪽 핑크 → 우측 노랑
   },
   {
     id: 3,
     kicker: "We Have",
     title: "STRATEGY",
-    description: "웹사이트, 앱, SaaS, AI 기반 서비스까지 원스톱 제작했다",
+    description: "AI·IoT·소프트웨어로 더 스마트한 세상을 만듭니다",
     background: "bg-gradient-to-r from-yellow-200 to-accent" // 왼쪽 노랑 → 우측 핑크
   }
 ]

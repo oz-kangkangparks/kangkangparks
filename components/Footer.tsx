@@ -4,41 +4,30 @@ import Image from "next/image"
 export default function Footer(){
   return (
     <footer className="border-t">
-      <div className="container py-10 grid md:grid-cols-4 gap-8">
-        <div>
-          <Image 
-            src="/images/logo.png" 
-            alt="강강박스" 
-            width={180} 
-            height={60} 
-            className="h-14 w-auto mb-3"
-          />
-          <p className="muted">기획부터 배포까지, 원스톱 에이전시</p>
+      <div className="container py-10 flex flex-col items-center">
+        <Image 
+          src="/images/logo.png" 
+          alt="강강박스" 
+          width={180} 
+          height={60} 
+          className="h-14 w-auto mb-6"
+        />
+        
+        <div className="flex justify-center items-start gap-16 mb-4 ml-8">
+          <div className="text-left">
+            <div className="font-semibold mb-2">Policy</div>
+            <ul className="space-y-1 text-sm">
+              <li><Link href="/policy/privacy" className="hover:text-primary transition-colors">개인정보처리방침</Link></li>
+              <li><Link href="/policy/privacy/termas" className="hover:text-primary transition-colors">이용약관</Link></li>
+            </ul>
+          </div>
+          <div className="text-left ml-16">
+            <div className="font-semibold mb-2">Contact</div>
+            <p className="text-sm">contact@kangkangparks.com</p>
+          </div>
         </div>
-        <div>
-          <div className="font-semibold mb-3">Menu</div>
-          <ul className="space-y-2 text-sm">
-            <li><Link href="/">Home</Link></li>
-            <li><Link href="/about">About Us</Link></li>
-            <li><Link href="/portfolio">PortFolio</Link></li>
-            <li><Link href="/services">Services</Link></li>
-            <li><Link href="/contact">Contact Us</Link></li>
-          </ul>
-        </div>
-        <div>
-          <div className="font-semibold mb-3">Policy</div>
-          <ul className="space-y-2 text-sm">
-            <li><Link href="/policy/privacy">개인정보처리방침</Link></li>
-            <li><Link href="/policy/privacy/termas">이용약관</Link></li>
-          </ul>
-        </div>
-        <div>
-          <div className="font-semibold mb-3">Contact</div>
-          <p className="text-sm">kji@kangkangparks.com</p>
-        </div>
-      </div>
-      <div className="border-t">
-        <div className="container py-6 text-xs text-gray-500">
+
+        <div className="mt-4 text-xs text-gray-500 text-center">
           © {new Date().getFullYear()} 강강박스. All rights reserved.
         </div>
       </div>
