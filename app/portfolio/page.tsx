@@ -11,10 +11,10 @@ export default function Page(){
   return (
     <>
       {/* 히어로 섹션 */}
-      <section className="section bg-accent">
+      <section className="py-20 bg-accent">
         <div className="container text-center">
           <h1 className="text-4xl md:text-6xl font-black tracking-tight">PortFolio</h1>
-          <p className="mt-4 text-lg text-gray-600">
+          <p className="mt-6 text-lg md:text-xl text-gray-700">
             포트폴리오를 찾아주셔서 감사합니다.<br/>
             그동안 참여한 작업과 함께 제공 서비스에 관한 자세한 정보를 확인해보세요.
           </p>

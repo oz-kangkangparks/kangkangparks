@@ -41,7 +41,7 @@ export default function HeroSlider() {
 
   return (
     <section className={`section ${current.background} transition-all duration-1000 ease-in-out`}>
-      <div className="container grid md:grid-cols-2 gap-8 items-center min-h-[60vh]">
+      <div className="container grid md:grid-cols-2 gap-8 items-center min-h-[80vh]">
         <div className="text-center md:text-left">
           <p className="kicker">{current.kicker}</p>
           <h1 className="h1 mt-2 text-5xl md:text-7xl font-black tracking-tight">

@@ -8,9 +8,9 @@ export default function Page(){
   return (
     <>
       {/* 히어로 섹션 */}
-      <section className="section bg-accent">
+      <section className="py-20 bg-accent">
         <div className="container text-center">
-          <h1 className="text-4xl md:text-6xl font-black tracking-tight text-gray-900">SERVICES</h1>
+          <h1 className="text-4xl md:text-6xl font-black tracking-tight text-gray-900">Services</h1>
           <p className="mt-6 text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
             귀사의 아이디어를 현실로 만드는 맞춤형 디지털 솔루션을 제공합니다.<br/>
             기획부터 개발·배포까지 전 과정을 함께하며, 빠르고 확장 가능한 서비스를 구축해 드립니다.
@@ -19,7 +19,7 @@ export default function Page(){
       </section>
 
       {/* 서비스 설명 */}
-      <section className="section">
+      <section className="pt-16 md:pt-24 pb-8">
         <div className="container text-center max-w-4xl">
           <p className="text-lg text-gray-700 leading-relaxed">
             AI·IoT·소프트웨어·웹 기반 서비스 개발에 특화되어 있습니다.<br/>
@@ -29,7 +29,7 @@ export default function Page(){
       </section>
 
       {/* 서비스 그리드 */}
-      <section className="section bg-white">
+      <section className="pt-8 pb-16 md:pb-24 bg-white">
         <div className="container">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* 웹 서비스 및 SaaS 플랫폼 개발 */}

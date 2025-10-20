@@ -21,10 +21,10 @@ export default function Page(){
   return (
     <>
       {/* 히어로 섹션 */}
-      <section className="section bg-accent">
+      <section className="py-20 bg-accent">
         <div className="container text-center">
           <h1 className="text-4xl md:text-6xl font-black tracking-tight">Contact Us</h1>
-          <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="mt-6 text-lg md:text-xl text-gray-700 max-w-2xl mx-auto">
             프로젝트에 대해 자세히 알려주세요.<br/>
             최대한 빠르게 연락드리겠습니다.
           </p>
