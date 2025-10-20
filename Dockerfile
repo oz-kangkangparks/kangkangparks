@@ -17,7 +17,8 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # Next.js standalone 모드 활성화 (next.config.js에서 설정 필요)
-# 빌드
+# 빌드 최적화: 메모리 제한 완화 + 병렬 처리
+ENV NODE_OPTIONS="--max-old-space-size=4096"
 RUN npm run build
 
 # Stage 3: Runner (Production)

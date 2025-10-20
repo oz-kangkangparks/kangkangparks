@@ -3,7 +3,11 @@
     "allow": [
       "Bash(npm install)",
       "Read(//Users/a/ozcoding/dev/oz-kangkangparks/mvp/yougenebox/customer-frontend/**)",
-      "Bash(npm install sharp)"
+      "Bash(npm install sharp)",
+      "mcp__serena__read_file",
+      "mcp__serena__activate_project",
+      "mcp__serena__find_file",
+      "mcp__serena__replace_regex"
     ],
     "deny": [],
     "ask": []

@@ -34,6 +34,8 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
+          timeout: 30m
+          command_timeout: 30m
           script: |
             set -e
 
@@ -94,9 +96,14 @@ jobs:
             rm -f /tmp/deploy.tar.gz
             echo "✅ Code extracted"
 
-            # 5. 새 이미지 빌드
+            # 5. 새 이미지 빌드 (최적화)
             echo "🔨 Building new image (${NEW_IMAGE_TAG})..."
-            docker build --no-cache --pull -t "${PROJECT_NAME}:${NEW_IMAGE_TAG}" .
+            # BuildKit 활성화 + 캐시 활용
+            DOCKER_BUILDKIT=1 docker build \
+              --pull \
+              --build-arg BUILDKIT_INLINE_CACHE=1 \
+              -t "${PROJECT_NAME}:${NEW_IMAGE_TAG}" \
+              .
             echo "✅ Image built"
 
             # 6. 새 컨테이너 기동 (새 포트)
