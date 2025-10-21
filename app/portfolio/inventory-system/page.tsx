@@ -42,7 +42,7 @@ export default function InventorySystemPage() {
         <div className="container">
           <div className="max-w-6xl mx-auto mb-16">
             <Image 
-              src="/images/projects/inventory-system.png" 
+              src="/images/projects/inventory-system.webp" 
               alt="재고관리 시스템 메인 화면" 
               width={1200} 
               height={800} 
@@ -60,7 +60,7 @@ export default function InventorySystemPage() {
           <div className="mb-80">
             <div className="flex justify-center max-w-none mx-auto">
               <Image 
-                src="/images/projects/inventory-system/inventory-system 1 (1).png"
+                src="/images/projects/inventory-system/inventory-system 1 (1).webp"
                 alt="재고관리 시스템 대시보드"
                 width={1400}
                 height={1000}
@@ -72,7 +72,7 @@ export default function InventorySystemPage() {
           <div className="mb-80">
             <div className="flex justify-center max-w-none mx-auto">
               <Image 
-                src="/images/projects/inventory-system/inventory-system 1 (2).png"
+                src="/images/projects/inventory-system/inventory-system 1 (2).webp"
                 alt="재고 목록 화면"
                 width={1400}
                 height={1000}
@@ -84,7 +84,7 @@ export default function InventorySystemPage() {
           <div className="mb-80">
             <div className="flex justify-center max-w-none mx-auto">
               <Image 
-                src="/images/projects/inventory-system/inventory-system 1 (3).png"
+                src="/images/projects/inventory-system/inventory-system 1 (3).webp"
                 alt="입출고 관리 화면"
                 width={1400}
                 height={1000}
@@ -96,7 +96,7 @@ export default function InventorySystemPage() {
           <div className="mb-80">
             <div className="flex justify-center max-w-none mx-auto">
               <Image 
-                src="/images/projects/inventory-system/inventory-system 1 (4).png"
+                src="/images/projects/inventory-system/inventory-system 1 (4).webp"
                 alt="통계 분석 화면"
                 width={1400}
                 height={1000}
@@ -108,7 +108,7 @@ export default function InventorySystemPage() {
           <div className="mb-80">
             <div className="flex justify-center max-w-none mx-auto">
               <Image 
-                src="/images/projects/inventory-system/inventory-system 1 (5).png"
+                src="/images/projects/inventory-system/inventory-system 1 (5).webp"
                 alt="알림 관리 화면"
                 width={1400}
                 height={1000}
@@ -120,7 +120,7 @@ export default function InventorySystemPage() {
           <div className="mb-80">
             <div className="flex justify-center max-w-none mx-auto">
               <Image 
-                src="/images/projects/inventory-system/inventory-system 1 (6).png"
+                src="/images/projects/inventory-system/inventory-system 1 (6).webp"
                 alt="사용자 관리 화면"
                 width={1400}
                 height={1000}
@@ -132,7 +132,7 @@ export default function InventorySystemPage() {
           <div className="mb-80">
             <div className="flex justify-center max-w-none mx-auto">
               <Image 
-                src="/images/projects/inventory-system/inventory-system 1 (7).png"
+                src="/images/projects/inventory-system/inventory-system 1 (7).webp"
                 alt="설정 관리 화면"
                 width={1400}
                 height={1000}

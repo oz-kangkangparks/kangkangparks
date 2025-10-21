@@ -27,14 +27,15 @@ export default function Page(){
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative group">
               <Link href="/portfolio/beonwh" className="block">
-                <Image 
-                  src="/images/projects/beonwh-main.png" 
-                  alt="비온후 프로젝트 메인 화면" 
-                  width={600} 
-                  height={400} 
+                <Image
+                  src="/images/projects/beonwh-main.webp"
+                  alt="비온후 프로젝트 메인 화면"
+                  width={600}
+                  height={400}
                   className="rounded-2xl object-contain w-full shadow-lg bg-white p-4 group-hover:shadow-xl transition-all duration-300 cursor-pointer"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                   priority
-                  quality={75}
+                  quality={80}
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 rounded-2xl transition-all duration-300 flex items-center justify-center">
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-3">
@@ -94,14 +95,15 @@ export default function Page(){
             </div>
             <div className="relative order-1 lg:order-2 group">
               <Link href="/portfolio/inventory-system" className="block">
-                <Image 
-                  src="/images/projects/inventory-system.png" 
-                  alt="재고관리 시스템 화면" 
-                  width={600} 
-                  height={400} 
+                <Image
+                  src="/images/projects/inventory-system.webp"
+                  alt="재고관리 시스템 화면"
+                  width={600}
+                  height={400}
                   className="rounded-2xl object-contain w-full shadow-lg bg-white p-4 group-hover:shadow-xl transition-all duration-300 cursor-pointer"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                   loading="lazy"
-                  quality={75}
+                  quality={80}
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 rounded-2xl transition-all duration-300 flex items-center justify-center">
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-3">
@@ -123,14 +125,15 @@ export default function Page(){
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="relative group">
               <Link href="/portfolio/moapdf" className="block">
-                <Image 
-                  src="/images/projects/moapdf-main.png" 
-                  alt="MoaPDF 프로젝트 화면" 
-                  width={600} 
-                  height={400} 
+                <Image
+                  src="/images/projects/moapdf-main.webp"
+                  alt="MoaPDF 프로젝트 화면"
+                  width={600}
+                  height={400}
                   className="rounded-2xl object-contain w-full shadow-lg bg-white p-4 group-hover:shadow-xl transition-all duration-300 cursor-pointer"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                   loading="lazy"
-                  quality={75}
+                  quality={80}
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 rounded-2xl transition-all duration-300 flex items-center justify-center">
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-3">
@@ -190,14 +193,15 @@ export default function Page(){
             </div>
             <div className="relative order-1 lg:order-2 group">
               <Link href="/portfolio/moanovel" className="block">
-                <Image 
-                  src="/images/projects/moanovel-main.png" 
-                  alt="모아노벨 프로젝트 화면" 
-                  width={600} 
-                  height={400} 
+                <Image
+                  src="/images/projects/moanovel-main.webp"
+                  alt="모아노벨 프로젝트 화면"
+                  width={600}
+                  height={400}
                   className="rounded-2xl object-contain w-full shadow-lg bg-white p-4 group-hover:shadow-xl transition-all duration-300 cursor-pointer"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                   loading="lazy"
-                  quality={75}
+                  quality={80}
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 rounded-2xl transition-all duration-300 flex items-center justify-center">
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-3">

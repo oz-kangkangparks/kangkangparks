@@ -42,7 +42,7 @@ export default function BeonwhPage() {
         <div className="container">
           <div className="max-w-4xl mx-auto mb-16">
             <Image 
-              src="/images/projects/beonwh-main.png" 
+              src="/images/projects/beonwh-main.webp" 
               alt="BEONWH 메인 화면" 
               width={800} 
               height={600} 
@@ -60,7 +60,7 @@ export default function BeonwhPage() {
           <div className="mb-80">
             <div className="flex justify-center max-w-none mx-auto">
               <Image 
-                src="/images/projects/beonwh/beonwh 1 (1).png"
+                src="/images/projects/beonwh/beonwh 1 (1).webp"
                 alt="BEONWH 메인 화면"
                 width={3200}
                 height={2400}
@@ -72,7 +72,7 @@ export default function BeonwhPage() {
           <div className="mb-80">
             <div className="flex justify-center max-w-none mx-auto">
               <Image 
-                src="/images/projects/beonwh/beonwh 1 (2).png"
+                src="/images/projects/beonwh/beonwh 1 (2).webp"
                 alt="BEONWH 감정 입력"
                 width={3200}
                 height={2400}
@@ -84,7 +84,7 @@ export default function BeonwhPage() {
           <div className="mb-80">
             <div className="flex justify-center max-w-none mx-auto">
               <Image 
-                src="/images/projects/beonwh/beonwh 1 (3).png"
+                src="/images/projects/beonwh/beonwh 1 (3).webp"
                 alt="BEONWH 일기 작성"
                 width={3200}
                 height={2400}
@@ -96,7 +96,7 @@ export default function BeonwhPage() {
           <div className="mb-80">
             <div className="flex justify-center max-w-none mx-auto">
               <Image 
-                src="/images/projects/beonwh/beonwh 1 (4).png"
+                src="/images/projects/beonwh/beonwh 1 (4).webp"
                 alt="BEONWH 타이머"
                 width={3200}
                 height={2400}
@@ -108,7 +108,7 @@ export default function BeonwhPage() {
           <div className="mb-80">
             <div className="flex justify-center max-w-none mx-auto">
               <Image 
-                src="/images/projects/beonwh/beonwh 1 (5).png"
+                src="/images/projects/beonwh/beonwh 1 (5).webp"
                 alt="BEONWH 설정"
                 width={3200}
                 height={2400}
@@ -120,7 +120,7 @@ export default function BeonwhPage() {
           <div className="mb-80">
             <div className="flex justify-center max-w-none mx-auto">
               <Image 
-                src="/images/projects/beonwh/beonwh 1 (6).png"
+                src="/images/projects/beonwh/beonwh 1 (6).webp"
                 alt="BEONWH 통계"
                 width={3200}
                 height={2400}
@@ -132,7 +132,7 @@ export default function BeonwhPage() {
           <div className="mb-80">
             <div className="flex justify-center max-w-none mx-auto">
               <Image 
-                src="/images/projects/beonwh/beonwh 1 (7).png"
+                src="/images/projects/beonwh/beonwh 1 (7).webp"
                 alt="BEONWH 음성 기능"
                 width={3200}
                 height={2400}
@@ -144,7 +144,7 @@ export default function BeonwhPage() {
           <div className="mb-80">
             <div className="flex justify-center max-w-none mx-auto">
               <Image 
-                src="/images/projects/beonwh/beonwh 1 (8).png"
+                src="/images/projects/beonwh/beonwh 1 (8).webp"
                 alt="BEONWH 힐링"
                 width={3200}
                 height={2400}

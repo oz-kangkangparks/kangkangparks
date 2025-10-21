@@ -42,7 +42,7 @@ export default function MoaPDFPage() {
         <div className="container">
           <div className="max-w-6xl mx-auto mb-16">
             <Image 
-              src="/images/projects/moapdf-main.png" 
+              src="/images/projects/moapdf-main.webp" 
               alt="MoaPDF 메인 화면" 
               width={1200} 
               height={800} 
@@ -60,7 +60,7 @@ export default function MoaPDFPage() {
           <div className="mb-80">
             <div className="flex justify-center max-w-none mx-auto">
               <Image 
-                src="/images/projects/moapdf/moapdf-1 (1).png"
+                src="/images/projects/moapdf/moapdf-1 (1).webp"
                 alt="MoaPDF 메인 화면"
                 width={1400}
                 height={1000}
@@ -72,7 +72,7 @@ export default function MoaPDFPage() {
           <div className="mb-80">
             <div className="flex justify-center max-w-none mx-auto">
               <Image 
-                src="/images/projects/moapdf/moapdf-1 (2).png"
+                src="/images/projects/moapdf/moapdf-1 (2).webp"
                 alt="MoaPDF PDF 편집 도구"
                 width={1400}
                 height={1000}
@@ -84,7 +84,7 @@ export default function MoaPDFPage() {
           <div className="mb-80">
             <div className="flex justify-center max-w-none mx-auto">
               <Image 
-                src="/images/projects/moapdf/moapdf-1 (3).png"
+                src="/images/projects/moapdf/moapdf-1 (3).webp"
                 alt="MoaPDF 파일 변환"
                 width={1400}
                 height={1000}
@@ -96,7 +96,7 @@ export default function MoaPDFPage() {
           <div className="mb-80">
             <div className="flex justify-center max-w-none mx-auto">
               <Image 
-                src="/images/projects/moapdf/moapdf-1 (4).png"
+                src="/images/projects/moapdf/moapdf-1 (4).webp"
                 alt="MoaPDF PDF 병합"
                 width={1400}
                 height={1000}
@@ -108,7 +108,7 @@ export default function MoaPDFPage() {
           <div className="mb-80">
             <div className="flex justify-center max-w-none mx-auto">
               <Image 
-                src="/images/projects/moapdf/moapdf-1 (5).png"
+                src="/images/projects/moapdf/moapdf-1 (5).webp"
                 alt="MoaPDF PDF 압축"
                 width={1400}
                 height={1000}
@@ -120,7 +120,7 @@ export default function MoaPDFPage() {
           <div className="mb-80">
             <div className="flex justify-center max-w-none mx-auto">
               <Image 
-                src="/images/projects/moapdf/moapdf-1 (6).png"
+                src="/images/projects/moapdf/moapdf-1 (6).webp"
                 alt="MoaPDF OCR 기능"
                 width={1400}
                 height={1000}
@@ -132,7 +132,7 @@ export default function MoaPDFPage() {
           <div className="mb-80">
             <div className="flex justify-center max-w-none mx-auto">
               <Image 
-                src="/images/projects/moapdf/moapdf-1 (7).png"
+                src="/images/projects/moapdf/moapdf-1 (7).webp"
                 alt="MoaPDF 디지털 서명"
                 width={1400}
                 height={1000}
@@ -144,7 +144,7 @@ export default function MoaPDFPage() {
           <div className="mb-80">
             <div className="flex justify-center max-w-none mx-auto">
               <Image 
-                src="/images/projects/moapdf/moapdf-1 (8).png"
+                src="/images/projects/moapdf/moapdf-1 (8).webp"
                 alt="MoaPDF 클라우드 연동"
                 width={1400}
                 height={1000}

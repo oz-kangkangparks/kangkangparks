@@ -10,9 +10,12 @@ const nextConfig = {
   
   images: {
     domains: [],
-    formats: ['image/webp', 'image/avif'],
-    // 빌드 시 이미지 최적화 제한
-    minimumCacheTTL: 60,
+    formats: ['image/webp', 'image/avif'], // WebP 우선, AVIF 폴백
+    // 이미지 캐싱 (1년)
+    minimumCacheTTL: 31536000,
+    // 기기별 최적화 사이즈
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   
   // 병렬 빌드 최적화
