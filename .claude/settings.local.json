@@ -7,7 +7,8 @@
       "mcp__serena__read_file",
       "mcp__serena__activate_project",
       "mcp__serena__find_file",
-      "mcp__serena__replace_regex"
+      "mcp__serena__replace_regex",
+      "Read(//Users/a/ozcoding/dev/oz-kangkangparks/mvp/yougenebox/customer-backend/**)"
     ],
     "deny": [],
     "ask": []

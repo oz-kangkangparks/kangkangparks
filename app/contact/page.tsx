@@ -6,14 +6,24 @@ export default function Page(){
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>){
     e.preventDefault()
-    const form = new FormData(e.currentTarget)
+    const formElement = e.currentTarget // 폼 참조를 미리 저장
+    const form = new FormData(formElement)
     setStatus("loading")
     try{
       const res = await fetch("/api/contact", { method:"POST", body: form })
-      if(!res.ok) throw new Error()
+      const data = await res.json()
+
+      console.log("Response status:", res.status, "Data:", data)
+
+      if(!res.ok) {
+        console.error("Server returned error:", data)
+        throw new Error(data.error || "Failed to send message")
+      }
+
       setStatus("ok")
-      e.currentTarget.reset()
-    }catch{
+      formElement.reset() // 저장된 참조로 리셋
+    }catch(error){
+      console.error("Submit error:", error)
       setStatus("err")
     }
   }
@@ -122,16 +132,18 @@ export default function Page(){
             </div>
 
             {status==="ok" && (
-              <div className="text-center p-4 bg-green-50 border border-green-200 rounded-lg">
-                <p className="text-green-600 font-medium">문의가 성공적으로 접수되었습니다!</p>
-                <p className="text-green-600 text-sm mt-1">빠른 시일 내에 연락드리겠습니다.</p>
+              <div className="text-center p-6 bg-green-50 border-2 border-green-300 rounded-lg animate-fade-in">
+                <div className="text-5xl mb-3">✅</div>
+                <p className="text-green-700 font-bold text-xl mb-2">상담 신청이 완료되었습니다!</p>
+                <p className="text-green-600">빠른 시일 내에 box@kangkangparks.com으로 연락드리겠습니다.</p>
               </div>
             )}
-            
+
             {status==="err" && (
-              <div className="text-center p-4 bg-red-50 border border-red-200 rounded-lg">
-                <p className="text-red-600 font-medium">오류가 발생했습니다.</p>
-                <p className="text-red-600 text-sm mt-1">다시 시도해주세요.</p>
+              <div className="text-center p-6 bg-red-50 border-2 border-red-300 rounded-lg">
+                <div className="text-5xl mb-3">❌</div>
+                <p className="text-red-700 font-bold text-xl mb-2">전송 중 오류가 발생했습니다</p>
+                <p className="text-red-600">잠시 후 다시 시도해주시거나 box@kangkangparks.com으로 직접 문의해주세요.</p>
               </div>
             )}
           </form>
@@ -140,7 +152,7 @@ export default function Page(){
           <div className="mt-16 text-center">
             <h3 className="text-lg font-semibold mb-4">또는 직접 연락주세요</h3>
             <div className="inline-block bg-accent px-6 py-4 rounded-lg">
-              <p className="text-gray-700">contact@kangkangparks.com</p>
+              <p className="text-gray-700">box@kangkangparks.com</p>
             </div>
           </div>
         </div>
