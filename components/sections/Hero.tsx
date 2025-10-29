@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Container } from '@/components/Layout';
-import { Canvas2DHeroScene } from '@/components/canvas/hero-canvas';
+import { Canvas2DHeroScene } from '@/components/canvas/HeroCanvas';
 
 export default function Hero() {
   return (

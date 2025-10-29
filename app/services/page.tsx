@@ -181,7 +181,7 @@ function Services() {
   );
 }
 
-function TiltCard({ children, delay = 0 }) {
+function TiltCard({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [style, setStyle] = useState<{ transform: string }>({ transform: '' });
   return (

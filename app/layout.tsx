@@ -1,8 +1,8 @@
 import type { Metadata } from "next"
 import "./globals.css"
-import SiteHeader from "@/components/header"
-import SiteFooter from "@/components/footer"
-import BackToTop from "@/components/back-to-top"
+import SiteHeader from "@/components/Header"
+import SiteFooter from "@/components/Footer"
+import BackToTop from "@/components/BackToTop"
 
 export const metadata: Metadata = {
   title: "강강박스 | KangKang Parks",

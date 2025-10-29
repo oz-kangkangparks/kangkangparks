@@ -20,9 +20,9 @@ export default function HomePage() {
 
 // Integrate Section - Code Editor Style
 function IntegrateSection() {
-  const [activeTab, setActiveTab] = useState('nodejs');
-  
-  const tabs = [
+  const [activeTab, setActiveTab] = useState<'nodejs' | 'react' | 'python' | 'rest'>('nodejs');
+
+  const tabs: Array<{ id: 'nodejs' | 'react' | 'python' | 'rest'; label: string }> = [
     { id: 'nodejs', label: 'Node.js' },
     { id: 'react', label: 'React' },
     { id: 'python', label: 'Python' },

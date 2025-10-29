@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     }
 
     // SMTP 설정
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT),
       auth: {

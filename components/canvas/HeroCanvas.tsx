@@ -11,7 +11,7 @@ import {
   drawParticles,
   drawParticlesMono,
   drawScanlines,
-} from './hero-drawing';
+} from './HeroDrawing';
 
 export function Canvas2DHeroScene({ variant = 'color' }: { variant?: 'color' | 'black' }) {
   const reduced = useReducedMotion();
@@ -29,8 +29,9 @@ export function Canvas2DHeroScene({ variant = 'color' }: { variant?: 'color' | '
     const particles = makeParticles(900, 6);
     
     function handleResize() {
+      if (!canvas || !ctx) return;
       const { clientWidth, clientHeight } = canvas.parentElement || document.body;
-      width = clientWidth; 
+      width = clientWidth;
       height = clientHeight;
       canvas.width = Math.floor(width * dpr);
       canvas.height = Math.floor(height * dpr);
@@ -38,8 +39,9 @@ export function Canvas2DHeroScene({ variant = 'color' }: { variant?: 'color' | '
       canvas.style.height = height + 'px';
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
-    
+
     function frame(t: number) {
+      if (!ctx) return;
       const time = t / 1000;
       ctx.clearRect(0, 0, width, height);
       const isBlack = variant === 'black';
