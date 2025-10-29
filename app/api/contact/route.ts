@@ -1,62 +1,70 @@
-import { NextResponse } from "next/server"
-import nodemailer from "nodemailer"
+import { NextResponse } from 'next/server'
+import nodemailer from 'nodemailer'
 
-export async function POST(req: Request){
+export async function POST(request: Request) {
   try {
-    const form = await req.formData()
-    const data = Object.fromEntries(form.entries())
+    const { name, email, company, message } = await request.json()
 
-    console.log("CONTACT_FORM", data)
-
-    // SMTP 환경 변수 확인
-    if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
-      console.warn("SMTP credentials not configured.")
-      console.log("Contact form data logged but email not sent.")
-      return NextResponse.json({ ok: true })
+    // 입력 검증
+    if (!name || !email || !message) {
+      return NextResponse.json(
+        { error: '필수 항목을 모두 입력해주세요.' },
+        { status: 400 }
+      )
     }
 
-    // Gmail SMTP transporter 설정
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || "smtp.gmail.com",
-      port: parseInt(process.env.SMTP_PORT || "587"),
-      secure: false, // STARTTLS 사용
+    // 이메일 형식 검증
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { error: '올바른 이메일 형식이 아닙니다.' },
+        { status: 400 }
+      )
+    }
+
+    // SMTP 설정
+    const transporter = nodemailer.createTransporter({
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT),
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
-      tls: {
-        rejectUnauthorized: false
-      }
     })
 
-    // 이메일 내용 구성
+    // 이메일 내용
     const mailOptions = {
       from: process.env.SMTP_USER,
-      to: "box@kangkangparks.com", // 수신 이메일 주소
-      subject: `[강강박스] 새로운 문의 - ${data.name}`,
+      to: 'box@kangkangparks.com',
+      subject: `[강강박스] ${name}님의 문의`,
       html: `
-        <h2>새로운 상담 문의가 접수되었습니다</h2>
-        <hr/>
-        <p><strong>이름:</strong> ${data.name}</p>
-        <p><strong>이메일:</strong> ${data.email}</p>
-        <p><strong>연락처:</strong> ${data.phone}</p>
-        <p><strong>회사:</strong> ${data.company || "미기재"}</p>
-        <p><strong>프로젝트 유형:</strong> ${data.type}</p>
-        <p><strong>예상 예산:</strong> ${data.budget || "미기재"}</p>
-        <hr/>
-        <p><strong>요청 내용:</strong></p>
-        <p>${String(data.message).replace(/\n/g, '<br/>')}</p>
+        <h2>새로운 문의가 접수되었습니다</h2>
+        <p><strong>이름:</strong> ${name}</p>
+        <p><strong>이메일:</strong> ${email}</p>
+        ${company ? `<p><strong>회사:</strong> ${company}</p>` : ''}
+        <p><strong>메시지:</strong></p>
+        <p style="white-space: pre-wrap;">${message}</p>
       `,
-      replyTo: String(data.email),
+      text: `
+        새로운 문의가 접수되었습니다
+
+        이름: ${name}
+        이메일: ${email}
+        ${company ? `회사: ${company}` : ''}
+        메시지:
+        ${message}
+      `,
     }
 
-    // 이메일 발송
+    // 이메일 전송
     await transporter.sendMail(mailOptions)
-    console.log("✅ Email sent successfully to box@kangkangparks.com")
 
-    return NextResponse.json({ ok: true, message: "Email sent successfully" })
+    return NextResponse.json({ success: true }, { status: 200 })
   } catch (error) {
-    console.error("Contact form error:", error)
-    return NextResponse.json({ ok: false, error: "Failed to send message" }, { status: 500 })
+    console.error('Email send error:', error)
+    return NextResponse.json(
+      { error: '이메일 전송에 실패했습니다. 잠시 후 다시 시도해주세요.' },
+      { status: 500 }
+    )
   }
 }

@@ -1,140 +1,208 @@
-export const metadata = {
-  title: "Services | 강강박스",
-  description: "웹/앱/SaaS/AI 제작",
-  alternates: { canonical: "/services" },
-}
+'use client'
 
-export default function Page(){
+import React, { useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+import { Code, Shield, Zap, TerminalSquare, Globe } from 'lucide-react';
+import { Section } from '@/components/Layout';
+
+export default function ServicesPage() { return <Services />; }
+
+function Services() {
+  const items = [
+    { 
+      title: 'AI/ML', 
+      text: '전략·데이터·모델·LLMOps', 
+      icon: <Code className="h-6 w-6" />,
+      gradient: 'from-pink-500 to-rose-500',
+      features: ['GPT-4 통합', '커스텀 모델 훈련', 'MLOps 파이프라인']
+    },
+    { 
+      title: 'IoT', 
+      text: '디바이스·펌웨어·엣지 추론', 
+      icon: <TerminalSquare className="h-6 w-6" />,
+      gradient: 'from-cyan-500 to-blue-500',
+      features: ['센서 통합', '실시간 데이터', '엣지 컴퓨팅']
+    },
+    { 
+      title: 'Cloud', 
+      text: 'API·데이터 파이프라인·MLOps', 
+      icon: <Globe className="h-6 w-6" />,
+      gradient: 'from-violet-500 to-purple-500',
+      features: ['확장 가능한 API', '자동 스케일링', '멀티 리전']
+    },
+    { 
+      title: 'Frontend', 
+      text: '웹·모바일·대시보드', 
+      icon: <Code className="h-6 w-6" />,
+      gradient: 'from-amber-500 to-orange-500',
+      features: ['React/Next.js', '반응형 디자인', 'PWA']
+    },
+    { 
+      title: 'Design', 
+      text: '리서치·UX·프로토타이핑', 
+      icon: <Zap className="h-6 w-6" />,
+      gradient: 'from-emerald-500 to-green-500',
+      features: ['사용자 리서치', 'UI/UX 설계', '프로토타이핑']
+    },
+    { 
+      title: 'Security', 
+      text: 'IAM·비밀관리·규정 준수', 
+      icon: <Shield className="h-6 w-6" />,
+      gradient: 'from-red-500 to-pink-500',
+      features: ['SOC 2 준수', 'GDPR 대응', '보안 감사']
+    },
+  ];
+  
   return (
     <>
-      {/* 히어로 섹션 */}
-      <section className="py-20 bg-accent">
-        <div className="container text-center">
-          <h1 className="text-4xl md:text-6xl font-black tracking-tight text-gray-900">Services</h1>
-          <p className="mt-6 text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
-            귀사의 아이디어를 현실로 만드는 맞춤형 디지털 솔루션을 제공합니다.<br/>
-            기획부터 개발·배포까지 전 과정을 함께하며, 빠르고 확장 가능한 서비스를 구축해 드립니다.
-          </p>
+      <Section id="services-hero">
+        <div className="mx-auto max-w-4xl text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h1 className="text-5xl sm:text-7xl font-bold tracking-tight">
+              <span className="bg-gradient-to-r from-pink-400 via-white to-cyan-400 bg-clip-text text-transparent">
+                서비스
+              </span>
+            </h1>
+            <p className="mt-6 text-xl text-neutral-300">
+              아이디어부터 운영까지 한 팀이 끝냅니다.
+            </p>
+            <p className="mt-4 text-base text-neutral-400 max-w-2xl mx-auto">
+              AI·IoT·소프트웨어를 한곳에서 제공합니다. 실험 속도와 운영 안정성을 균형 있게 잡습니다.
+            </p>
+          </motion.div>
         </div>
-      </section>
+      </Section>
 
-      {/* 서비스 설명 */}
-      <section className="pt-16 md:pt-24 pb-8">
-        <div className="container text-center max-w-4xl">
-          <p className="text-lg text-gray-700 leading-relaxed">
-            AI·IoT·소프트웨어·웹 기반 서비스 개발에 특화되어 있습니다.<br/>
-            단순한 코드 구현을 넘어, 사용자의 아이디어를 실제 제품으로 전환하는 실행 중심의 개발 파트너로 활동합니다.
-          </p>
-        </div>
-      </section>
+      <Section id="services-grid" band>
+        <div className="mx-auto max-w-6xl">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {items.map((it, idx) => (
+              <motion.div
+                key={it.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="group relative rounded-2xl border border-neutral-800 bg-neutral-900/50 p-8 hover:border-neutral-700 transition-all duration-300"
+              >
+                {/* Icon with Gradient */}
+                <div className={`inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${it.gradient} mb-6`}>
+                  {it.icon}
+                </div>
+                
+                {/* Title and Description */}
+                <h3 className="text-xl font-bold mb-2">{it.title}</h3>
+                <p className="text-sm text-neutral-400 mb-4">{it.text}</p>
+                
+                {/* Features List */}
+                <ul className="space-y-2">
+                  {it.features.map((feature, i) => (
+                    <li key={i} className="flex items-center gap-2 text-sm text-neutral-500">
+                      <div className="h-1.5 w-1.5 rounded-full bg-neutral-600" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
 
-      {/* 서비스 그리드 */}
-      <section className="pt-8 pb-16 md:pb-24 bg-white">
-        <div className="container">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* 웹 서비스 및 SaaS 플랫폼 개발 */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <h3 className="text-xl font-bold mb-4 relative inline-block">
-                <span className="relative z-10">웹 서비스 및 SaaS 플랫폼 개발</span>
-                <span className="absolute bottom-1 left-0 w-full h-3 bg-yellow-300/50 -z-0"></span>
-              </h3>
-              <p className="text-gray-700 leading-relaxed">
-                기업 초기 단계의 아이디어를 MVP부터
-                상용 서비스까지 구현.
-                React, Node.js 등 최신 기술 스택으로
-                확장 가능한 플랫폼을 제공합니다.
-              </p>
-            </div>
-
-            {/* 모바일 및 통합 관리 시스템 */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <h3 className="text-xl font-bold mb-4 relative inline-block">
-                <span className="relative z-10">모바일 및 통합 관리 시스템</span>
-                <span className="absolute bottom-1 left-0 w-full h-3 bg-pink-300/50 -z-0"></span>
-              </h3>
-              <p className="text-gray-700 leading-relaxed">
-                웹·앱 통합 서비스 제공,
-                반응형 웹과 데이터 연동 아우르는
-                크로스플랫폼 솔루션을 구현합니다.
-              </p>
-            </div>
-
-            {/* AI 및 데이터 기반 솔루션 */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <h3 className="text-xl font-bold mb-4 relative inline-block">
-                <span className="relative z-10">AI 및 데이터 기반 솔루션</span>
-                <span className="absolute bottom-1 left-0 w-full h-3 bg-green-300/50 -z-0"></span>
-              </h3>
-              <p className="text-gray-700 leading-relaxed">
-                음성·문서·이미지 등 데이터 처리 기반
-                자동화 서비스 개발.
-                GPT API와 LangChain을 활용한
-                지능형 시스템을 제공합니다.
-              </p>
-            </div>
-
-            {/* 기업용 업무 시스템 구축 */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <h3 className="text-xl font-bold mb-4 relative inline-block">
-                <span className="relative z-10">기업용 업무 시스템 구축</span>
-                <span className="absolute bottom-1 left-0 w-full h-3 bg-blue-300/50 -z-0"></span>
-              </h3>
-              <p className="text-gray-700 leading-relaxed">
-                ERP, 재고관리, 업무 자동화 등
-                실무 효율을 높이는 내부 시스템 설계.
-                PostgreSQL 기반의 안정적인
-                데이터 관리를 보장합니다.
-              </p>
-            </div>
-
-            {/* 기획 → 배포 전 과정 관리 */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <h3 className="text-xl font-bold mb-4 relative inline-block">
-                <span className="relative z-10">기획 → 배포 전 과정 관리</span>
-                <span className="absolute bottom-1 left-0 w-full h-3 bg-purple-300/50 -z-0"></span>
-              </h3>
-              <p className="text-gray-700 leading-relaxed">
-                설계부터 개발, 배포까지 지원
-                상황 공유와 지속적인
-                기술 지원 제공합니다.
-              </p>
-            </div>
-
-            {/* 빠른 상품과 지속 가능한 구조 */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <h3 className="text-xl font-bold mb-4 relative inline-block">
-                <span className="relative z-10">빠른 상품과 지속 가능한 구조</span>
-                <span className="absolute bottom-1 left-0 w-full h-3 bg-orange-300/50 -z-0"></span>
-              </h3>
-              <p className="text-gray-700 leading-relaxed">
-                스타트업에서 바로 서비스 가능한
-                수준의 품질과 속도 보장,
-                지속적으로 확장을 고려한
-                아키텍처로 설계하여 성장을 지원합니다.
-              </p>
-            </div>
+                {/* Hover Effect */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-pink-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+              </motion.div>
+            ))}
           </div>
         </div>
-      </section>
+      </Section>
 
-      {/* CTA 섹션 - 푸터 색상 */}
-      <section className="section bg-accent">
-        <div className="container text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">프로젝트를 시작해보세요</h2>
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            아이디어가 있으시다면 언제든 연락주세요.<br/>
-            함께 성공적인 프로젝트를 만들어가겠습니다.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact" className="btn-primary px-8 py-3">
-              상담 신청하기
-            </a>
-            <a href="/portfolio" className="btn-secondary px-8 py-3">
-              포트폴리오 보기
-            </a>
+      {/* Additional Benefits Section */}
+      <Section id="benefits">
+        <div className="mx-auto max-w-4xl text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight mb-6">
+              왜 <span className="bg-gradient-to-r from-pink-400 to-cyan-400 bg-clip-text text-transparent">강강박스</span>인가?
+            </h2>
+            <p className="text-lg text-neutral-400 mb-12">
+              우리는 단순히 코드를 작성하는 것이 아닙니다. 비즈니스 성공을 위한 기술 파트너입니다.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-6 text-left">
+            {[
+              {
+                title: '빠른 출시',
+                desc: '프로토타입부터 프로덕션까지 최소 시간으로 이동합니다.',
+                icon: <Zap className="h-5 w-5" />
+              },
+              {
+                title: '검증된 기술',
+                desc: '현대적이고 안정적인 기술 스택으로 리스크를 줄입니다.',
+                icon: <Shield className="h-5 w-5" />
+              },
+              {
+                title: '전문가 팀',
+                desc: 'AI, IoT, 웹 개발 전문가들이 함께 작업합니다.',
+                icon: <Code className="h-5 w-5" />
+              },
+              {
+                title: '지속적인 지원',
+                desc: '배포 후에도 지속적인 유지보수와 개선을 제공합니다.',
+                icon: <Globe className="h-5 w-5" />
+              },
+            ].map((benefit, i) => (
+              <motion.div
+                key={benefit.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="rounded-2xl border border-neutral-800 bg-neutral-900/50 p-6"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-pink-500/20 to-cyan-500/20 flex items-center justify-center text-white flex-shrink-0">
+                    {benefit.icon}
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-1">{benefit.title}</h3>
+                    <p className="text-sm text-neutral-400">{benefit.desc}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
-      </section>
+      </Section>
     </>
-  )
+  );
+}
+
+function TiltCard({ children, delay = 0 }) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [style, setStyle] = useState<{ transform: string }>({ transform: '' });
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay }}
+      ref={ref}
+      onMouseMove={(e) => {
+        const r = ref.current?.getBoundingClientRect();
+        if (!r) return;
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        setStyle({ transform: `rotateX(${(-y * 8).toFixed(2)}deg) rotateY(${(x * 8).toFixed(2)}deg) translateZ(0)` });
+      }}
+      onMouseLeave={() => setStyle({ transform: '' })}
+      className="rounded-2xl border border-neutral-900 bg-neutral-950 p-4 text-center [transform-style:preserve-3d] transition will-change-transform"
+      style={style}
+    >
+      {children}
+    </motion.div>
+  );
 }

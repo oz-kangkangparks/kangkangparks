@@ -1,148 +1,127 @@
 'use client'
 
-import React from 'react'
-import Link from 'next/link'
-import { motion } from 'framer-motion'
-import Image from 'next/image'
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
+import { Container } from '@/components/Layout';
+import { Canvas2DHeroScene } from '@/components/canvas/hero-canvas';
 
 export default function Hero() {
-  // 애니메이션 variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.22, 1, 0.36, 1] as const, // Custom easing
-      },
-    },
-  }
-
   return (
-    <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
-      {/* 배경 - 핑크 그라데이션 */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-primary-100 via-accent to-primary-200">
-        {/* 배경 이미지가 있으면 표시 */}
-        <div className="absolute inset-0">
-          <Image
-            src="/images/main.jpg"
-            alt="강강박스 메인 배경"
-            fill
-            priority
-            className="object-cover object-center opacity-0 transition-opacity duration-700"
-            quality={90}
-            onLoad={(e) => {
-              const img = e.target as HTMLImageElement
-              img.style.opacity = '1'
-            }}
-            onError={(e) => {
-              // 이미지 로드 실패 시 숨김 (gradient 사용)
-              const img = e.target as HTMLImageElement
-              img.style.display = 'none'
-            }}
-          />
+    <section id="home" className="relative isolate overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        <Canvas2DHeroScene variant="black" />
+        <div className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(closest-side,black,transparent)] opacity-70">
+          <DotGrid />
         </div>
-
-        {/* 부드러운 패턴 효과 */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255, 79, 139, 0.3) 1px, transparent 0)`,
-            backgroundSize: '32px 32px'
-          }} />
-        </div>
+        {/* Gradient Background - Resend Style */}
+        <div className="absolute inset-0 bg-gradient-to-b from-pink-500/5 via-transparent to-cyan-500/5 opacity-50" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-pink-500/20 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-[120px]" />
       </div>
 
-      {/* 콘텐츠 */}
-      <motion.div
-        className="relative z-10 container mx-auto px-4 text-center"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {/* 메인 헤드라인 */}
-        <motion.h1
-          className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 mb-6 leading-tight"
-          variants={itemVariants}
-          style={{ letterSpacing: '-0.02em' }}
-        >
-          데이터로 미래를 코딩합니다.
-        </motion.h1>
-
-        {/* 서브 텍스트 */}
-        <motion.p
-          className="text-xl md:text-2xl text-gray-700 mb-10 max-w-3xl mx-auto leading-relaxed"
-          variants={itemVariants}
-        >
-          AI와 IoT 기술을 통해 비즈니스의 잠재력을 현실로 만듭니다.
-        </motion.p>
-
-        {/* CTA 버튼 */}
-        <motion.div variants={itemVariants}>
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-primary-500 rounded-xl shadow-lg hover:bg-primary-600 hover:scale-105 transition-all duration-300 ease-out"
+      <Container className="relative z-10 min-h-[100svh] flex items-center py-32">
+        <div className="mx-auto max-w-5xl text-center">
+          {/* Main Heading - Resend Style */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            프로젝트 문의
-            <svg
-              className="ml-2 w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
-          </Link>
-        </motion.div>
+            <h1 className="text-6xl sm:text-8xl font-extrabold tracking-tight">
+              <span className="bg-gradient-to-r from-pink-400 via-white to-cyan-400 bg-clip-text text-transparent">
+                AI·IoT·소프트웨어
+              </span>
+              <br />
+              <span className="text-white">for developers</span>
+            </h1>
+          </motion.div>
 
-        {/* 스크롤 유도 애니메이션 */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.6,
-            delay: 1.2,
-            repeat: Infinity,
-            repeatType: 'reverse',
-            repeatDelay: 0.3,
-          }}
-        >
-          <div className="flex flex-col items-center text-gray-600">
-            <span className="text-sm mb-2 tracking-wider">SCROLL</span>
-            <svg
-              className="w-6 h-6 animate-bounce"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          {/* Subtitle */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="mt-6 text-lg sm:text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed"
+          >
+            아이디어를 기술로 실현하는 최고의 방법.
+            <br />
+            강강박스와 함께 트랜잭션 및 마케팅 시스템을 대규모로 구축하세요.
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-10 flex items-center justify-center gap-4 flex-wrap"
+          >
+            <a
+              href="#/contact"
+              className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-4 text-base font-semibold text-neutral-950 hover:bg-neutral-100 transition-colors shadow-lg"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 14l-7 7m0 0l-7-7m7 7V3"
-              />
-            </svg>
-          </div>
-        </motion.div>
-      </motion.div>
+              시작하기 <ArrowRight className="h-5 w-5" />
+            </a>
+            <a
+              href="#/services"
+              className="inline-flex items-center gap-2 rounded-xl border border-neutral-700 bg-neutral-900/50 px-6 py-4 text-base font-semibold text-white hover:bg-neutral-800 transition-colors backdrop-blur"
+            >
+              서비스 보기
+            </a>
+          </motion.div>
+
+          {/* Trust Section */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-20"
+          >
+            <p className="text-sm text-neutral-500 mb-6">다양한 규모의 기업들이 강강박스를 신뢰합니다</p>
+            <div className="flex items-center justify-center gap-8 flex-wrap">
+              {['AI/ML', 'IoT', 'Cloud', 'Frontend', 'Design', 'Security'].map((tech, i) => (
+                <motion.div
+                  key={tech}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ 
+                    opacity: [0.5, 1, 0.5],
+                    y: [0, -8, 0],
+                    scale: [1, 1.05, 1],
+                  }}
+                  transition={{ 
+                    duration: 2,
+                    delay: i * 0.2,
+                    repeat: Infinity,
+                    repeatDelay: 0.5,
+                    ease: "easeInOut"
+                  }}
+                  className="text-sm font-semibold text-neutral-400 hover:text-white transition-colors cursor-default"
+                >
+                  {tech}
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </Container>
+
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-neutral-800/80 to-transparent" />
     </section>
-  )
+  );
 }
 
+function DotGrid() {
+  const dots = Array.from({ length: 14 * 24 });
+  return (
+    <div className="h-full w-full">
+      <div className="grid h-full w-full grid-cols-24 grid-rows-14 gap-2 p-4">
+        {dots.map((_, i) => (
+          <motion.div key={i} className="h-1 w-1 rounded-full bg-white/10"
+            animate={{ opacity: [0.2, 0.8, 0.2] }}
+            transition={{ duration: 2.4, repeat: Infinity, delay: (i % 24) * 0.02 }} />
+        ))}
+      </div>
+    </div>
+  );
+}

@@ -1,39 +1,37 @@
 import type { Metadata } from "next"
 import "./globals.css"
-import Header from "@/components/Header"
-import Footer from "@/components/Footer"
+import SiteHeader from "@/components/header"
+import SiteFooter from "@/components/footer"
+import BackToTop from "@/components/back-to-top"
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.ganggangbox.example"),
-  title: "강강박스 | 기획·개발 에이전시",
-  description: "웹/앱/SaaS/AI, 기획부터 배포까지 원스톱 제공",
-  alternates: { canonical: "/" },
+  title: "강강박스 | KangKang Parks",
+  description: "강강박스 - 혁신적인 웹 개발 솔루션",
+  keywords: ["웹개발", "소프트웨어", "강강박스", "kangkangparks"],
+  authors: [{ name: "강강박스" }],
   openGraph: {
-    title: "강강박스 | 기획·개발 에이전시",
-    description: "웹/앱/SaaS/AI, 기획부터 배포까지 원스톱 제공",
-    url: "https://www.ganggangbox.example",
-    siteName: "강강박스",
+    title: "강강박스 | KangKang Parks",
+    description: "강강박스 - 혁신적인 웹 개발 솔루션",
     type: "website",
+    locale: "ko_KR",
+    siteName: "강강박스",
   },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const orgJsonLd = {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    name:"강강박스",
-    url:"https://www.ganggangbox.example",
-    sameAs:[],
-    logo:"https://www.ganggangbox.example/logo.png",
-    description:"기획·디자인·개발·배포 에이전시",
-  }
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="ko">
-      <body>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }} />
-        <Header />
-        <main>{children}</main>
-        <Footer />
+      <body className="min-h-screen bg-neutral-950 text-white">
+        <SiteHeader />
+        <main className="px-4 sm:px-6 lg:px-8">
+          {children}
+        </main>
+        <BackToTop />
+        <SiteFooter />
       </body>
     </html>
   )

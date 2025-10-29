@@ -1,77 +1,67 @@
-"use client"
-import Link from "next/link"
-import Image from "next/image"
-import { usePathname } from "next/navigation"
-import { useState } from "react"
+'use client'
 
-const Item = ({ href, label, onClick }: { href: string; label: string; onClick?: () => void }) => {
-  const pathname = usePathname()
-  const active = pathname === href
+import React from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
+import { Container } from './Layout';
+import { LogoConnected } from './Logo';
+
+export default function SiteHeader() {
   return (
-    <Link
-      href={href}
-      onClick={onClick}
-      className={`px-3 py-2 rounded-lg ${active ? "bg-accent text-ink" : "hover:bg-accent/70"}`}
-      aria-current={active ? "page" : undefined}
-    >
-      {label}
-    </Link>
-  )
+    <header className="sticky top-0 z-50 border-b border-neutral-800/50 bg-neutral-950/80 backdrop-blur-xl supports-[backdrop-filter]:bg-neutral-950/60">
+      <Container className="flex items-center justify-between py-4">
+        <div className="flex items-center gap-3">
+          <LogoConnected size={28} />
+          <Link href="/" className="text-base font-bold tracking-tight hover:text-pink-400 transition-colors">
+            강강박스
+          </Link>
+        </div>
+        <HeaderNav />
+        <div className="flex items-center gap-4">
+          <Link
+            href="/contact"
+            className="hidden sm:inline-flex items-center gap-2 rounded-xl border border-neutral-700 bg-neutral-900/50 px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800 transition-colors backdrop-blur"
+          >
+            문의하기
+          </Link>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-sm font-semibold text-neutral-950 hover:bg-neutral-100 transition-colors"
+          >
+            시작하기 <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </Container>
+    </header>
+  );
 }
 
-export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+const NAV_ITEMS = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Services', href: '/services' },
+  { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Contact', href: '/contact' },
+];
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
-  const closeMenu = () => setIsMenuOpen(false)
-
+function HeaderNav() {
+  const variants = {
+    init: { opacity: 0, y: -8 },
+    show: (i: number) => ({ opacity: 1, y: 0, transition: { delay: 0.04 * i, duration: 0.3 } })
+  };
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b">
-      <div className="container flex items-center justify-between h-16">
-        <Link href="/" className="flex items-center">
-          <Image 
-            src="/images/logo.png" 
-            alt="강강박스" 
-            width={150} 
-            height={50} 
-            className="h-12 w-auto"
-            priority
-          />
+    <nav className="hidden md:flex items-center gap-1 text-sm text-neutral-300">
+      {NAV_ITEMS.map((it, i) => (
+        <Link key={it.href} href={it.href}>
+          <motion.div custom={i}
+            initial="init" animate="show" variants={variants}
+            className="relative px-4 py-2 rounded-lg hover:bg-neutral-800/50 hover:text-white transition-colors"
+            whileTap={{ scale: 0.98 }}>
+            <span>{it.label}</span>
+          </motion.div>
         </Link>
-        
-        {/* 데스크톱 메뉴 */}
-        <nav className="desktop-menu hidden md:flex items-center gap-1">
-          <Item href="/" label="Home" />
-          <Item href="/about" label="About Us" />
-          <Item href="/portfolio" label="PortFolio" />
-          <Item href="/services" label="Services" />
-          <Item href="/contact" label="Contact Us" />
-        </nav>
-
-        {/* 모바일 햄버거 버튼 */}
-        <button
-          onClick={toggleMenu}
-          className="md:hidden flex flex-col items-center justify-center w-8 h-8 space-y-1"
-          aria-label="메뉴 열기"
-        >
-          <span className={`w-6 h-0.5 bg-gray-600 transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-          <span className={`w-6 h-0.5 bg-gray-600 transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-          <span className={`w-6 h-0.5 bg-gray-600 transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
-        </button>
-      </div>
-
-      {/* 모바일 메뉴 */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-white border-t">
-          <nav className="container py-4 flex flex-col space-y-2">
-            <Item href="/" label="Home" onClick={closeMenu} />
-            <Item href="/about" label="About Us" onClick={closeMenu} />
-            <Item href="/portfolio" label="PortFolio" onClick={closeMenu} />
-            <Item href="/services" label="Services" onClick={closeMenu} />
-            <Item href="/contact" label="Contact Us" onClick={closeMenu} />
-          </nav>
-        </div>
-      )}
-    </header>
-  )
+      ))}
+    </nav>
+  );
 }

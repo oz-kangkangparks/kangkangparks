@@ -1,36 +1,43 @@
-import Link from "next/link"
-import Image from "next/image"
+import React from 'react';
+import Link from 'next/link';
+import { Github, ExternalLink, Shield } from 'lucide-react';
+import { Container } from './Layout';
+import { LogoConnected } from './Logo';
 
-export default function Footer(){
+export default function SiteFooter() {
   return (
-    <footer className="border-t">
-      <div className="container py-10 flex flex-col items-center">
-        <Image 
-          src="/images/logo.png" 
-          alt="강강박스" 
-          width={180} 
-          height={60} 
-          className="h-14 w-auto mb-6"
-        />
-        
-        <div className="flex justify-center items-start gap-16 mb-4 ml-8">
-          <div className="text-left">
-            <div className="font-semibold mb-2">Policy</div>
-            <ul className="space-y-1 text-sm">
-              <li><Link href="/policy/privacy" className="hover:text-primary transition-colors">개인정보처리방침</Link></li>
-              <li><Link href="/policy/privacy/termas" className="hover:text-primary transition-colors">이용약관</Link></li>
-            </ul>
+    <footer className="border-t border-neutral-800/50 mt-24 bg-neutral-950">
+      <Container className="py-16">
+        {/* Brand Section */}
+        <div className="max-w-md mx-auto text-center">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <LogoConnected size={32} />
+            <span className="text-lg font-bold tracking-tight">강강박스</span>
           </div>
-          <div className="text-left ml-16">
-            <div className="font-semibold mb-2">Contact</div>
-            <p className="text-sm">contact@kangkangparks.com</p>
-          </div>
+          <p className="text-sm text-neutral-400 leading-relaxed mb-4">
+            AI·IoT·소프트웨어를 한곳에서 제공합니다.
+            <br />
+            실험 속도와 운영 안정성을 균형 있게 잡습니다.
+          </p>
+          <p className="text-sm text-neutral-400 mb-6">
+            box@kangkangparks.com
+          </p>
         </div>
+      </Container>
 
-        <div className="mt-4 text-xs text-gray-500 text-center">
-          © {new Date().getFullYear()} 강강박스. All rights reserved.
-        </div>
+      {/* Bottom Section */}
+      <div className="border-t border-neutral-800/50">
+        <Container className="py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="text-sm text-neutral-500">
+            © {new Date().getFullYear()} 강강박스. All rights reserved.
+          </div>
+          <div className="flex items-center gap-6 text-sm text-neutral-500">
+            <Link href="/policy/privacy" className="hover:text-white transition-colors">개인정보처리방침</Link>
+            <Link href="/policy/terms" className="hover:text-white transition-colors">이용약관</Link>
+            <Link href="/policy/cookies" className="hover:text-white transition-colors">쿠키 정책</Link>
+          </div>
+        </Container>
       </div>
     </footer>
-  )
+  );
 }
