@@ -13,12 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Fix case-sensitive file names
-        run: |
-          # Remove lowercase files if they exist
-          rm -f components/back-to-top.tsx components/canvas/hero-canvas.tsx components/canvas/hero-drawing.ts || true
-          echo "✅ Lowercase files removed (if existed)"
-
       - name: Create deployment archive
         run: |
           tar -czf /tmp/deploy.tar.gz --exclude='.git' --exclude='node_modules' .

@@ -16,6 +16,9 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# Git 히스토리의 소문자 파일 제거 (Linux는 대소문자 구분)
+RUN rm -f components/back-to-top.tsx components/canvas/hero-canvas.tsx components/canvas/hero-drawing.ts || true
+
 # Next.js standalone 모드 활성화 (next.config.js에서 설정 필요)
 # 빌드 최적화: 메모리 제한 완화 + 병렬 처리
 ENV NODE_OPTIONS="--max-old-space-size=4096"
