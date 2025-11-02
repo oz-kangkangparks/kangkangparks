@@ -15,13 +15,14 @@ export default function SiteFooter() {
             <span className="text-lg font-bold tracking-tight">강강박스</span>
           </div>
           <p className="text-sm text-neutral-400 leading-relaxed mb-4">
-            AI·IoT·소프트웨어를 한곳에서 제공합니다.
-            <br />
-            실험 속도와 운영 안정성을 균형 있게 잡습니다.
+            AI·IoT·소프트웨어로 더 스마트한 세상을 만듭니다.
           </p>
-          <p className="text-sm text-neutral-400 mb-6">
+          <a
+            href="mailto:box@kangkangparks.com"
+            className="text-sm text-neutral-400 hover:text-white transition-colors inline-block mb-6"
+          >
             box@kangkangparks.com
-          </p>
+          </a>
         </div>
       </Container>
 
