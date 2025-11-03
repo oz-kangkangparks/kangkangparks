@@ -11,7 +11,13 @@
       "Read(//Users/a/ozcoding/dev/oz-kangkangparks/mvp/yougenebox/customer-backend/**)",
       "Bash(find /Users/a/ozcoding/dev/oz-kangkangparks/kangkangparks/app/portfolio -name \"*.tsx\" -type f -exec sed -i '' 's/\\/images\\/projects\\/\\([^\"\"]*\\)\\.png/\\/images\\/projects\\/\\1.webp/g' {} ;)",
       "mcp__playwright__browser_navigate",
-      "mcp__playwright__browser_take_screenshot"
+      "mcp__playwright__browser_take_screenshot",
+      "Bash(npm run build:*)",
+      "Bash(git add:*)",
+      "Bash(cat:*)",
+      "Bash(git check-ignore:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []
