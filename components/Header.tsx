@@ -35,7 +35,6 @@ export default function SiteHeader() {
 }
 
 const NAV_ITEMS = [
-    { label: "Home", href: "/" },
     { label: "About", href: "/about" },
     { label: "Services", href: "/services" },
     { label: "Portfolio", href: "/portfolio" },
