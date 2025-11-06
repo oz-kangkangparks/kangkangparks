@@ -75,7 +75,7 @@ export default function NewHero() {
                     <AnimatePresence mode="wait">
                         <motion.h1
                             key={currentSequence.id}
-                            className="absolute inset-x-0 font-extrabold tracking-tight md:text-[14rem]"
+                            className="absolute inset-x-0 font-extrabold tracking-tight text-[8rem] md:text-[14rem]"
                             initial={{ opacity: 0, x: -160, y: -480 }}
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -160 }}
