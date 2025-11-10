@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 export default function SimpleCTA() {
@@ -34,13 +35,13 @@ export default function SimpleCTA() {
                         비즈니스의 새로운 도약, 강강박스와 함께 시작하세요.
                     </p>
 
-                    <a
-                        href="mailto:box@kangkangparks.com"
+                    <Link
+                        href="/contact"
                         className="mt-10 inline-flex items-center gap-3 rounded-xl bg-white px-8 py-4 font-semibold text-neutral-950 transition-colors hover:bg-neutral-100"
                     >
                         <span>문의하기</span>
                         <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                    </a>
+                    </Link>
                 </motion.div>
             </div>
         </section>
