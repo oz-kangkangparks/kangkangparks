@@ -18,15 +18,9 @@ export default function SiteHeader() {
                 <div className="flex items-center gap-4">
                     <Link
                         href="/contact"
-                        className="hidden sm:inline-flex items-center gap-2 rounded-xl border border-neutral-700 bg-neutral-900/50 px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800 transition-colors backdrop-blur"
-                    >
-                        문의하기
-                    </Link>
-                    <Link
-                        href="/contact"
                         className="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 text-sm font-semibold text-neutral-950 hover:bg-neutral-100 transition-colors"
                     >
-                        시작하기 <ArrowRight className="h-4 w-4" />
+                        문의하기 <ArrowRight className="h-4 w-4" />
                     </Link>
                 </div>
             </Container>
