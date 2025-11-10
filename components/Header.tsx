@@ -10,7 +10,7 @@ import { LogoConnected } from "./Logo";
 export default function SiteHeader() {
     return (
         <header className="sticky top-0 z-50 border-b border-neutral-800/50 bg-neutral-950/80 backdrop-blur-xl supports-[backdrop-filter]:bg-neutral-950/60">
-            <Container className="flex items-center justify-between py-4 sm:px-6 lg:px-8">
+            <Container className="flex items-center justify-between py-4 sm:px-6 lg:px-8 px-4">
                 <div className="flex items-center">
                     <LogoConnected />
                 </div>

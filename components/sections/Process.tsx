@@ -60,7 +60,7 @@ export default function Process() {
     };
 
     return (
-        <section className="relative flex h-screen w-full items-center justify-center bg-black">
+        <section className="relative flex min-h-screen w-full items-center justify-center bg-black py-16 md:h-screen md:py-0">
             <div className="mx-auto w-full px-6 lg:px-12">
                 <motion.div
                     className="mb-16 text-center"

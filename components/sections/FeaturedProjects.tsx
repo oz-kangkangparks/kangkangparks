@@ -68,6 +68,7 @@ export default function FeaturedProjects() {
     const animationRef = useRef<number>();
     const [isHovering, setIsHovering] = useState(false);
     const isJumpingRef = useRef(false);
+    const [isMobile, setIsMobile] = useState(false);
 
     const applyTransform = () => {
         const track = trackRef.current;
@@ -122,6 +123,16 @@ export default function FeaturedProjects() {
         requestAnimationFrame(animateStep);
     };
 
+    useEffect(() => {
+        const updateViewport = () => {
+            if (typeof window === "undefined") return;
+            setIsMobile(window.innerWidth < 1024);
+        };
+        updateViewport();
+        window.addEventListener("resize", updateViewport);
+        return () => window.removeEventListener("resize", updateViewport);
+    }, []);
+
     const handleJump = (dir: 1 | -1) => {
         if (isJumpingRef.current) return;
         const track = trackRef.current;
@@ -134,7 +145,8 @@ export default function FeaturedProjects() {
             Math.round(offsetRef.current / singleStep) * singleStep;
         offsetRef.current = alignedOffset;
         applyTransform();
-        const jumpDistance = singleStep * 3;
+        const stepMultiplier = isMobile ? 1 : 3;
+        const jumpDistance = singleStep * stepMultiplier;
         const targetOffset = alignedOffset + jumpDistance * dir;
         runJumpAnimation(targetOffset);
     };
@@ -200,7 +212,7 @@ export default function FeaturedProjects() {
     return (
         <section
             id="portfolio"
-            className="relative flex h-screen w-full items-center justify-center bg-neutral-900 border-t border-neutral-800"
+            className="relative flex min-h-screen w-full items-center justify-center bg-neutral-900 border-t border-neutral-800 py-16 md:h-screen md:py-0"
         >
             <div className="mx-auto w-full px-6 lg:px-12">
                 {/* Header */}

@@ -57,14 +57,14 @@ export default function SimpleServices() {
     return (
         <section
             id="services"
-            className="relative flex min-h-screen w-full items-center justify-center bg-black"
+            className="relative flex min-h-screen w-full items-center justify-center bg-black py-16 md:py-0"
         >
             <motion.div
                 className="mx-auto w-full max-w-[90rem] px-6 lg:px-12"
-                initial={{ opacity: 0, y: 80 }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.4 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
             >
                 <div className="flex flex-col gap-8 lg:grid lg:grid-cols-[minmax(220px,280px)_minmax(0,1fr)] lg:items-center">
                     {/* Left - Navigation */}
