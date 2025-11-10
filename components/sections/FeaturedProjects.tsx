@@ -200,7 +200,7 @@ export default function FeaturedProjects() {
     return (
         <section
             id="portfolio"
-            className="relative flex h-screen w-full items-center justify-center bg-black"
+            className="relative flex h-screen w-full items-center justify-center bg-neutral-900 border-t border-neutral-800"
         >
             <div className="mx-auto w-full px-6 lg:px-12">
                 {/* Header */}
