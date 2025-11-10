@@ -8,55 +8,40 @@ export default function SimpleCTA() {
     return (
         <section
             id="contact"
-            className="relative bg-neutral-900 border-t border-neutral-800 py-16"
+            className="relative flex min-h-screen items-center overflow-hidden border-t border-neutral-800 py-20"
         >
-            <div className="mx-auto w-full max-w-[90rem] px-6 lg:px-12">
-                <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-                    {/* Left - Content */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-8 leading-tight">
-                            프로젝트 문의
-                        </h2>
-                        <p className="text-lg lg:text-xl text-neutral-400 mb-12 leading-relaxed">
-                            ERP, 모바일 앱, AI 시스템 등<br />
-                            필요한 프로젝트를 상담해보세요.
-                        </p>
+            <video
+                className="absolute inset-0 h-full w-full object-cover"
+                src="videos/contact.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+            />
+            <div className="absolute inset-0 bg-black/70" />
+            <div className="relative z-10 mx-auto w-full max-w-[90rem] px-6 lg:px-12">
+                <motion.div
+                    className="text-center"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.4 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                >
+                    <h2 className="text-4xl font-bold text-white leading-tight lg:text-5xl xl:text-6xl">
+                        CONTACT
+                    </h2>
+                    <p className="mt-6 text-lg text-neutral-400 lg:text-xl">
+                        비즈니스의 새로운 도약, 강강박스와 함께 시작하세요.
+                    </p>
 
-                        {/* CTA Button */}
-                        <a
-                            href="mailto:box@kangkangparks.com"
-                            className="inline-flex items-center gap-3 px-8 py-4 bg-white text-neutral-950 font-semibold rounded-xl hover:bg-neutral-100 transition-colors group"
-                        >
-                            <span>이메일 문의하기</span>
-                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                        </a>
-                    </motion.div>
-
-                    {/* Right - Contact Info */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
+                    <a
+                        href="mailto:box@kangkangparks.com"
+                        className="mt-10 inline-flex items-center gap-3 rounded-xl bg-white px-8 py-4 font-semibold text-neutral-950 transition-colors hover:bg-neutral-100"
                     >
-                        {/* Email */}
-                        <div className="border-t-2 border-white pt-8">
-                            <p className="text-sm text-neutral-500 uppercase tracking-wider mb-4">
-                                Email
-                            </p>
-                            <a
-                                href="mailto:box@kangkangparks.com"
-                                className="text-2xl lg:text-3xl font-bold text-white hover:text-neutral-300 transition-colors"
-                            >
-                                box@kangkangparks.com
-                            </a>
-                        </div>
-                    </motion.div>
-                </div>
+                        <span>문의하기</span>
+                        <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    </a>
+                </motion.div>
             </div>
         </section>
     );
