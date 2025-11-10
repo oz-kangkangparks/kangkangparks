@@ -6,7 +6,7 @@ import { LogoConnected } from "./Logo";
 
 export default function SiteFooter() {
     return (
-        <footer className="border-t border-neutral-800/50 mt-24 bg-neutral-950">
+        <footer className="border-t border-neutral-800/50 bg-neutral-950">
             <Container className="py-16">
                 {/* Brand Section */}
                 <div className="max-w-md mx-auto text-center">
