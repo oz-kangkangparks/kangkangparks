@@ -54,7 +54,10 @@ const projects = [
 ];
 
 const CAROUSEL_COPIES = 4;
-const duplicatedProjects = Array.from({ length: CAROUSEL_COPIES }, () => projects).flat();
+const duplicatedProjects = Array.from(
+    { length: CAROUSEL_COPIES },
+    () => projects
+).flat();
 const BASE_SPEED = 0.5;
 
 export default function FeaturedProjects() {
@@ -201,17 +204,17 @@ export default function FeaturedProjects() {
         >
             <div className="mx-auto w-full px-6 lg:px-12">
                 {/* Header */}
-                <div className="mb-20 text-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        <h2 className="mb-8 text-3xl font-bold leading-tight text-white lg:text-4xl xl:text-5xl">
-                            PERFORMANCE
-                        </h2>
-                    </motion.div>
-                </div>
+                <motion.div
+                    className="mb-16 text-center"
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.4 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                >
+                    <h2 className="mb-4 text-4xl font-bold leading-tight text-white lg:text-5xl xl:text-6xl">
+                        PERFORMANCE
+                    </h2>
+                </motion.div>
                 {/* Carousel */}
                 <div className="relative">
                     <div
