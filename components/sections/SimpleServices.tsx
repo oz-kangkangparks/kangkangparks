@@ -57,16 +57,16 @@ export default function SimpleServices() {
     return (
         <section
             id="services"
-            className="relative bg-black h-screen w-full flex items-center justify-center"
+            className="relative flex min-h-screen w-full items-center justify-center bg-black"
         >
             <motion.div
-                className="max-w-7xl mx-auto w-full px-4"
+                className="mx-auto w-full max-w-[90rem] px-6 lg:px-12"
                 initial={{ opacity: 0, y: 80 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.4 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
             >
-                <div className="flex flex-col gap-8 lg:grid lg:grid-cols-[256px_1fr] lg:items-center">
+                <div className="flex flex-col gap-8 lg:grid lg:grid-cols-[minmax(220px,280px)_minmax(0,1fr)] lg:items-center">
                     {/* Left - Navigation */}
                     <div className="flex-shrink-0">
                         <nav
