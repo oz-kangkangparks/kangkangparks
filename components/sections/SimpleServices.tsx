@@ -203,7 +203,7 @@ export default function SimpleServices() {
 
                             {/* More View Button */}
                             <a
-                                href="#contact"
+                                href="services"
                                 className="inline-flex items-center justify-center rounded-full border-2 border-white px-10 py-4 font-medium text-white transition-all hover:bg-white hover:text-black"
                             >
                                 MORE VIEW +
