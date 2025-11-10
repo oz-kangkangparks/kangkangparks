@@ -66,7 +66,7 @@ export default function Process() {
                     className="mb-16 text-center"
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.4 }}
+                    viewport={{ once: false, amount: 0.4 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                 >
                     <h2 className="text-4xl font-bold leading-tight text-white lg:text-5xl xl:text-6xl">
@@ -81,7 +81,7 @@ export default function Process() {
                             <motion.div
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
+                                viewport={{ once: false }}
                                 transition={{
                                     delay: index * 0.1,
                                     duration: 0.6,
