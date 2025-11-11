@@ -9,20 +9,11 @@ const projects = [
     {
         id: "beonwh",
         title: "비온후",
-        subtitle: "모바일 앱 제작",
+        subtitle: "모바일 앱",
         category: "Mobile App",
         description:
-            "날씨 기반 일기 서비스 앱으로 감성적인 UI/UX와 사용자 경험을 중심으로 디자인하였습니다. iOS와 Android 동시 출시로 빠른 시장 진입을 이루었으며, 직관적인 인터페이스로 사용자들의 높은 만족도를 얻었습니다.",
+            "정책 연계가 가능한 헬스케어 기반 서비스로, 감정 기록 → 데이터 분석 → 정책 보고까지 이어지는 정책형 멘탈케어 루틴 서비스입니다.",
         image: "/images/beonwh.webp",
-    },
-    {
-        id: "inventory",
-        title: "재고관리 시스템",
-        subtitle: "웹 시스템 개발",
-        category: "Web System",
-        description:
-            "제조업체의 복잡한 재고 관리를 효율적으로 처리하는 맞춤형 웹 시스템입니다. 실시간 재고 현황 파악과 입출고 관리를 자동화하여 업무 효율을 50% 이상 향상시켰으며, 관리자 페이지를 통해 손쉽게 데이터를 관리할 수 있습니다.",
-        image: "/images/재고관리 (1).webp",
     },
     {
         id: "moapdf",
@@ -30,25 +21,34 @@ const projects = [
         subtitle: "SaaS 플랫폼",
         category: "SaaS Platform",
         description:
-            "PDF 변환 및 편집 SaaS 플랫폼으로 월 10만 건 이상의 문서 처리를 안정적으로 제공합니다. 클라우드 기반 아키텍처로 확장성을 확보하였으며, 직관적인 UI로 누구나 쉽게 사용할 수 있도록 구현하였습니다.",
+            "설치가 필요 없는 웹 브라우저 기반의 PDF 문서 처리 솔루션입니다",
         image: "/images/moapdf-main.webp",
+    },
+    {
+        id: "inventory",
+        title: "재고관리 시스템",
+        subtitle: "맞춤형 웹 시스템",
+        category: "Custom Web System",
+        description:
+            "AppSheet기반 스마트 재고관리 시스템으로, 누구나 사용할 수 있는 웹 기반의 입출고 자동화 시스템입니다.",
+        image: "/images/재고관리 (1).webp",
     },
     {
         id: "moanovel",
         title: "MoaNOVEL",
-        subtitle: "SaaS 플랫폼",
-        category: "SaaS Platform",
+        subtitle: "AI 서비스",
+        category: "AI service",
         description:
-            "PDF 변환 및 편집 SaaS 플랫폼으로 월 10만 건 이상의 문서 처리를 안정적으로 제공합니다. 클라우드 기반 아키텍처로 확장성을 확보하였으며, 직관적인 UI로 누구나 쉽게 사용할 수 있도록 구현하였습니다.",
+            "AI 기반의 웹소설 집필도구로, 작가 친화적인 환경으로 AI 기반 집필 보조 툴을 제공합니다.",
         image: "/images/모아노벨 (1).webp",
     },
     {
         id: "mes",
         title: "MES",
-        subtitle: "SaaS 플랫폼",
-        category: "SaaS Platform",
+        subtitle: "맞춤형 웹 시스템",
+        category: "Custom Web System",
         description:
-            "PDF 변환 및 편집 SaaS 플랫폼으로 월 10만 건 이상의 문서 처리를 안정적으로 제공합니다. 클라우드 기반 아키텍처로 확장성을 확보하였으며, 직관적인 UI로 누구나 쉽게 사용할 수 있도록 구현하였습니다.",
+            "실시간 생산 관리 체계를 구축하여 디지털 전환이 필요한 제조업의 현실적인 문제들을 해결하기 위한 맞춤형 웹 시스템입니다.",
         image: "/images/MES_표지.png",
     },
 ];
