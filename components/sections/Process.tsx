@@ -86,7 +86,7 @@ export default function Process() {
                                     delay: index * 0.1,
                                     duration: 0.6,
                                 }}
-                                className="relative flex w-full max-w-sm flex-col items-center text-center sm:max-w-md lg:max-w-[260px]"
+                                className="relative flex w-full max-w-sm flex-col items-center text-center sm:max-w-md lg:max-w-[320px]"
                             >
                                 <div
                                     className={`w-full rounded-3xl border p-7 transition-all duration-300 ${
@@ -102,7 +102,7 @@ export default function Process() {
                                             {step.icon}
                                         </span>
                                     </div>
-                                    <h3 className="mb-4 text-2xl font-bold text-white sm:text-[1.65rem]">
+                                    <h3 className="mb-3 text-xl font-bold leading-tight text-white sm:text-2xl lg:text-[1.7rem]">
                                         {step.title}
                                     </h3>
                                     <p className="text-base text-neutral-300 leading-relaxed whitespace-pre-line">
