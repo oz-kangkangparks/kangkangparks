@@ -10,7 +10,7 @@ const services = [
         title: "HOMEPAGE",
         titleKo: "홈페이지 제작",
         subtitle:
-            "복잡한 기획 자료 없어도 괜찮습니다.\n아이디어만 있으면 전문 기획부터 디자인, 운영 방법까지 함께 제공합니다.",
+            "단순한 회사 소개 페이지를 넘어, 20년 시니어의 '안정적인 백엔드' 설계로 트래픽이 몰려도 다운되지 않는 '프리미엄' 웹사이트를 보장합니다.",
         image: "/images/service-homepage.jpg",
     },
     {
@@ -18,7 +18,7 @@ const services = [
         title: "WEB SYSTEM",
         titleKo: "웹 시스템 개발",
         subtitle:
-            "ERP·MES·그룹웨어·CMS 등 30+ 프로젝트를 성공적으로 구축했습니다.\n기획부터 운영까지 전 과정을 책임집니다.",
+            "엑셀로 관리하던 업무, 혹은 오래되고 느려진 기존 시스템(레거시)이 고민이신가요?\n 20년 경력의 'B2B 지식'으로 문제를 진단하고 '맞춤형 업무 시스템'을 설계합니다.",
         image: "/images/service-web-system.jpg",
     },
     {
@@ -26,7 +26,7 @@ const services = [
         title: "MOBILE APP",
         titleKo: "모바일 앱",
         subtitle:
-            "한 번 개발로 iOS·Android 동시 출시합니다.\n앱스토어 심사부터 배포까지 전 과정을 책임집니다.",
+            "고객의 눈길을 끄는 '매력적인 B2C 앱'과 20년 시니어의 '안정적인 서버'를 결합합니다.\n 고성능 하이브리드 앱을 만나보세요.",
         image: "/images/service-mobile.jpg",
     },
     {
@@ -34,7 +34,7 @@ const services = [
         title: "AI SERVICE",
         titleKo: "AI 서비스",
         subtitle:
-            "AI 기술로 업무 혁신이 필요하신가요?\nGPT 챗봇, 영상 인식, 데이터 분석 등 원하는 AI 시스템을 모두 개발합니다.",
+            "AI 기술로 업무 혁신이 필요하신가요? GPT 챗봇, 영상 인식, 데이터 분석 등 원하는 AI 시스템을 모두 개발합니다.",
         image: "/images/service-ai.jpg",
     },
 ];
