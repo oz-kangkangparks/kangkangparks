@@ -7,27 +7,37 @@ const heroSequences = [
     {
         id: "plan",
         label: "PLAN",
-        video: "/videos/plan.mp4",
+        videoMp4: "/videos/plan.mp4",
+        videoWebm: "/videos/plan.webm",
+        poster: "/videos/plan.webp",
     },
     {
         id: "design",
         label: "DESIGN",
-        video: "/videos/design.mp4",
+        videoMp4: "/videos/design.mp4",
+        videoWebm: "/videos/design.webm",
+        poster: "/videos/design.webp",
     },
     {
         id: "build",
         label: "BUILD",
-        video: "/videos/build.mp4",
+        videoMp4: "/videos/build.mp4",
+        videoWebm: "/videos/build.webm",
+        poster: "/videos/build.webp",
     },
     {
         id: "test",
         label: "TEST",
-        video: "/videos/test.mp4",
+        videoMp4: "/videos/test.mp4",
+        videoWebm: "/videos/test.webm",
+        poster: "/videos/test.webp",
     },
     {
         id: "care",
         label: "CARE",
-        video: "/videos/care.mp4",
+        videoMp4: "/videos/care.mp4",
+        videoWebm: "/videos/care.webm",
+        poster: "/videos/care.webp",
     },
 ];
 
@@ -85,25 +95,27 @@ export default function NewHero() {
     return (
         <section className="relative flex h-screen w-full overflow-hidden bg-black">
             <div className="absolute inset-0">
-                {heroSequences.map((sequence, index) => (
+                <AnimatePresence mode="wait">
                     <motion.video
-                        key={sequence.id}
-                        src={sequence.video}
+                        key={currentSequence.id}
                         className="absolute inset-0 h-full w-full object-cover"
                         autoPlay
                         loop
                         muted
                         playsInline
-                        preload="auto"
-                        initial={false}
-                        animate={{ opacity: index === activeIndex ? 1 : 0 }}
-                        transition={{
-                            duration: TRANSITION_DURATION,
-                            ease: "easeInOut",
-                        }}
-                        aria-hidden={index !== activeIndex}
-                    />
-                ))}
+                        preload="metadata"
+                        poster={currentSequence.poster}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: TRANSITION_DURATION, ease: "easeInOut" }}
+                    >
+                        {currentSequence.videoWebm && (
+                            <source src={currentSequence.videoWebm} type="video/webm" />
+                        )}
+                        <source src={currentSequence.videoMp4} type="video/mp4" />
+                    </motion.video>
+                </AnimatePresence>
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/40" />
                 <div className="absolute inset-0 bg-black/20 md:hidden" />
             </div>

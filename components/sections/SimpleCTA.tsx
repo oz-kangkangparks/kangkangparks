@@ -13,12 +13,16 @@ export default function SimpleCTA() {
         >
             <video
                 className="absolute inset-0 h-full w-full object-cover"
-                src="videos/contact.mp4"
                 autoPlay
                 loop
                 muted
                 playsInline
-            />
+                preload="metadata"
+                poster="/videos/contact.webp"
+            >
+                <source src="/videos/contact.webm" type="video/webm" />
+                <source src="/videos/contact.mp4" type="video/mp4" />
+            </video>
             <div className="absolute inset-0 bg-black/70" />
             <div className="relative z-10 mx-auto w-full max-w-[90rem] px-6 lg:px-12">
                 <motion.div
