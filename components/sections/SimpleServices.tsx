@@ -57,7 +57,7 @@ export default function SimpleServices() {
     return (
         <section
             id="services"
-            className="relative flex min-h-screen w-full items-center justify-center bg-black py-16 md:py-0"
+            className="relative flex min-h-screen w-full items-center justify-center bg-neutral-900 border-t border-neutral-800 py-16 md:py-0"
         >
             <motion.div
                 className="mx-auto w-full max-w-[90rem] px-6 lg:px-12"
