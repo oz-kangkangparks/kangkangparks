@@ -9,35 +9,30 @@ const heroSequences = [
         label: "PLAN",
         videoMp4: "/videos/plan.mp4",
         videoWebm: "/videos/plan.webm",
-        poster: "/videos/plan.webp",
     },
     {
         id: "design",
         label: "DESIGN",
         videoMp4: "/videos/design.mp4",
         videoWebm: "/videos/design.webm",
-        poster: "/videos/design.webp",
     },
     {
         id: "build",
         label: "BUILD",
         videoMp4: "/videos/build.mp4",
         videoWebm: "/videos/build.webm",
-        poster: "/videos/build.webp",
     },
     {
         id: "test",
         label: "TEST",
         videoMp4: "/videos/test.mp4",
         videoWebm: "/videos/test.webm",
-        poster: "/videos/test.webp",
     },
     {
         id: "care",
         label: "CARE",
         videoMp4: "/videos/care.mp4",
         videoWebm: "/videos/care.webm",
-        poster: "/videos/care.webp",
     },
 ];
 
@@ -104,16 +99,24 @@ export default function NewHero() {
                         muted
                         playsInline
                         preload="metadata"
-                        poster={currentSequence.poster}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: TRANSITION_DURATION, ease: "easeInOut" }}
+                        transition={{
+                            duration: TRANSITION_DURATION,
+                            ease: "easeInOut",
+                        }}
                     >
                         {currentSequence.videoWebm && (
-                            <source src={currentSequence.videoWebm} type="video/webm" />
+                            <source
+                                src={currentSequence.videoWebm}
+                                type="video/webm"
+                            />
                         )}
-                        <source src={currentSequence.videoMp4} type="video/mp4" />
+                        <source
+                            src={currentSequence.videoMp4}
+                            type="video/mp4"
+                        />
                     </motion.video>
                 </AnimatePresence>
                 <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/40" />
