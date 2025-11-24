@@ -129,7 +129,7 @@ function StorySection() {
         <Section
             id="story"
             band
-            className="flex items-center"
+            className="flex min-h-screen items-center justify-center"
             sectionClassName="bg-neutral-900"
         >
             <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2 md:items-center">
@@ -201,7 +201,7 @@ function TeamSection() {
         <Section
             id="team"
             band
-            className="flex items-center"
+            className="flex min-h-screen items-center justify-center"
             sectionClassName="bg-neutral-950"
         >
             <div className="mx-auto max-w-5xl space-y-12 text-white">
@@ -264,7 +264,7 @@ function ValuesSection() {
     return (
         <Section
             id="values"
-            className="flex items-center"
+            className="flex min-h-screen items-center justify-center"
             sectionClassName="bg-neutral-900"
         >
             <div className="mx-auto max-w-4xl space-y-16">
@@ -433,12 +433,23 @@ const AchievementModal = ({
 function AchievementsSection() {
     const [selected, setSelected] = useState<Achievement | null>(null);
 
+    useEffect(() => {
+        if (selected) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, [selected]);
+
     return (
         <>
             <Section
                 id="achievements"
                 band
-                className="flex items-center"
+                className="flex min-h-screen items-center justify-center"
                 sectionClassName="bg-neutral-950"
             >
                 <div className="mx-auto w-full max-w-6xl space-y-12 px-4">

@@ -18,7 +18,7 @@ export function Section({
   sectionClassName?: string;
 }) {
   return (
-    <section id={id} className={`relative ${sectionClassName}`}>
+    <section id={id} className={`relative overflow-hidden ${sectionClassName}`}>
       {band && <div aria-hidden className="pointer-events-none absolute inset-0 z-0 bg-neutral-900/40" />}
       <Container className={`relative z-10 py-20 sm:py-28 ${className}`}>{children}</Container>
       <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-neutral-800/80 to-transparent" />
