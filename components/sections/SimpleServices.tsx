@@ -52,7 +52,7 @@ export default function SimpleServices() {
         }, 4000);
 
         return () => clearInterval(timer);
-    }, [isHovered, activeService]);
+    }, [isHovered]);
 
     return (
         <section
@@ -114,7 +114,7 @@ export default function SimpleServices() {
                                     cy="50%"
                                     r="49%"
                                     fill="none"
-                                    stroke="#ffffff"
+                                    stroke="#22d3ee"
                                     strokeWidth="4"
                                     strokeLinecap="round"
                                     pathLength="100"
@@ -205,7 +205,7 @@ export default function SimpleServices() {
                             {/* More View Button */}
                             <a
                                 href="services"
-                                className="inline-flex items-center justify-center rounded-full border-2 border-white px-10 py-4 font-medium text-white transition-all hover:bg-white hover:text-black"
+                                className="inline-flex items-center justify-center rounded-full border-2 border-white px-10 py-4 font-medium text-white transition-all hover:bg-cyan-400 hover:text-black hover:border-cyan-400"
                             >
                                 MORE VIEW +
                             </a>

@@ -140,7 +140,7 @@ function AchievementCard({
             {images.length > 0 ? (
                 <>
                     <div>
-                        <p className="text-xs uppercase tracking-widest text-neutral-400">
+                        <p className="text-xs uppercase tracking-widest text-cyan-300">
                             {item.category}
                         </p>
                         <h3 className="mt-3 text-lg font-semibold">

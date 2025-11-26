@@ -41,7 +41,7 @@ export default function SimpleCTA() {
 
                     <Link
                         href="/contact"
-                        className="mt-10 inline-flex items-center gap-3 rounded-xl bg-white px-8 py-4 font-semibold text-neutral-950 transition-colors hover:bg-neutral-100"
+                        className="mt-10 inline-flex items-center gap-3 rounded-xl bg-white px-8 py-4 font-semibold text-neutral-950 transition-colors hover:bg-cyan-400"
                     >
                         <span>문의하기</span>
                         <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />

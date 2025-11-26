@@ -253,7 +253,7 @@ export default function FeaturedProjects() {
                                         className="object-cover transition-transform duration-500 group-hover:scale-110"
                                     />
                                     <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/70 to-transparent p-6 transition-opacity duration-300 group-hover:opacity-0">
-                                        <p className="mb-2 text-xs uppercase tracking-wider text-neutral-300">
+                                        <p className="mb-2 text-xs uppercase tracking-wider text-cyan-300">
                                             {project.category}
                                         </p>
                                         <h3 className="text-xl font-bold text-white lg:text-2xl">
@@ -261,7 +261,7 @@ export default function FeaturedProjects() {
                                         </h3>
                                     </div>
                                     <div className="absolute inset-0 flex flex-col justify-center bg-black/90 p-8 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                                        <p className="mb-3 text-xs uppercase tracking-wider text-neutral-400">
+                                        <p className="mb-3 text-xs uppercase tracking-wider text-cyan-400">
                                             {project.category}
                                         </p>
                                         <h3 className="mb-4 text-2xl font-bold text-white">
@@ -270,7 +270,7 @@ export default function FeaturedProjects() {
                                         <p className="mb-6 text-sm leading-relaxed text-neutral-300">
                                             {project.description}
                                         </p>
-                                        <p className="text-sm font-medium text-white">
+                                        <p className="text-sm font-medium text-cyan-400">
                                             MORE VIEW+
                                         </p>
                                     </div>
@@ -304,7 +304,7 @@ export default function FeaturedProjects() {
                 <div className="mt-16 text-center">
                     <Link
                         href="/portfolio"
-                        className="inline-block px-10 py-4 border-2 border-white text-white font-medium rounded-full hover:bg-white hover:text-black transition-all"
+                        className="inline-block px-10 py-4 border-2 border-white text-white font-medium rounded-full hover:bg-cyan-400 hover:text-black hover:border-cyan-400 transition-all"
                     >
                         MORE VIEW+
                     </Link>
