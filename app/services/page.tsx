@@ -3,54 +3,62 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Section } from "@/components/Layout";
-import { Globe, Building2, Smartphone, Bot, CheckCircle } from "lucide-react";
+import {
+    Globe,
+    Building2,
+    Smartphone,
+    Bot,
+    CheckCircle,
+    Monitor,
+    Server,
+    BrainCircuit,
+} from "lucide-react";
 import Link from "next/link";
 
 const SERVICES = [
     {
-        icon: Globe,
+        icon: Monitor,
         title: "웹 서비스 및 SaaS 플랫폼",
-        summary: "아이디어를 검증하는 가장 빠르고 안정적인 방법",
-        details: [
-            "초기 스타트업 MVP 신속 개발",
-            "대규모 트래픽 SaaS 아키텍처 설계",
-            "SEO 및 Core Web Vitals 최적화",
+        description:
+            "기획 초기 단계의 아이디어를 검증된 MVP로, 더 나아가 대규모 상용 서비스로 확장합니다. 아이디어의 실현부터 운영까지 전 과정을 책임집니다.",
+        checks: [
+            "아이디어 검증을 위한 MVP 신속 개발",
+            "대규모 상용 서비스를 위한 확장성 설계",
+            "기획부터 배포까지 올인원 구현",
         ],
-        recommendedFor: "플랫폼 비즈니스 창업자, 레거시 웹 리뉴얼",
     },
     {
-        icon: Building2,
+        icon: Server,
         title: "기업용 업무 시스템 구축",
-        summary: "20년 도메인 지식으로 비즈니스 프로세스 최적화",
-        details: [
-            "제조/물류 특화 MES/ERP 구축",
-            "재고 관리/발주 자동화",
-            "엑셀 업무 디지털 전환",
+        description:
+            "ERP, 재고관리, 업무 자동화 등 기업 현장에 꼭 필요한 기능을 탑재하여, 실무 효율을 극대화하는 맞춤형 내부 시스템을 구축합니다.",
+        checks: [
+            "기업 맞춤형 ERP 및 재고관리 시스템",
+            "반복 업무 자동화(RPA) 솔루션",
+            "실무 효율 중심의 UI/UX 설계",
         ],
-        recommendedFor:
-            "엑셀 관리에 한계가 온 중소기업, 스마트 팩토리 도입 기업",
     },
     {
         icon: Smartphone,
         title: "모바일 및 통합 관리 시스템",
-        summary: "하나의 코드로 웹과 앱을 동시에, 효율적인 관리",
-        details: [
-            "React Native/Flutter 크로스 플랫폼 개발",
-            "앱-웹 통합 관리자(Admin) 구축",
-            "네이티브 기능(위치/카메라) 구현",
+        description:
+            "단순한 앱 개발이 아닙니다. 사용자용 모바일 앱 서비스뿐만 아니라, 이를 관리하는 웹 서비스까지 유기적으로 연결된 '통합형 시스템'을 구축합니다.",
+        checks: [
+            "Web & App 통합 서비스 동시 개발",
+            "React Native / Flutter 기반 크로스 플랫폼",
+            "통합 관리자(Admin) 시스템 구축",
         ],
-        recommendedFor: "O2O 서비스, 현장직용 앱, 커뮤니티 앱",
     },
     {
-        icon: Bot,
+        icon: BrainCircuit,
         title: "AI 및 데이터 기반 솔루션",
-        summary: "실무에 즉시 적용 가능한 업무 자동화",
-        details: [
-            "ChatGPT API 연동 챗봇",
-            "OCR 문서 자동화",
-            "음성/이미지 분석 솔루션",
+        description:
+            "GPT 챗봇은 물론 음성, 문서, 이미지, 영상 등 기업이 보유한 다양한 형태의 데이터를 처리하여, 실무에 즉시 적용 가능한 자동화 서비스를 개발합니다.",
+        checks: [
+            "음성/문서/이미지/영상 데이터 처리 자동화",
+            "GPT 기반 지능형 챗봇 서비스",
+            "비정형 데이터 분석 솔루션",
         ],
-        recommendedFor: "반복 업무 자동화 필요 기업, AI 도입 희망 스타트업",
     },
 ];
 
@@ -87,35 +95,12 @@ const PROCESS_STEPS = [
     },
 ];
 
-const TECH_STACKS = [
-    {
-        category: "Frontend & Mobile",
-        techs: ["React", "Next.js", "TypeScript", "Flutter", "Tailwind CSS"],
-    },
-    {
-        category: "Backend & Infra",
-        techs: [
-            "Node.js",
-            "Python",
-            "Java(Spring Boot)",
-            "PostgreSQL",
-            "AWS",
-            "Docker",
-        ],
-    },
-    {
-        category: "AI & Data",
-        techs: ["OpenAI API", "LangChain", "Hugging Face", "PyTorch"],
-    },
-];
-
 export default function ServicesPage() {
     return (
         <div className="bg-neutral-950 text-white">
             <HeroSection />
             <ServiceLineupSection />
             <ProcessSection />
-            <TechStackSection />
             <CtaSection />
         </div>
     );
@@ -154,50 +139,54 @@ function ServiceLineupSection() {
         <Section
             id="services"
             sectionClassName="bg-neutral-900"
-            className="flex min-h-screen items-center"
+            className="flex min-h-screen flex-col items-center justify-center"
         >
+            <motion.div
+                className="text-center mb-16"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+            >
+                <h2 className="text-3xl font-bold text-white md:text-4xl">
+                    Our Services
+                </h2>
+            </motion.div>
             <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2">
                 {SERVICES.map((service) => {
                     const Icon = service.icon;
                     return (
                         <motion.div
                             key={service.title}
-                            className="flex flex-col rounded-xl border-t-4 border-cyan-400 bg-neutral-950 p-8 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:bg-neutral-900"
+                            className="group flex flex-col items-start rounded-2xl border border-white/5 bg-neutral-900 p-10 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.5 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <div className="flex items-center gap-4">
-                                <Icon className="h-10 w-10 text-cyan-400" />
-                                <h2 className="text-2xl font-bold text-white">
-                                    {service.title}
-                                </h2>
-                            </div>
-                            <p className="mt-4 text-lg font-semibold text-cyan-400">
-                                {service.summary}
+                            <Icon
+                                className="h-12 w-12 text-cyan-400"
+                                strokeWidth={2}
+                            />
+                            <h2 className="mb-4 mt-6 text-2xl font-bold text-white">
+                                {service.title}
+                            </h2>
+                            <p className="mb-6 leading-relaxed text-neutral-300 break-keep">
+                                {service.description}
                             </p>
-                            <ul className="mt-6 flex-grow space-y-3">
-                                {service.details.map((detail) => (
+                            <ul className="flex-grow space-y-3">
+                                {service.checks.map((check) => (
                                     <li
-                                        key={detail}
+                                        key={check}
                                         className="flex items-start gap-3"
                                     >
                                         <CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-cyan-400" />
-                                        <span className="text-neutral-300 break-keep">
-                                            {detail}
+                                        <span className="font-medium text-neutral-300 break-keep">
+                                            {check}
                                         </span>
                                     </li>
                                 ))}
                             </ul>
-                            <div className="mt-8 rounded-lg bg-neutral-800/50 p-4">
-                                <p className="text-sm font-semibold text-white">
-                                    Recommended For
-                                </p>
-                                <p className="mt-1 text-sm text-neutral-400 break-keep">
-                                    {service.recommendedFor}
-                                </p>
-                            </div>
                         </motion.div>
                     );
                 })}
@@ -217,9 +206,6 @@ function ProcessSection() {
                 <h2 className="text-3xl font-bold text-white md:text-4xl">
                     Development Process
                 </h2>
-                <p className="mx-auto mt-4 max-w-2xl text-lg text-neutral-400">
-                    체계적인 5단계 프로세스를 통해 아이디어를 현실로 만듭니다.
-                </p>
             </div>
             <div className="relative mt-16 w-full max-w-2xl">
                 <div
@@ -265,57 +251,11 @@ function ProcessSection() {
     );
 }
 
-function TechStackSection() {
-    return (
-        <Section
-            id="tech-stack"
-            sectionClassName="bg-neutral-900"
-            className="flex min-h-screen flex-col items-center justify-center"
-        >
-            <div className="text-center">
-                <h2 className="text-3xl font-bold text-white md:text-4xl">
-                    Our Tech Stack
-                </h2>
-                <p className="mx-auto mt-4 max-w-2xl text-lg text-neutral-400">
-                    비즈니스 목표 달성을 위해 검증되고 신뢰할 수 있는 기술을
-                    사용합니다.
-                </p>
-            </div>
-            <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
-                {TECH_STACKS.map((stack) => (
-                    <motion.div
-                        key={stack.category}
-                        className="rounded-2xl border border-neutral-800 bg-neutral-950 p-6"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.5 }}
-                        transition={{ duration: 0.5 }}
-                    >
-                        <h3 className="text-lg font-semibold text-white">
-                            {stack.category}
-                        </h3>
-                        <div className="mt-4 flex flex-wrap gap-2">
-                            {stack.techs.map((tech) => (
-                                <span
-                                    key={tech}
-                                    className="rounded-full bg-neutral-800 px-3 py-1 text-sm font-medium text-neutral-300"
-                                >
-                                    {tech}
-                                </span>
-                            ))}
-                        </div>
-                    </motion.div>
-                ))}
-            </div>
-        </Section>
-    );
-}
-
 function CtaSection() {
     return (
         <Section
             id="cta"
-            sectionClassName="bg-neutral-950"
+            sectionClassName="bg-neutral-900"
             className="flex min-h-screen items-center justify-center"
         >
             <div className="mx-auto max-w-3xl text-center">
