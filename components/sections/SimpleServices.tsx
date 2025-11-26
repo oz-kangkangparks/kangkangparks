@@ -52,7 +52,7 @@ export default function SimpleServices() {
         }, 4000);
 
         return () => clearInterval(timer);
-    }, [isHovered]);
+    }, [isHovered, activeService]);
 
     return (
         <section
@@ -73,6 +73,7 @@ export default function SimpleServices() {
                             className="flex flex-col"
                             onMouseEnter={() => setIsHovered(true)}
                             onMouseLeave={() => setIsHovered(false)}
+                            onTouchEnd={() => setIsHovered(false)}
                         >
                             {services.map((service, index) => (
                                 <button
