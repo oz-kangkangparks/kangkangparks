@@ -6,35 +6,35 @@ import Image from "next/image";
 
 const services = [
     {
-        id: "homepage",
-        title: "HOMEPAGE",
-        titleKo: "홈페이지 제작",
+        id: "web-service",
+        title: "Web Service & SaaS",
+        titleKo: "웹 서비스 및 SaaS 플랫폼",
         subtitle:
-            "단순한 회사 소개 페이지를 넘어, 20년 시니어의 '안정적인 백엔드' 설계로 트래픽이 몰려도 다운되지 않는 '프리미엄' 웹사이트를 보장합니다.",
+            "아이디어 검증을 위한 MVP부터 대규모 트래픽을 감당하는 상용 플랫폼까지, 비즈니스의 성장을 견인하는 확장 가능한 웹 서비스를 구축합니다.",
         image: "/images/service-homepage.jpg",
     },
     {
-        id: "web-system",
-        title: "WEB SYSTEM",
-        titleKo: "웹 시스템 개발",
+        id: "mobile",
+        title: "Mobile & Integration",
+        titleKo: "모바일 및 통합 관리 시스템",
         subtitle:
-            "엑셀로 관리하던 업무, 혹은 오래되고 느려진 기존 시스템(레거시)이 고민이신가요?\n 20년 경력의 'B2B 지식'으로 문제를 진단하고 '맞춤형 업무 시스템'을 설계합니다.",
+            "하나의 코드로 iOS와 Android를 동시에 출시하는 크로스 플랫폼 앱과, 이를 효율적으로 관리하는 통합 어드민 시스템을 제공합니다.",
         image: "/images/service-web-system.jpg",
     },
     {
-        id: "mobile-app",
-        title: "MOBILE APP",
-        titleKo: "모바일 앱",
+        id: "ai-service",
+        title: "AI & Data",
+        titleKo: "AI 서비스 및 데이터 분석",
         subtitle:
-            "고객의 눈길을 끄는 '매력적인 B2C 앱'과 20년 시니어의 '안정적인 서버'를 결합합니다.\n 고성능 하이브리드 앱을 만나보세요.",
+            "GPT 챗봇, 음성/이미지/영상 분석 등 기업의 데이터를 활용한 실용적인 AI 솔루션으로 업무 자동화와 혁신을 실현합니다.",
         image: "/images/service-mobile.jpg",
     },
     {
-        id: "ai-service",
-        title: "AI SERVICE",
-        titleKo: "AI 서비스",
+        id: "enterprise",
+        title: "Enterprise System",
+        titleKo: "기업용 업무 시스템 구축",
         subtitle:
-            "AI 기술로 업무 혁신이 필요하신가요? GPT 챗봇, 영상 인식, 데이터 분석 등 원하는 AI 시스템을 모두 개발합니다.",
+            "20년 도메인 지식으로 비즈니스 프로세스를 최적화합니다. ERP, MES, 재고관리 등 현장에 꼭 필요한 맞춤형 시스템을 설계합니다.",
         image: "/images/service-ai.jpg",
     },
 ];
