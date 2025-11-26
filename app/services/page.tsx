@@ -65,33 +65,33 @@ const SERVICES = [
 const PROCESS_STEPS = [
     {
         step: "1",
-        title: "문의 및 분석 (Consulting)",
+        title: "문의 및 상담",
         description:
-            "단순 견적이 아닌 기술적 실현 가능성과 비즈니스 목표를 함께 진단합니다.",
+            "20년 경력의 시니어가 기술적인 실현 방안을 구체화하고, 가장 효율적인 개발 로드맵을 제안해 드립니다.",
     },
     {
         step: "2",
-        title: "설계 및 제안 (Architecture)",
+        title: "기획 및 설계",
         description:
-            "확장성과 안정성을 고려한 최적의 시스템 아키텍처와 구체적인 로드맵을 제안합니다.",
+            "구체적인 기능 명세와 시스템 설계를 통해 개발 범위를 명확히 하고, 최적의 기술 스택과 아키텍처를 확정합니다.",
     },
     {
         step: "3",
-        title: "개발 (Agile)",
+        title: "개발 및 구현",
         description:
-            "투명한 소통과 애자일 방법론에 기반하여 빠르고 유연하게 개발을 진행합니다.",
+            "확정된 설계를 바탕으로 실제 개발을 진행하며, 주요 진행 상황을 투명하게 공유합니다.",
     },
     {
         step: "4",
-        title: "품질 검증 (QA)",
+        title: "테스트 및 피드백",
         description:
-            "사용자 시나리오 기반의 테스트와 코드 리뷰를 통해 서비스 안정성을 확보합니다.",
+            "기능 테스트와 보안/성능 검증을 거친 후, 고객 피드백을 반영하여 완성도를 극대화합니다.",
     },
     {
         step: "5",
-        title: "배포 및 이관 (Deploy)",
+        title: "배포 및 운영",
         description:
-            "안정적인 배포 환경을 구축하고, 소스코드 소유권과 운영 노하우를 모두 이관합니다.",
+            "안정적인 실서버 배포를 지원하며, 서비스 런칭 후에도 지속적인 운영을 돕기 위한 기술 지원을 제공합니다.",
     },
 ];
 
@@ -207,7 +207,7 @@ function ProcessSection() {
                     Development Process
                 </h2>
             </div>
-            <div className="relative mt-16 w-full max-w-2xl">
+            <div className="relative mt-16 w-full max-w-4xl">
                 <div
                     className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-neutral-800"
                     aria-hidden="true"
@@ -215,7 +215,7 @@ function ProcessSection() {
                 {PROCESS_STEPS.map((step, index) => (
                     <motion.div
                         key={step.title}
-                        className="relative mb-12 flex items-center justify-center"
+                        className="relative mb-16 flex items-center justify-center"
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.5 }}
@@ -228,20 +228,24 @@ function ProcessSection() {
                                     : "justify-end"
                             }`}
                         >
-                            <div
-                                className={`w-2/5 ${
-                                    index % 2 === 0 ? "text-left" : "text-right"
-                                }`}
-                            >
-                                <h3 className="text-xl font-bold text-white">
-                                    {step.title}
-                                </h3>
-                                <p className="mt-2 text-neutral-400 break-keep">
-                                    {step.description}
-                                </p>
+                            <div className="w-2/5">
+                                <div
+                                    className={
+                                        index % 2 === 0
+                                            ? "text-right"
+                                            : "text-left"
+                                    }
+                                >
+                                    <h3 className="text-xl font-bold text-white">
+                                        {step.title}
+                                    </h3>
+                                    <p className="mt-2 leading-relaxed text-neutral-300 break-keep">
+                                        {step.description}
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                        <div className="absolute left-1/2 z-10 flex h-14 w-14 -translate-x-1/2 items-center justify-center rounded-full bg-cyan-400 text-2xl font-bold text-black">
+                        <div className="absolute left-1/2 z-10 flex h-14 w-14 -translate-x-1/2 items-center justify-center rounded-full border-2 border-cyan-400 bg-transparent text-2xl font-bold text-cyan-400">
                             {step.step}
                         </div>
                     </motion.div>
@@ -260,11 +264,11 @@ function CtaSection() {
         >
             <div className="mx-auto max-w-3xl text-center">
                 <h2 className="text-3xl font-bold text-white sm:text-4xl">
-                    어떤 솔루션이 필요한지 고민이신가요?
+                    아이디어를 현실로 만들 준비가 되셨나요?
                 </h2>
                 <p className="mt-4 text-lg text-neutral-400">
-                    현재 비즈니스 상황을 알려주시면, 가장 적합한 기술과 로드맵을
-                    제안해 드립니다.
+                    비즈니스 목표만 말씀해 주세요. 최적의 기술 스택과 실행
+                    로드맵은 저희가 설계합니다.
                 </p>
                 <motion.div
                     whileHover={{ scale: 1.05 }}
@@ -275,7 +279,7 @@ function CtaSection() {
                         href="/contact"
                         className="inline-block rounded-lg bg-cyan-400 px-8 py-3 text-lg font-semibold text-black transition hover:bg-cyan-500"
                     >
-                        무료 기술 상담 신청하기
+                        프로젝트 문의하기
                     </Link>
                 </motion.div>
             </div>
