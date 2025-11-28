@@ -8,9 +8,9 @@ import {
     ChevronLeft,
     ChevronRight,
     ArrowRight,
-    ShieldCheck,
-    Zap,
-    Users,
+    ClipboardCheck,
+    Infinity,
+    Anchor,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -486,22 +486,22 @@ function HeroSection() {
 
 const WHY_US_ITEMS = [
     {
-        icon: ShieldCheck,
-        title: "20년 경력의 안정성",
+        icon: ClipboardCheck,
+        title: "검증된 설계",
         description:
-            "20년 경력의 시니어 아키텍트가 설계하여, 수십만 트래픽도 감당하는 안정적이고 확장 가능한 시스템을 구축합니다.",
+            "아이디어만 가져오세요. 20년 경력의 노하우로 실패 확률을 줄이고, 가장 효율적인 실행 계획을 설계합니다.",
     },
     {
-        icon: Zap,
-        title: "최신 기술 스택",
+        icon: Infinity,
+        title: "한계 없는 기술",
         description:
-            "React, Next.js, Flutter 등 최신 기술 스택을 적극 활용하여 가장 빠르고 현대적인 사용자 경험을 제공합니다.",
+            "웹, 앱, AI까지. 검증된 최신 기술 스택으로 빠르게 구현하고, 유연하게 확장 가능한 시스템을 구축합니다.",
     },
     {
-        icon: Users,
-        title: "비즈니스 파트너십",
+        icon: Anchor,
+        title: "안정적 런칭",
         description:
-            "단순한 외주 개발이 아닌, 비즈니스 목표를 함께 고민하고 성공을 위해 협력하는 장기적인 기술 파트너가 되어 드립니다.",
+            "런칭은 끝이 아닌 시작입니다. 안정적인 배포로, 비즈니스의 성공적인 안착을 돕습니다.",
     },
 ];
 
@@ -515,10 +515,10 @@ function WhyUsSection() {
                 className="mb-16 text-center"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: false, amount: 0.2 }}
                 transition={{ duration: 0.6 }}
             >
-                <h2 className="text-4xl font-bold text-white lg:text-5xl">
+                <h2 className="text-3xl font-bold text-white md:text-4xl">
                     Why Choose Us
                 </h2>
             </motion.div>
@@ -531,7 +531,7 @@ function WhyUsSection() {
                             className="text-center"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.3 }}
+                            viewport={{ once: false, amount: 0.3 }}
                             transition={{ delay: index * 0.1, duration: 0.5 }}
                         >
                             <div className="inline-block rounded-2xl bg-neutral-800 p-4">
