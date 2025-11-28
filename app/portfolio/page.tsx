@@ -4,7 +4,14 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Section } from "@/components/Layout";
-import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import {
+    ChevronLeft,
+    ChevronRight,
+    ArrowRight,
+    ShieldCheck,
+    Zap,
+    Users,
+} from "lucide-react";
 import Link from "next/link";
 
 const portfolioItems = [
@@ -84,8 +91,18 @@ const portfolioItems = [
         description:
             "실시간 생산 관리 체계를 구축하여 디지털 전환이 필요한 제조업의 현실적인 문제들을 해결하기 위한 맞춤형 웹 시스템입니다.",
         details:
-            "OpenAI GPT-4 API 연동, Redis 캐싱으로 빠른 응답 속도, Next.js 서버 사이드 렌더링으로 SEO 최적화를 구현했습니다.",
-        tech: ["Next.js", "GPT-4 API", "Redis", "Prisma"],
+            "26개의 화면을 통해 생산, 품질, 재고 등 전 과정을 데이터로 관리하며 스마트 팩토리의 핵심 기능을 구현했습니다.",
+        tech: [
+            "Kubernetes",
+            "Flutter",
+            "CI/CD",
+            "Spring Boot",
+            "PostgreSQL",
+            "Vue.js",
+            "Docker",
+            "Gitlab-Runner",
+            "RabbitMQ",
+        ],
         mainImage: "/images/MES_표지.png",
         images: [
             "/images/모아노벨 (1).webp",
@@ -392,6 +409,76 @@ function HeroSection() {
     );
 }
 
+const WHY_US_ITEMS = [
+    {
+        icon: ShieldCheck,
+        title: "20년 경력의 안정성",
+        description:
+            "20년 경력의 시니어 아키텍트가 설계하여, 수십만 트래픽도 감당하는 안정적이고 확장 가능한 시스템을 구축합니다.",
+    },
+    {
+        icon: Zap,
+        title: "최신 기술 스택",
+        description:
+            "React, Next.js, Flutter 등 최신 기술 스택을 적극 활용하여 가장 빠르고 현대적인 사용자 경험을 제공합니다.",
+    },
+    {
+        icon: Users,
+        title: "비즈니스 파트너십",
+        description:
+            "단순한 외주 개발이 아닌, 비즈니스 목표를 함께 고민하고 성공을 위해 협력하는 장기적인 기술 파트너가 되어 드립니다.",
+    },
+];
+
+function WhyUsSection() {
+    return (
+        <Section
+            sectionClassName="bg-neutral-900"
+            className="flex min-h-screen flex-col items-center justify-center"
+        >
+            <motion.div
+                className="mb-16 text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6 }}
+            >
+                <h2 className="text-4xl font-bold text-white lg:text-5xl">
+                    Why Choose Us
+                </h2>
+            </motion.div>
+            <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
+                {WHY_US_ITEMS.map((item, index) => {
+                    const Icon = item.icon;
+                    return (
+                        <motion.div
+                            key={item.title}
+                            className="text-center"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.3 }}
+                            transition={{ delay: index * 0.1, duration: 0.5 }}
+                        >
+                            <div className="inline-block rounded-2xl bg-neutral-800 p-4">
+                                <Icon
+                                    className="h-10 w-10 text-cyan-400"
+                                    strokeWidth={2}
+                                />
+                            </div>
+                            <h3 className="mt-6 text-xl font-bold text-white">
+                                {item.title}
+                            </h3>
+                            <p className="mt-2 text-neutral-400">
+                                {item.description}
+                            </p>
+                        </motion.div>
+                    );
+                })}
+            </div>
+        </Section>
+    );
+}
+
 function CtaSection() {
     return (
         <Section
@@ -399,7 +486,13 @@ function CtaSection() {
             sectionClassName="bg-black"
             className="flex min-h-screen items-center justify-center"
         >
-            <div className="mx-auto max-w-3xl text-center">
+            <motion.div
+                className="mx-auto max-w-3xl text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ duration: 0.5 }}
+            >
                 <h2 className="text-3xl font-bold text-white sm:text-4xl">
                     아이디어를 현실로 만들 준비가 되셨나요?
                 </h2>
@@ -414,12 +507,12 @@ function CtaSection() {
                 >
                     <Link
                         href="/contact"
-                        className="inline-flex items-center gap-2 rounded-lg bg-cyan-400 px-8 py-4 text-lg font-semibold text-black shadow-lg transition-colors hover:bg-cyan-500"
+                        className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 text-lg font-semibold text-black shadow-lg transition-colors hover:bg-cyan-400"
                     >
                         프로젝트 문의하기 <ArrowRight className="h-5 w-5" />
                     </Link>
                 </motion.div>
-            </div>
+            </motion.div>
         </Section>
     );
 }
@@ -429,6 +522,7 @@ export default function PortfolioPage() {
         <div className="bg-neutral-950 text-white">
             <HeroSection />
             <CoverflowPortfolio />
+            <WhyUsSection />
             <CtaSection />
         </div>
     );
