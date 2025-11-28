@@ -145,7 +145,7 @@ function ServiceLineupSection() {
                 className="text-center mb-16"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ duration: 0.5 }}
             >
                 <h2 className="text-3xl font-bold text-white md:text-4xl">
@@ -161,7 +161,7 @@ function ServiceLineupSection() {
                             className="group flex flex-col items-start rounded-2xl border border-white/5 bg-neutral-900 p-10 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.5 }}
+                            viewport={{ once: false, amount: 0.5 }}
                             transition={{ duration: 0.5 }}
                         >
                             <Icon
@@ -202,11 +202,17 @@ function ProcessSection() {
             sectionClassName="bg-neutral-950"
             className="flex min-h-screen flex-col items-center justify-center"
         >
-            <div className="text-center">
+            <motion.div
+                className="text-center mb-16"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ duration: 0.5 }}
+            >
                 <h2 className="text-3xl font-bold text-white md:text-4xl">
                     Development Process
                 </h2>
-            </div>
+            </motion.div>
             <div className="relative mt-16 w-full max-w-4xl">
                 <div
                     className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-neutral-800"
@@ -218,7 +224,7 @@ function ProcessSection() {
                         className="relative mb-16 flex items-center justify-center"
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.5 }}
+                        viewport={{ once: false, amount: 0.5 }}
                         transition={{ duration: 0.5 }}
                     >
                         <div
@@ -262,7 +268,13 @@ function CtaSection() {
             sectionClassName="bg-neutral-900"
             className="flex min-h-screen items-center justify-center"
         >
-            <div className="mx-auto max-w-3xl text-center">
+            <motion.div
+                className="mx-auto max-w-3xl text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ duration: 0.5 }}
+            >
                 <h2 className="text-3xl font-bold text-white sm:text-4xl">
                     아이디어를 현실로 만들 준비가 되셨나요?
                 </h2>
@@ -270,6 +282,7 @@ function CtaSection() {
                     비즈니스 목표만 말씀해 주세요. 최적의 기술 스택과 실행
                     로드맵은 저희가 설계합니다.
                 </p>
+
                 <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -277,12 +290,12 @@ function CtaSection() {
                 >
                     <Link
                         href="/contact"
-                        className="inline-block rounded-lg bg-cyan-400 px-8 py-3 text-lg font-semibold text-black transition hover:bg-cyan-500"
+                        className="inline-block rounded-lg bg-white px-8 py-3 text-lg font-semibold text-black transition hover:bg-cyan-400"
                     >
                         프로젝트 문의하기
                     </Link>
                 </motion.div>
-            </div>
+            </motion.div>
         </Section>
     );
 }
