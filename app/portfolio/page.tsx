@@ -21,10 +21,20 @@ const portfolioItems = [
         category: "모바일 앱",
         industry: "Mobile App",
         description:
-            "정책 연계가 가능한 헬스케어 기반 서비스로, 감정 기록 → 데이터 분석 → 정책 보고까지 이어지는 정책형 멘탈케어 루틴 서비스입니다.",
+            "창업자의 번아웃 예방을 위한 3단계 루틴(STOP-NOTE-HEAL)을 제공하는 멘탈케어 루틴 서비스입니다.",
         details:
-            "Firebase 실시간 데이터베이스를 활용한 실시간 날씨 업데이트, Google Maps API 기반 위치 서비스, 푸시 알림 기능을 구현했습니다.",
-        tech: ["React Native", "Firebase", "Google Maps API"],
+            "하루 1분 내 실행 가능한 단순·직관적 루틴으로 설계되어 사용자의 편의성을 높이고, PostgreSQL + 암호화 적용 및 JWT 기반 인증을 통해 안전하게 설계하였습니다.",
+        tech: [
+            "jwt",
+            "Vite",
+            "PostgreSQL",
+            "shadcn",
+            "TailwindCSS",
+            "Express",
+            "Node.js",
+            "Rest api",
+            "React",
+        ],
         images: [
             "/images/beonwh.webp",
             "/images/beonwh-1.webp",
@@ -38,10 +48,10 @@ const portfolioItems = [
         category: "맞춤형 웹 시스템",
         industry: "Custom Web System",
         description:
-            "AppSheet기반 스마트 재고관리 시스템으로, 누구나 사용할 수 있는 웹 기반의 입출고 자동화 시스템입니다.",
+            "AppSheet기반 스마트 재고관리 시스템으로, 중소기업 맞춤형 실시간 재고 관리 및 입출고 자동화 시스템입니다.",
         details:
-            "PostgreSQL 기반의 안정적인 데이터 관리, 실시간 재고 알림, 자동 발주 로직, 다양한 리포트 기능을 제공합니다.",
-        tech: ["React", "Node.js", "PostgreSQL", "Express"],
+            "Google AppSheet 플랫폼을 기반으로 노코드(No-Code) 개발 방식을 적용하여 안드로이드, iOS, 웹 환경을 단기간에 구축했습니다. Google Sheets를 데이터베이스로 활용해 실시간 데이터 동기화를 구현했으며, 모바일 기기의 카메라를 활용한 바코드/QR 스캔 기능을 네이티브 수준으로 통합했습니다.",
+        tech: ["AppSheet"],
         mainImage: "/images/재고관리 (1).webp",
         images: [
             "/images/재고관리 (1).webp",
@@ -55,10 +65,10 @@ const portfolioItems = [
         category: "SaaS 플랫폼",
         industry: "SaaS Platform",
         description:
-            "설치가 필요 없는 웹 브라우저 기반의 PDF 문서 처리 솔루션입니다",
+            "별도의 프로그램 설치 없이 웹 브라우저에서 병합, 분할, 압축 등 모든 PDF 작업을 안전하고 신속하게 처리하는 올인원 SaaS 플랫폼입니다.",
         details:
-            "AWS Lambda를 활용한 서버리스 아키텍처, Python 기반 PDF 처리 엔진, Next.js로 구현된 빠른 사용자 인터페이스를 제공합니다.",
-        tech: ["Next.js", "Python", "AWS Lambda", "S3"],
+            "React와 Tailwind CSS(Shadcn UI)로 직관적인 인터페이스를 구현하고, Node.js와 Express로 대용량 파일 처리에 최적화된 백엔드를 구축했습니다.",
+        tech: ["PostgreSQL", "Express", "Node.js", "React", "Python"],
         mainImage: "/images/moapdf-main.webp",
         images: [
             "/images/moapdf-main.webp",
@@ -72,10 +82,17 @@ const portfolioItems = [
         category: "AI 서비스",
         industry: "AI service",
         description:
-            "AI 기반의 웹소설 집필도구로, 작가 친화적인 환경으로 AI 기반 집필 보조 툴을 제공합니다.",
+            "세계관과 줄거리 입력만으로 등장인물과 챕터를 자동 생성하고, 복선(Plot Hook) 관리와 문맥 교정 기능을 통해 웹소설 창작의 생산성과 개연성을 극대화하는 올인원 집필 도구입니다.",
         details:
-            "OpenAI GPT-4 API 연동, Redis 캐싱으로 빠른 응답 속도, Next.js 서버 사이드 렌더링으로 SEO 최적화를 구현했습니다.",
-        tech: ["Next.js", "GPT-4 API", "Redis", "Prisma"],
+            "Node.js와 Express로 백엔드를 구축하고 PostgreSQL을 활용해 복잡한 세계관과 등장인물 관계(ERD) 데이터를 구조화했습니다. Frontend는 React와 Tailwind CSS(Shadcn UI)로 몰입감 있는 집필 환경을 제공하며, 최신 생성형 AI 모델을 API로 연동하여 자동 집필 및 문맥 분석 기능을 구현했습니다.",
+        tech: [
+            "PostgreSQL",
+            "GPT-4 API",
+            "Express",
+            "Node.js",
+            "React",
+            "Python",
+        ],
         mainImage: "/images/모아노벨 (1).webp",
         images: [
             "/images/모아노벨 (1).webp",
@@ -127,6 +144,8 @@ const PortfolioModal = ({
     item: PortfolioItem;
     onClose: () => void;
 }) => {
+    const [imageIndex, setImageIndex] = useState(0);
+
     useEffect(() => {
         const handleEsc = (event: KeyboardEvent) => {
             if (event.key === "Escape") onClose();
@@ -134,6 +153,16 @@ const PortfolioModal = ({
         window.addEventListener("keydown", handleEsc);
         return () => window.removeEventListener("keydown", handleEsc);
     }, [onClose]);
+
+    const handlePrev = () => {
+        setImageIndex(
+            (prev) => (prev - 1 + item.images.length) % item.images.length
+        );
+    };
+
+    const handleNext = () => {
+        setImageIndex((prev) => (prev + 1) % item.images.length);
+    };
 
     return (
         <motion.div
@@ -148,60 +177,106 @@ const PortfolioModal = ({
                 animate={{ scale: 1 }}
                 exit={{ scale: 0.95 }}
                 transition={{ duration: 0.3 }}
-                className="relative w-full max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-neutral-900"
+                className="relative w-full max-w-6xl overflow-hidden rounded-2xl border border-white/10 bg-neutral-900"
                 onClick={(e) => e.stopPropagation()}
             >
-                <div className="max-h-[90vh] overflow-y-auto p-6 md:p-8">
-                    <h2 className="mb-2 text-3xl font-bold text-white">
-                        {item.title}
-                    </h2>
-                    <p className="mb-4 text-sm text-cyan-400">
-                        {item.industry}
-                    </p>
-                    <p className="mb-6 text-neutral-300">{item.description}</p>
-                    <p className="mb-8 text-neutral-400">{item.details}</p>
-                    <div className="mb-8 h-px bg-neutral-800" />
-                    <div className="grid gap-8 md:grid-cols-2">
-                        <div>
-                            <h3 className="mb-4 text-lg font-semibold">
-                                주요 기술 스택
-                            </h3>
-                            <div className="flex flex-wrap gap-2">
-                                {item.tech.map((tech) => (
-                                    <span
-                                        key={tech}
-                                        className="rounded-full bg-neutral-800 px-3 py-1 text-sm text-neutral-300"
-                                    >
-                                        {tech}
-                                    </span>
-                                ))}
-                            </div>
-                        </div>
-                        <div>
-                            <h3 className="mb-4 text-lg font-semibold">
-                                프로젝트 이미지
-                            </h3>
-                            <div className="grid grid-cols-3 gap-2">
-                                {item.images.map((image) => (
+                <div className="max-h-[90vh] overflow-y-auto">
+                    <div className="grid md:grid-cols-2">
+                        <div className="relative group overflow-hidden">
+                            <motion.div
+                                className="flex"
+                                animate={{ x: `-${imageIndex * 100}%` }}
+                                transition={{
+                                    type: "tween",
+                                    ease: "easeInOut",
+                                    duration: 0.4,
+                                }}
+                            >
+                                {item.images.map((imageSrc, index) => (
                                     <div
-                                        key={image}
-                                        className="relative aspect-square overflow-hidden rounded-lg"
+                                        key={index}
+                                        className="relative w-full aspect-square flex-shrink-0"
                                     >
                                         <Image
-                                            src={image}
-                                            alt={item.title}
+                                            src={imageSrc}
+                                            alt={`${item.title} image ${
+                                                index + 1
+                                            }`}
                                             fill
                                             className="object-cover"
                                         />
                                     </div>
                                 ))}
+                            </motion.div>
+
+                            {item.images.length > 1 && (
+                                <>
+                                    <button
+                                        onClick={handlePrev}
+                                        className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-2 text-white opacity-0 transition group-hover:opacity-100 hover:bg-black/75 z-10"
+                                    >
+                                        <ChevronLeft size={24} />
+                                    </button>
+                                    <button
+                                        onClick={handleNext}
+                                        className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-black/50 p-2 text-white opacity-0 transition group-hover:opacity-100 hover:bg-black/75 z-10"
+                                    >
+                                        <ChevronRight size={24} />
+                                    </button>
+                                    <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
+                                        {item.images.map((_, index) => (
+                                            <button
+                                                key={index}
+                                                className={`h-2 w-2 rounded-full transition-all ${
+                                                    index === imageIndex
+                                                        ? "bg-white w-4"
+                                                        : "bg-gray-500"
+                                                }`}
+                                                onClick={() =>
+                                                    setImageIndex(index)
+                                                }
+                                            />
+                                        ))}
+                                    </div>
+                                </>
+                            )}
+                        </div>
+
+                        <div className="p-6 md:p-8">
+                            <h2 className="mb-2 text-3xl font-bold text-white">
+                                {item.title}
+                            </h2>
+                            <p className="mb-4 text-sm text-cyan-400">
+                                {item.industry}
+                            </p>
+                            <p className="mb-6 text-neutral-300">
+                                {item.description}
+                            </p>
+                            <p className="mb-8 text-neutral-400">
+                                {item.details}
+                            </p>
+                            <div className="mb-8 h-px bg-neutral-800" />
+                            <div>
+                                <h3 className="mb-4 text-lg font-semibold">
+                                    주요 기술 스택
+                                </h3>
+                                <div className="flex flex-wrap gap-2">
+                                    {item.tech.map((tech) => (
+                                        <span
+                                            key={tech}
+                                            className="rounded-full bg-neutral-800 px-3 py-1 text-sm text-neutral-300"
+                                        >
+                                            {tech}
+                                        </span>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <button
                     onClick={onClose}
-                    className="absolute right-4 top-4 rounded-full bg-white/10 p-2 text-white transition hover:bg-white/20"
+                    className="absolute right-4 top-4 z-20 rounded-full bg-white/10 p-2 text-white transition hover:bg-white/20"
                 >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
