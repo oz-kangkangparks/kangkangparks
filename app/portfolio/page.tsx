@@ -12,9 +12,9 @@ const portfolioItems = [
         id: "beonwh",
         title: "비온후",
         category: "모바일 앱",
-        industry: "날씨 정보 서비스",
+        industry: "Mobile App",
         description:
-            "React Native 기반 크로스플랫폼 날씨 정보 앱. 실시간 데이터와 위치 기반 서비스를 제공합니다.",
+            "정책 연계가 가능한 헬스케어 기반 서비스로, 감정 기록 → 데이터 분석 → 정책 보고까지 이어지는 정책형 멘탈케어 루틴 서비스입니다.",
         details:
             "Firebase 실시간 데이터베이스를 활용한 실시간 날씨 업데이트, Google Maps API 기반 위치 서비스, 푸시 알림 기능을 구현했습니다.",
         tech: ["React Native", "Firebase", "Google Maps API"],
@@ -28,10 +28,10 @@ const portfolioItems = [
     {
         id: "inventory",
         title: "재고관리 시스템",
-        category: "웹 시스템",
-        industry: "제조 · 물류",
+        category: "맞춤형 웹 시스템",
+        industry: "Custom Web System",
         description:
-            "실시간 재고 추적 및 자동 발주 시스템으로 운영 효율을 극대화한 맞춤형 업무 시스템입니다.",
+            "AppSheet기반 스마트 재고관리 시스템으로, 누구나 사용할 수 있는 웹 기반의 입출고 자동화 시스템입니다.",
         details:
             "PostgreSQL 기반의 안정적인 데이터 관리, 실시간 재고 알림, 자동 발주 로직, 다양한 리포트 기능을 제공합니다.",
         tech: ["React", "Node.js", "PostgreSQL", "Express"],
@@ -45,10 +45,10 @@ const portfolioItems = [
     {
         id: "moapdf",
         title: "MoaPDF",
-        category: "웹 서비스",
-        industry: "SaaS",
+        category: "SaaS 플랫폼",
+        industry: "SaaS Platform",
         description:
-            "AI 기반 PDF 변환 및 편집 도구로, 월 10만 건 이상의 문서를 처리하는 B2C SaaS 플랫폼입니다.",
+            "설치가 필요 없는 웹 브라우저 기반의 PDF 문서 처리 솔루션입니다",
         details:
             "AWS Lambda를 활용한 서버리스 아키텍처, Python 기반 PDF 처리 엔진, Next.js로 구현된 빠른 사용자 인터페이스를 제공합니다.",
         tech: ["Next.js", "Python", "AWS Lambda", "S3"],
@@ -63,13 +63,30 @@ const portfolioItems = [
         id: "moanovel",
         title: "모아노벨",
         category: "AI 서비스",
-        industry: "콘텐츠",
+        industry: "AI service",
         description:
-            "GPT-4 기반 소설 생성 AI 플랫폼으로, 일일 활성 사용자 5,000명 이상을 보유한 AI 콘텐츠 서비스입니다.",
+            "AI 기반의 웹소설 집필도구로, 작가 친화적인 환경으로 AI 기반 집필 보조 툴을 제공합니다.",
         details:
             "OpenAI GPT-4 API 연동, Redis 캐싱으로 빠른 응답 속도, Next.js 서버 사이드 렌더링으로 SEO 최적화를 구현했습니다.",
         tech: ["Next.js", "GPT-4 API", "Redis", "Prisma"],
         mainImage: "/images/모아노벨 (1).webp",
+        images: [
+            "/images/모아노벨 (1).webp",
+            "/images/moanovel-2.webp",
+            "/images/moanovel-3.webp",
+        ],
+    },
+    {
+        id: "mes",
+        title: "MES",
+        category: "맞춤형 웹 시스템",
+        industry: "Custom Web System",
+        description:
+            "실시간 생산 관리 체계를 구축하여 디지털 전환이 필요한 제조업의 현실적인 문제들을 해결하기 위한 맞춤형 웹 시스템입니다.",
+        details:
+            "OpenAI GPT-4 API 연동, Redis 캐싱으로 빠른 응답 속도, Next.js 서버 사이드 렌더링으로 SEO 최적화를 구현했습니다.",
+        tech: ["Next.js", "GPT-4 API", "Redis", "Prisma"],
+        mainImage: "/images/MES_표지.png",
         images: [
             "/images/모아노벨 (1).webp",
             "/images/moanovel-2.webp",
@@ -219,19 +236,20 @@ const CoverflowPortfolio = () => {
         setActiveIndex((prev) => prev - 1);
     };
 
-    const onCardAnimationComplete = () => {
+    const handleAnimationComplete = () => {
         if (isJumping) {
-            // This is a jump, do nothing else
-            setIsJumping(false);
-        } else {
-            // This is a user-initiated animation, check for wrap-around
-            if (activeIndex >= portfolioItems.length * 2) {
-                setIsJumping(true);
-                setActiveIndex(portfolioItems.length);
-            } else if (activeIndex < portfolioItems.length) {
-                setIsJumping(true);
-                setActiveIndex(portfolioItems.length * 2 - 1);
-            }
+            setIsJumping(false); // Reset the flag after the instant jump has processed
+            return; // No further checks if it was a jump
+        }
+
+        // Only check for wrap-around if it was a normal animation completion
+        if (activeIndex >= portfolioItems.length * 2) {
+            setIsJumping(true); // Flag that next transition should be instant
+            setActiveIndex(portfolioItems.length); // Jump to the start of the middle group
+        } else if (activeIndex < portfolioItems.length) {
+            // Check for prev wrap
+            setIsJumping(true); // Flag that next transition should be instant
+            setActiveIndex(portfolioItems.length * 2 - 1); // Jump to the end of the middle group
         }
     };
 
@@ -241,11 +259,26 @@ const CoverflowPortfolio = () => {
                 sectionClassName="bg-neutral-950"
                 className="flex flex-col items-center justify-center"
             >
-                <div
+                <motion.div
+                    className="mb-16 text-center"
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.2 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                >
+                    <h2 className="text-3xl font-bold text-white md:text-4xl">
+                        Our Projects
+                    </h2>
+                </motion.div>
+                <motion.div
                     className="relative w-full h-[60vh]"
                     style={{ perspective: "1000px" }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false }}
+                    transition={{ duration: 0.5 }}
                 >
-                    <AnimatePresence>
+                    <AnimatePresence initial={false}>
                         {extendedPortfolioItems.map((item, i) => {
                             const offset = i - activeIndex;
                             const isCenter = offset === 0;
@@ -272,7 +305,7 @@ const CoverflowPortfolio = () => {
                                         ease: [0.22, 1, 0.36, 1],
                                     }}
                                     onAnimationComplete={
-                                        onCardAnimationComplete
+                                        handleAnimationComplete
                                     }
                                     onClick={() =>
                                         isCenter && setSelectedItem(item)
@@ -305,7 +338,7 @@ const CoverflowPortfolio = () => {
                             );
                         })}
                     </AnimatePresence>
-                </div>
+                </motion.div>
                 <div className="mt-8 flex items-center justify-center gap-4">
                     <button
                         onClick={handlePrev}
@@ -343,7 +376,7 @@ function HeroSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="relative z-10 max-w-4xl text-center"
+                className="relative z-10 max-w-7xl text-center"
             >
                 <p className="text-xs uppercase tracking-[0.6em] text-neutral-400">
                     portfolio
