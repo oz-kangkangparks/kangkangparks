@@ -9,6 +9,11 @@ export const metadata: Metadata = {
     description: "강강박스 - 혁신적인 웹 개발 솔루션",
     keywords: ["웹개발", "소프트웨어", "강강박스", "kangkangparks"],
     authors: [{ name: "강강박스" }],
+    icons: {
+        icon: "/images/favicon.webp",
+        shortcut: "/images/favicon.webp",
+        apple: "/images/favicon.webp",
+    },
     openGraph: {
         title: "강강박스 | KangKang Parks",
         description: "강강박스 - 혁신적인 웹 개발 솔루션",
