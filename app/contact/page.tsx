@@ -2,158 +2,133 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Zap, ArrowRight } from 'lucide-react';
-import { Section } from '@/components/Layout';
+import { Code, ArrowRight } from 'lucide-react';
+import { Container } from '@/components/Layout';
 
-export default function ContactPage() { return <Contact />; }
-
-function ExampleBox() {
-  const sample = `이름: 홍길동\n이메일: hong@example.com\n회사: Axiom Labs\n예상 예산: 3천만 원 ~ 5천만 원\n요구사항: 공장 설비 온도 센서 데이터 기반 이상 탐지 모델 개발 및 대시보드 구축을 희망합니다. 파일 연동: CSV/REST 가능하며, 4주 내 PoC 진행을 원합니다.`;
+export default function ContactPage() {
   return (
-    <div className="rounded-2xl border border-neutral-800 bg-neutral-900/50 p-6">
-      <div className="flex items-center justify-between mb-3">
-        <div className="text-sm font-semibold text-neutral-400">예시</div>
-        <button 
-          type="button" 
-          onClick={() => navigator.clipboard?.writeText(sample)} 
-          className="text-xs text-pink-400 hover:text-pink-300 transition-colors"
-        >
-          예시 복사
-        </button>
-      </div>
-      <pre className="whitespace-pre-wrap text-xs text-neutral-400 leading-relaxed font-mono">{sample}</pre>
+    <div className="bg-neutral-950 text-white">
+      <HeroSection />
+      <ContactFormSection />
     </div>
   );
 }
 
-function Contact() {
+function HeroSection() {
   return (
-    <>
-      <Section id="contact-hero">
-        <div className="mx-auto max-w-4xl text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1 className="text-5xl sm:text-7xl font-bold tracking-tight">
-              <span className="bg-gradient-to-r from-pink-400 via-white to-cyan-400 bg-clip-text text-transparent">
-                Contact Us
-              </span>
-            </h1>
-            <p className="mt-6 text-xl text-neutral-300">
-              프로젝트에 대해 알려주세요
-            </p>
-            <p className="mt-4 text-base text-neutral-400 max-w-2xl mx-auto">
-              24시간 이내에 답변드리겠습니다
-            </p>
-          </motion.div>
-        </div>
-      </Section>
+    <section className="relative isolate flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-b from-black via-neutral-900 to-black px-4 py-24 sm:px-6">
+      <div className="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-cyan-500/20 blur-3xl" />
+      <div className="absolute bottom-0 right-10 h-40 w-40 rounded-full bg-pink-500/20 blur-3xl" />
+      
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="relative max-w-4xl text-center"
+      >
+        <p className="text-xs uppercase tracking-[0.6em] text-neutral-400">
+          contact us
+        </p>
+        <h1 className="mt-3 text-5xl font-bold leading-tight text-white md:text-7xl">
+          함께 만드는 새로운 가치
+        </h1>
+        <p className="mx-auto mt-4 max-w-3xl text-lg text-neutral-300">
+          당신의 아이디어가 현실이 되는 곳. 강강박스와 함께 혁신적인 프로젝트를 시작해보세요.
+        </p>
+      </motion.div>
+    </section>
+  );
+}
 
-      <Section id="contact-form" band>
-        <div className="mx-auto max-w-4xl">
-          <div className="grid lg:grid-cols-3 gap-8">
-            {/* Contact Info */}
-            <div className="space-y-6">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="rounded-2xl border border-neutral-800 bg-neutral-900/50 p-6"
-              >
-                <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-pink-500 to-cyan-500 flex items-center justify-center mb-4">
-                  <Code className="h-5 w-5 text-white" />
-                </div>
-                <h3 className="font-semibold mb-2">이메일</h3>
-                <p className="text-sm text-neutral-400">contact@kangkangbox.com</p>
-              </motion.div>
+function ExampleBox() {
+  const sample = `이름: 홍길동\n이메일: hong@example.com\n회사: Axiom Labs\n예상 예산: 3천만 원 ~ 5천만 원\n요구사항: 공장 설비 온도 센서 데이터 기반 이상 탐지 모델 개발 및 대시보드 구축을 희망합니다. 파일 연동: CSV/REST 가능하며, 4주 내 PoC 진행을 원합니다.`;
+  return (
+    <div className="rounded-2xl border border-neutral-800 bg-neutral-900/50 p-6 mb-8">
+      <div className="flex items-center justify-between mb-3">
+        <div className="text-sm font-semibold text-neutral-400">작성 예시</div>
+        <button 
+          type="button" 
+          onClick={() => navigator.clipboard?.writeText(sample)} 
+          className="text-xs text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1"
+        >
+          <Code className="w-3 h-3" />
+          예시 복사
+        </button>
+      </div>
+      <pre className="whitespace-pre-wrap text-xs text-neutral-400 leading-relaxed font-mono bg-black/20 p-4 rounded-xl border border-neutral-800/50">{sample}</pre>
+    </div>
+  );
+}
 
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="rounded-2xl border border-neutral-800 bg-neutral-900/50 p-6"
-              >
-                <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-emerald-500 to-green-500 flex items-center justify-center mb-4">
-                  <Zap className="h-5 w-5 text-white" />
-                </div>
-                <h3 className="font-semibold mb-2">응답 시간</h3>
-                <p className="text-sm text-neutral-400">평균 24시간 이내</p>
-              </motion.div>
-            </div>
-
-            {/* Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="lg:col-span-2"
-            >
-              <div className="rounded-2xl border border-neutral-800 bg-neutral-900/50 p-8">
-                <h3 className="text-2xl font-bold mb-6">프로젝트를 알려주세요</h3>
-                
-                <div className="mb-6">
-                  <ExampleBox />
-                </div>
-
-                <form className="space-y-6">
-                  <div>
-                    <label className="block text-sm font-medium text-neutral-400 mb-2">
-                      프로젝트 내용
-                    </label>
-                    <textarea
-                      placeholder="이름, 이메일, 회사, 예상 예산, 요구사항 등을 자유롭게 작성해주세요"
-                      className="w-full rounded-xl border border-neutral-800 bg-neutral-900/80 px-4 py-4 text-sm outline-none focus:border-pink-500/50 focus:ring-2 focus:ring-pink-500/20 transition-all min-h-[240px] resize-none"
-                    />
-                  </div>
-
-                  <button 
-                    type="submit" 
-                    className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-4 text-base font-semibold text-neutral-950 hover:bg-neutral-100 transition-colors shadow-lg"
-                  >
-                    보내기 <ArrowRight className="h-5 w-5" />
-                  </button>
-                </form>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </Section>
-
-      {/* FAQ or Additional Info */}
-      <Section id="contact-info">
-        <div className="mx-auto max-w-3xl text-center">
+function ContactFormSection() {
+  return (
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden py-24">
+      <div className="absolute top-1/2 left-0 h-96 w-96 -translate-y-1/2 -translate-x-1/2 rounded-full bg-violet-500/10 blur-3xl" />
+      
+      <Container className="relative z-10">
+        <div className="mx-auto max-w-4xl w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="rounded-2xl border border-neutral-800 bg-neutral-900/50 p-12"
+            className="rounded-3xl border border-neutral-800 bg-neutral-900/80 backdrop-blur-xl p-8 md:p-12 shadow-2xl"
           >
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-4">
-              더 궁금한 점이 있으신가요?
-            </h2>
-            <p className="text-neutral-400 mb-8">
-              프로젝트 규모, 예산, 기간에 대한 상담이 필요하시면 언제든지 연락주세요.
-            </p>
-            <div className="flex items-center justify-center gap-4 flex-wrap">
-              <a
-                href="#/services"
-                className="inline-flex items-center gap-2 rounded-xl border border-neutral-700 bg-neutral-900/50 px-6 py-3 text-sm font-medium text-white hover:bg-neutral-800 transition-colors backdrop-blur"
-              >
-                서비스 보기
-              </a>
-              <a
-                href="#/portfolio"
-                className="inline-flex items-center gap-2 rounded-xl border border-neutral-700 bg-neutral-900/50 px-6 py-3 text-sm font-medium text-white hover:bg-neutral-800 transition-colors backdrop-blur"
-              >
-                포트폴리오 보기
-              </a>
+            <div className="text-center mb-10">
+              <h2 className="text-3xl font-bold mb-4">프로젝트 문의</h2>
+              <p className="text-neutral-400">
+                구체적인 요구사항을 알려주시면 더 정확한 상담이 가능합니다.
+              </p>
             </div>
+
+            <ExampleBox />
+
+            <form className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-neutral-400">이름</label>
+                  <input
+                    type="text"
+                    className="w-full rounded-xl border border-neutral-800 bg-neutral-950/50 px-4 py-3 text-sm outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 transition-all"
+                    placeholder="홍길동"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-neutral-400">연락처</label>
+                  <input
+                    type="text"
+                    className="w-full rounded-xl border border-neutral-800 bg-neutral-950/50 px-4 py-3 text-sm outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 transition-all"
+                    placeholder="010-0000-0000"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-neutral-400">이메일</label>
+                <input
+                  type="email"
+                  className="w-full rounded-xl border border-neutral-800 bg-neutral-950/50 px-4 py-3 text-sm outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 transition-all"
+                  placeholder="hello@example.com"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-neutral-400">프로젝트 내용</label>
+                <textarea
+                  className="w-full rounded-xl border border-neutral-800 bg-neutral-950/50 px-4 py-4 text-sm outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 transition-all min-h-[200px] resize-none"
+                  placeholder="프로젝트의 목적, 일정, 예산 등 구체적인 내용을 적어주세요."
+                />
+              </div>
+
+              <button 
+                type="submit" 
+                className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-4 text-base font-bold text-white hover:opacity-90 transition-opacity shadow-lg shadow-cyan-500/20 mt-4"
+              >
+                문의하기 <ArrowRight className="h-5 w-5" />
+              </button>
+            </form>
           </motion.div>
         </div>
-      </Section>
-    </>
+      </Container>
+    </section>
   );
 }
