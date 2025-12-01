@@ -115,8 +115,10 @@ export default function BlogDetailPage({
                 >
                     <ReactMarkdown>{post.content}</ReactMarkdown>
                 </motion.div>
+            </article>
 
-                <div className="mt-20 border-t border-white/10 pt-10">
+            <section className="bg-neutral-900 py-20">
+                <div className="mx-auto max-w-4xl px-6">
                     <div className="mb-12 flex items-center justify-between">
                         <h3 className="text-2xl font-bold text-white">
                             이런 글은 어떠세요?
@@ -133,7 +135,7 @@ export default function BlogDetailPage({
                             <Link
                                 key={relatedPost.slug}
                                 href={`/blog/${relatedPost.slug}`}
-                                className="group block overflow-hidden rounded-2xl border border-white/10 bg-white/5 transition-all hover:-translate-y-1 hover:border-cyan-500/30 hover:shadow-lg hover:shadow-cyan-900/20"
+                                className="group block overflow-hidden rounded-2xl border border-white/10 bg-neutral-950 transition-all hover:-translate-y-1 hover:border-cyan-500/30 hover:shadow-lg hover:shadow-cyan-900/20"
                             >
                                 <div className="relative h-40 w-full overflow-hidden bg-neutral-900">
                                     <Image
@@ -155,7 +157,7 @@ export default function BlogDetailPage({
                         ))}
                     </div>
                 </div>
-            </article>
+            </section>
         </main>
     );
 }
