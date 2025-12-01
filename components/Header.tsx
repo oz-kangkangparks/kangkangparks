@@ -123,6 +123,7 @@ function MobileMenu({
     onClose: () => void;
 }) {
     const [mounted, setMounted] = useState(false);
+    const pathname = usePathname();
 
     useEffect(() => {
         setMounted(true);
@@ -161,27 +162,24 @@ function MobileMenu({
                             </button>
                         </div>
                         <ul className="space-y-4 text-lg font-semibold text-white">
-                            {NAV_ITEMS.map((item) => (
-                                <li key={item.href}>
-                                    <Link
-                                        href={item.href}
-                                        className="block rounded-xl bg-white/5 px-4 py-3 transition hover:bg-white/10"
-                                        onClick={onClose}
-                                    >
-                                        {item.label}
-                                    </Link>
-                                </li>
-                            ))}
-                            <li>
-                                <Link
-                                    href="/contact"
-                                    className="flex items-center justify-between rounded-xl bg-white px-4 py-3 text-base font-semibold text-neutral-900"
-                                    onClick={onClose}
-                                >
-                                    문의하기
-                                    <ArrowRight className="h-4 w-4" />
-                                </Link>
-                            </li>
+                            {NAV_ITEMS.map((item) => {
+                                const isActive = pathname === item.href;
+                                return (
+                                    <li key={item.href}>
+                                        <Link
+                                            href={item.href}
+                                            className={`block rounded-xl px-4 py-3 transition ${
+                                                isActive
+                                                    ? "bg-white/20 text-white"
+                                                    : "bg-white/5 hover:bg-white/10 text-neutral-300"
+                                            }`}
+                                            onClick={onClose}
+                                        >
+                                            {item.label}
+                                        </Link>
+                                    </li>
+                                );
+                            })}
                         </ul>
                     </motion.nav>
                 </>
