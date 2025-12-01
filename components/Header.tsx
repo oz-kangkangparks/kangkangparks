@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { createPortal } from "react-dom";
 import { ArrowRight, Menu, X } from "lucide-react";
@@ -70,6 +71,7 @@ const NAV_ITEMS = [
 ];
 
 function HeaderNav() {
+    const pathname = usePathname();
     const variants = {
         init: { opacity: 0, y: -8 },
         show: (i: number) => ({
@@ -80,20 +82,35 @@ function HeaderNav() {
     };
     return (
         <nav className="hidden items-center gap-1 text-sm text-neutral-300 md:flex">
-            {NAV_ITEMS.map((it, i) => (
-                <Link key={it.href} href={it.href}>
-                    <motion.div
-                        custom={i}
-                        initial="init"
-                        animate="show"
-                        variants={variants}
-                        className="relative px-4 py-2 rounded-lg hover:bg-neutral-800/50 hover:text-white transition-colors"
-                        whileTap={{ scale: 0.98 }}
-                    >
-                        <span>{it.label}</span>
-                    </motion.div>
-                </Link>
-            ))}
+            {NAV_ITEMS.map((it, i) => {
+                const isActive = pathname === it.href;
+                return (
+                    <Link key={it.href} href={it.href}>
+                        <motion.div
+                            custom={i}
+                            initial="init"
+                            animate="show"
+                            variants={variants}
+                            className={`relative px-4 py-2 rounded-lg transition-colors ${
+                                isActive 
+                                    ? "bg-white/10 text-white font-medium" 
+                                    : "hover:bg-neutral-800/50 hover:text-white"
+                            }`}
+                            whileTap={{ scale: 0.98 }}
+                        >
+                            <span>{it.label}</span>
+                            {isActive && (
+                                <motion.div
+                                    layoutId="activeNav"
+                                    className="absolute inset-0 rounded-lg bg-white/10"
+                                    initial={false}
+                                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                                />
+                            )}
+                        </motion.div>
+                    </Link>
+                );
+            })}
         </nav>
     );
 }
