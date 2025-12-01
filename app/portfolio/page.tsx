@@ -423,9 +423,15 @@ const CoverflowPortfolio = () => {
                                     onAnimationComplete={
                                         handleAnimationComplete
                                     }
-                                    onClick={() =>
-                                        isCenter && setSelectedItem(item)
-                                    }
+                                    onClick={() => {
+                                        if (isCenter) {
+                                            setSelectedItem(item);
+                                        } else if (offset < 0) {
+                                            handlePrev();
+                                        } else {
+                                            handleNext();
+                                        }
+                                    }}
                                 >
                                     <div className="relative h-full w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl bg-neutral-900">
                                         <Image
