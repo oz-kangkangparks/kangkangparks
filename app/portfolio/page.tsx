@@ -16,7 +16,7 @@ import Link from "next/link";
 
 const portfolioItems = [
     {
-        id: "beonwh",
+        id: "bonwho",
         title: "비온후",
         category: "모바일 앱",
         industry: "Mobile App",
@@ -36,11 +36,18 @@ const portfolioItems = [
             "React",
         ],
         images: [
-            "/images/beonwh.webp",
-            "/images/beonwh-1.webp",
-            "/images/beonwh-2.webp",
+            "/images/bonwho/bonwho-1.webp",
+            "/images/bonwho/bonwho-2.webp",
+            "/images/bonwho/bonwho-3.webp",
+            "/images/bonwho/bonwho-4.webp",
+            "/images/bonwho/bonwho-5.webp",
+            "/images/bonwho/bonwho-6.webp",
+            "/images/bonwho/bonwho-7.webp",
+            "/images/bonwho/bonwho-8.webp",
+            "/images/bonwho/bonwho-9.webp",
+            "/images/bonwho/bonwho-10.webp",
         ],
-        mainImage: "/images/beonwh.webp",
+        mainImage: "/images/bonwho/bonwho-1.webp",
     },
     {
         id: "inventory",
@@ -52,11 +59,16 @@ const portfolioItems = [
         details:
             "Google AppSheet 플랫폼을 기반으로 노코드(No-Code) 개발 방식을 적용하여 안드로이드, iOS, 웹 환경을 단기간에 구축했습니다. Google Sheets를 데이터베이스로 활용해 실시간 데이터 동기화를 구현했으며, 모바일 기기의 카메라를 활용한 바코드/QR 스캔 기능을 네이티브 수준으로 통합했습니다.",
         tech: ["AppSheet"],
-        mainImage: "/images/재고관리 (1).webp",
+        mainImage: "/images/inventory-system/inventory-system-1.webp",
         images: [
-            "/images/재고관리 (1).webp",
-            "/images/inventory-system-2.webp",
-            "/images/inventory-system-3.webp",
+            "/images/inventory-system/inventory-system-1.webp",
+            "/images/inventory-system/inventory-system-2.webp",
+            "/images/inventory-system/inventory-system-3.webp",
+            "/images/inventory-system/inventory-system-4.webp",
+            "/images/inventory-system/inventory-system-5.webp",
+            "/images/inventory-system/inventory-system-6.webp",
+            "/images/inventory-system/inventory-system-7.webp",
+            "/images/inventory-system/inventory-system-8.webp",
         ],
     },
     {
@@ -69,11 +81,17 @@ const portfolioItems = [
         details:
             "React와 Tailwind CSS(Shadcn UI)로 직관적인 인터페이스를 구현하고, Node.js와 Express로 대용량 파일 처리에 최적화된 백엔드를 구축했습니다.",
         tech: ["PostgreSQL", "Express", "Node.js", "React", "Python"],
-        mainImage: "/images/moapdf-main.webp",
+        mainImage: "/images/moapdf/moapdf-1.webp",
         images: [
-            "/images/moapdf-main.webp",
-            "/images/moapdf-2.webp",
-            "/images/moapdf-3.webp",
+            "/images/moapdf/moapdf-1.webp",
+            "/images/moapdf/moapdf-2.webp",
+            "/images/moapdf/moapdf-3.webp",
+            "/images/moapdf/moapdf-4.webp",
+            "/images/moapdf/moapdf-5.webp",
+            "/images/moapdf/moapdf-6.webp",
+            "/images/moapdf/moapdf-7.webp",
+            "/images/moapdf/moapdf-8.webp",
+            "/images/moapdf/moapdf-9.webp",
         ],
     },
     {
@@ -93,11 +111,14 @@ const portfolioItems = [
             "React",
             "Python",
         ],
-        mainImage: "/images/모아노벨 (1).webp",
+        mainImage: "/images/moanovel/moanovel-1.webp",
         images: [
-            "/images/모아노벨 (1).webp",
-            "/images/moanovel-2.webp",
-            "/images/moanovel-3.webp",
+            "/images/moanovel/moanovel-1.webp",
+            "/images/moanovel/moanovel-2.webp",
+            "/images/moanovel/moanovel-3.webp",
+            "/images/moanovel/moanovel-4.webp",
+            "/images/moanovel/moanovel-5.webp",
+            "/images/moanovel/moanovel-6.webp",
         ],
     },
     {
@@ -120,11 +141,14 @@ const portfolioItems = [
             "Gitlab-Runner",
             "RabbitMQ",
         ],
-        mainImage: "/images/MES_표지.png",
+        mainImage: "/images/mes/mes-1.webp",
         images: [
-            "/images/모아노벨 (1).webp",
-            "/images/moanovel-2.webp",
-            "/images/moanovel-3.webp",
+            "/images/mes/mes-1.webp",
+            "/images/mes/mes-2.webp",
+            "/images/mes/mes-3.webp",
+            "/images/mes/mes-4.webp",
+            "/images/mes/mes-5.webp",
+            "/images/mes/mes-6.webp",
         ],
     },
 ];
@@ -203,7 +227,7 @@ const PortfolioModal = ({
                                                 index + 1
                                             }`}
                                             fill
-                                            className="object-cover"
+                                            className="object-contain"
                                         />
                                     </div>
                                 ))}

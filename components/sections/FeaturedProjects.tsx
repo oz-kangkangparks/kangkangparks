@@ -7,13 +7,13 @@ import Link from "next/link";
 
 const projects = [
     {
-        id: "beonwh",
+        id: "bonwho",
         title: "비온후",
         subtitle: "모바일 앱",
         category: "Mobile App",
         description:
             "정책 연계가 가능한 헬스케어 기반 서비스로, 감정 기록 → 데이터 분석 → 정책 보고까지 이어지는 정책형 멘탈케어 루틴 서비스입니다.",
-        image: "/images/beonwh.webp",
+        image: "/images/bonwho/bonwho-1.webp",
     },
     {
         id: "moapdf",
@@ -22,7 +22,7 @@ const projects = [
         category: "SaaS Platform",
         description:
             "설치가 필요 없는 웹 브라우저 기반의 PDF 문서 처리 솔루션입니다",
-        image: "/images/moapdf-main.webp",
+        image: "/images/moapdf/moapdf-1.webp",
     },
     {
         id: "inventory",
@@ -31,7 +31,7 @@ const projects = [
         category: "Custom Web System",
         description:
             "AppSheet기반 스마트 재고관리 시스템으로, 누구나 사용할 수 있는 웹 기반의 입출고 자동화 시스템입니다.",
-        image: "/images/재고관리 (1).webp",
+        image: "/images/inventory-system/inventory-system-1.webp",
     },
     {
         id: "moanovel",
@@ -40,7 +40,7 @@ const projects = [
         category: "AI service",
         description:
             "AI 기반의 웹소설 집필도구로, 작가 친화적인 환경으로 AI 기반 집필 보조 툴을 제공합니다.",
-        image: "/images/모아노벨 (1).webp",
+        image: "/images/moanovel/moanovel-1.webp",
     },
     {
         id: "mes",
@@ -49,7 +49,7 @@ const projects = [
         category: "Custom Web System",
         description:
             "실시간 생산 관리 체계를 구축하여 디지털 전환이 필요한 제조업의 현실적인 문제들을 해결하기 위한 맞춤형 웹 시스템입니다.",
-        image: "/images/MES_표지.png",
+        image: "/images/mes/mes-1.webp",
     },
 ];
 

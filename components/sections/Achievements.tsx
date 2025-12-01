@@ -21,9 +21,9 @@ const achievements = [
         title: "김해시 복지재단 협약식",
         description: "김해시 복지재단과의 업무 협약",
         images: [
-            "/images/hyeobyak/협약식_1.webp",
-            "/images/hyeobyak/협약식_2.webp",
-            "/images/hyeobyak/협약식_3.webp",
+            "/images/hyeobyak/hyeobyak-1.webp",
+            "/images/hyeobyak/hyeobyak-2.webp",
+            "/images/hyeobyak/hyeobyak-3.webp",
         ],
     },
     {
@@ -31,9 +31,9 @@ const achievements = [
         title: "창업진흥원 정책 아이디어 공모전 표창",
         description: "정책 아이디어 공모전 수상",
         images: [
-            "/images/gongmojeon/공모전_2.webp",
-            "/images/gongmojeon/공모전_5.webp",
-            "/images/gongmojeon/공모전_6.webp",
+            "/images/gongmojeon/gongmojeon-1.webp",
+            "/images/gongmojeon/gongmojeon-2.webp",
+            "/images/gongmojeon/gongmojeon-3.webp",
         ],
     },
     {

@@ -11,13 +11,13 @@ const TEAM = [
         name: "Tech Lead",
         role: "#Tech-Lead #Full-Stack",
         detail: "40개 이상의 프로젝트 경험을 보유한 20년차 시니어 개발자로서, 프로젝트의 기술적 전문성과 안정성을 책임집니다.",
-        photo: "/images/about-member_1.png",
+        photo: "/images/member/member-1.png",
     },
     {
         name: "Full-Stack Creator",
         role: "#Full-Stack #Marketing",
         detail: "기획, 개발, 마케팅 등 다양한 경험을 보유한 크리에이터로서, 비즈니스의 유연한 확장과 실행을 책임집니다.",
-        photo: "/images/about-member_2.png",
+        photo: "/images/member/member-2.png",
     },
 ];
 
@@ -435,12 +435,12 @@ function AchievementsSection() {
 
     useEffect(() => {
         if (selected) {
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflow = "hidden";
         } else {
-            document.body.style.overflow = 'auto';
+            document.body.style.overflow = "auto";
         }
         return () => {
-            document.body.style.overflow = 'auto';
+            document.body.style.overflow = "auto";
         };
     }, [selected]);
 
