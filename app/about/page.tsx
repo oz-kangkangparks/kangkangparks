@@ -53,9 +53,9 @@ const ACHIEVEMENTS = [
         category: "COMPETITION",
         event: "창업진흥원 정책 아이디어 공모전 표창",
         images: [
-            "/images/gongmojeon/공모전_2.webp",
-            "/images/gongmojeon/공모전_5.webp",
-            "/images/gongmojeon/공모전_6.webp",
+            "/images/gongmojeon/gongmojeon-1.webp",
+            "/images/gongmojeon/gongmojeon-2.webp",
+            "/images/gongmojeon/gongmojeon-3.webp",
         ],
         description:
             "창업진흥원에서 주최한 정책 아이디어 공모전에서 우수한 성적으로 표창을 받았습니다. 저희의 혁신적인 아이디어가 공식적으로 인정받은 순간입니다.",
@@ -64,9 +64,9 @@ const ACHIEVEMENTS = [
         category: "PARTNERSHIP",
         event: "김해시 복지재단 협약 체결",
         images: [
-            "/images/hyeobyak/협약식_1.webp",
-            "/images/hyeobyak/협약식_2.webp",
-            "/images/hyeobyak/협약식_3.webp",
+            "/images/hyeobyak/hyeobyak-1.webp",
+            "/images/hyeobyak/hyeobyak-2.webp",
+            "/images/hyeobyak/hyeobyak-3.webp",
         ],
         description:
             "김해시 복지재단과의 협약을 통해 지역 사회 발전에 기여할 수 있는 기회를 마련했습니다. 기술로 사회에 기여하는 강강박스의 가치를 실현합니다.",
@@ -75,9 +75,9 @@ const ACHIEVEMENTS = [
         category: "AWARD",
         event: "경남벤처기업협회 표창장 수상",
         images: [
-            "/images/venture/venture_2.webp",
-            "/images/venture/venture_3.webp",
-            "/images/venture/venture_4.webp",
+            "/images/venture/venture-1.webp",
+            "/images/venture/venture-2.webp",
+            "/images/venture/venture-3.webp",
         ],
         description:
             "경남벤처기업협회로부터 기술 혁신과 지역 경제 발전에 기여한 공로를 인정받아 유공포상을 수상했습니다.",

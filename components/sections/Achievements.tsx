@@ -11,9 +11,9 @@ const achievements = [
         title: "경남벤처기업협회 정기총회 유공포상",
         description: "경남벤처기업협회 표창장 수상",
         images: [
-            "/images/venture/venture_2.webp",
-            "/images/venture/venture_3.webp",
-            "/images/venture/venture_4.webp",
+            "/images/venture/venture-1.webp",
+            "/images/venture/venture-2.webp",
+            "/images/venture/venture-3.webp",
         ],
     },
     {
