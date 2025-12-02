@@ -599,11 +599,10 @@ function CtaSection() {
                 transition={{ duration: 0.5 }}
             >
                 <h2 className="text-3xl font-bold text-white sm:text-4xl">
-                    아이디어를 현실로 만들 준비가 되셨나요?
+                    준비된 기술력으로 비즈니스를 확실히 뒷받침합니다.
                 </h2>
                 <p className="mt-4 text-lg text-neutral-400">
-                    비즈니스 목표만 말씀해 주세요. 최적의 기술 스택과 실행
-                    로드맵은 저희가 설계합니다.
+                    기술 걱정은 덜어내고, 오직 비즈니스 성장에만 집중하세요.
                 </p>
                 <motion.div
                     whileHover={{ scale: 1.05 }}
@@ -614,7 +613,7 @@ function CtaSection() {
                         href="/contact"
                         className="inline-flex items-center gap-2 rounded-lg bg-white px-8 py-4 text-lg font-semibold text-black shadow-lg transition-colors hover:bg-cyan-400"
                     >
-                        프로젝트 문의하기 <ArrowRight className="h-5 w-5" />
+                        프로젝트 개발 문의 <ArrowRight className="h-5 w-5" />
                     </Link>
                 </motion.div>
             </motion.div>
