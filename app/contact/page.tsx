@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import { Code, ArrowRight } from 'lucide-react';
 import { Container } from '@/components/Layout';
 
+import apiClient from '@/lib/apiClient';
+
 export default function ContactPage() {
   return (
     <div className="bg-neutral-950 text-white">
@@ -41,14 +43,16 @@ function HeroSection() {
 }
 
 function ExampleBox() {
-  const sample = `이름: 홍길동\n이메일: hong@example.com\n회사: Axiom Labs\n예상 예산: 3천만 원 ~ 5천만 원\n요구사항: 공장 설비 온도 센서 데이터 기반 이상 탐지 모델 개발 및 대시보드 구축을 희망합니다. 파일 연동: CSV/REST 가능하며, 4주 내 PoC 진행을 원합니다.`;
+  const sample = `회사: (주)스타트업\n예상 예산: 3,000만 원\n요구사항: 신규 런칭하는 서비스의 랜딩 페이지와 관리자 페이지 개발을 의뢰합니다. 반응형 웹으로 제작을 원하며, 디자인은 내부에서 제공 가능합니다. 2개월 내 런칭을 목표로 하고 있습니다.`;
+  const template = `회사: \n예상 예산: \n요구사항: `;
+  
   return (
     <div className="rounded-2xl border border-neutral-800 bg-neutral-900/50 p-6 mb-8">
       <div className="flex items-center justify-between mb-3">
         <div className="text-sm font-semibold text-neutral-400">작성 예시</div>
         <button 
           type="button" 
-          onClick={() => navigator.clipboard?.writeText(sample)} 
+          onClick={() => navigator.clipboard?.writeText(template)} 
           className="text-xs text-cyan-400 hover:text-cyan-300 transition-colors flex items-center gap-1"
         >
           <Code className="w-3 h-3" />
@@ -61,6 +65,105 @@ function ExampleBox() {
 }
 
 function ContactFormSection() {
+  const [formState, setFormState] = React.useState({
+    name: '',
+    contact: '',
+    email: '',
+    message: ''
+  });
+
+  const [errors, setErrors] = React.useState({
+    name: '',
+    contact: '',
+    email: '',
+    message: ''
+  });
+
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormState(prev => ({ ...prev, [name]: value }));
+    // Clear error when user types
+    if (errors[name as keyof typeof errors]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const { name, contact, email, message } = formState;
+    const newErrors = {
+      name: '',
+      contact: '',
+      email: '',
+      message: ''
+    };
+    let hasError = false;
+
+    if (!name) {
+      newErrors.name = '이름을 입력해주세요.';
+      hasError = true;
+    }
+
+    if (!contact) {
+      newErrors.contact = '연락처를 입력해주세요.';
+      hasError = true;
+    } else {
+      const phoneRegex = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+      if (!phoneRegex.test(contact)) {
+        newErrors.contact = '올바른 휴대전화 번호 형식이 아닙니다. (예: 010-1234-5678)';
+        hasError = true;
+      }
+    }
+
+    if (!email) {
+      newErrors.email = '이메일을 입력해주세요.';
+      hasError = true;
+    } else {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        newErrors.email = '올바른 이메일 형식이 아닙니다.';
+        hasError = true;
+      }
+    }
+
+    if (!message) {
+      newErrors.message = '프로젝트 내용을 입력해주세요.';
+      hasError = true;
+    }
+
+    if (hasError) {
+      setErrors(newErrors);
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      await apiClient.post('/contact', {
+        name,
+        contact,
+        email,
+        message,
+      });
+      alert('문의가 성공적으로 접수되었습니다.');
+      // Reset form
+      setFormState({
+        name: '',
+        contact: '',
+        email: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Failed to submit contact form:', error);
+      alert('문의 접수 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden py-24">
       <div className="absolute top-1/2 left-0 h-96 w-96 -translate-y-1/2 -translate-x-1/2 rounded-full bg-violet-500/10 blur-3xl" />
@@ -82,23 +185,45 @@ function ContactFormSection() {
 
             <ExampleBox />
 
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6" noValidate>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-neutral-400">이름</label>
                   <input
                     type="text"
-                    className="w-full rounded-xl border border-neutral-800 bg-neutral-950/50 px-4 py-3 text-sm outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 transition-all"
+                    name="name"
+                    value={formState.name}
+                    onChange={handleChange}
+                    className={`w-full rounded-xl border bg-neutral-950/50 px-4 py-3 text-sm outline-none transition-all ${
+                      errors.name 
+                        ? 'border-red-500/50 focus:border-red-500 focus:ring-2 focus:ring-red-500/20' 
+                        : 'border-neutral-800 focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20'
+                    }`}
                     placeholder="홍길동"
+                    disabled={isSubmitting}
                   />
+                  {errors.name && (
+                    <p className="text-xs text-red-500 ml-1">{errors.name}</p>
+                  )}
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-neutral-400">연락처</label>
                   <input
                     type="text"
-                    className="w-full rounded-xl border border-neutral-800 bg-neutral-950/50 px-4 py-3 text-sm outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 transition-all"
+                    name="contact"
+                    value={formState.contact}
+                    onChange={handleChange}
+                    className={`w-full rounded-xl border bg-neutral-950/50 px-4 py-3 text-sm outline-none transition-all ${
+                      errors.contact 
+                        ? 'border-red-500/50 focus:border-red-500 focus:ring-2 focus:ring-red-500/20' 
+                        : 'border-neutral-800 focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20'
+                    }`}
                     placeholder="010-0000-0000"
+                    disabled={isSubmitting}
                   />
+                  {errors.contact && (
+                    <p className="text-xs text-red-500 ml-1">{errors.contact}</p>
+                  )}
                 </div>
               </div>
 
@@ -106,24 +231,47 @@ function ContactFormSection() {
                 <label className="text-sm font-medium text-neutral-400">이메일</label>
                 <input
                   type="email"
-                  className="w-full rounded-xl border border-neutral-800 bg-neutral-950/50 px-4 py-3 text-sm outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 transition-all"
+                  name="email"
+                  value={formState.email}
+                  onChange={handleChange}
+                  className={`w-full rounded-xl border bg-neutral-950/50 px-4 py-3 text-sm outline-none transition-all ${
+                    errors.email 
+                      ? 'border-red-500/50 focus:border-red-500 focus:ring-2 focus:ring-red-500/20' 
+                      : 'border-neutral-800 focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20'
+                  }`}
                   placeholder="hello@example.com"
+                  disabled={isSubmitting}
                 />
+                {errors.email && (
+                  <p className="text-xs text-red-500 ml-1">{errors.email}</p>
+                )}
               </div>
 
               <div className="space-y-2">
                 <label className="text-sm font-medium text-neutral-400">프로젝트 내용</label>
                 <textarea
-                  className="w-full rounded-xl border border-neutral-800 bg-neutral-950/50 px-4 py-4 text-sm outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 transition-all min-h-[200px] resize-none"
+                  name="message"
+                  value={formState.message}
+                  onChange={handleChange}
+                  className={`w-full rounded-xl border bg-neutral-950/50 px-4 py-4 text-sm outline-none transition-all min-h-[200px] resize-none ${
+                    errors.message 
+                      ? 'border-red-500/50 focus:border-red-500 focus:ring-2 focus:ring-red-500/20' 
+                      : 'border-neutral-800 focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20'
+                  }`}
                   placeholder="프로젝트의 목적, 일정, 예산 등 구체적인 내용을 적어주세요."
+                  disabled={isSubmitting}
                 />
+                {errors.message && (
+                  <p className="text-xs text-red-500 ml-1">{errors.message}</p>
+                )}
               </div>
 
               <button 
                 type="submit" 
-                className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-4 text-base font-bold text-white hover:opacity-90 transition-opacity shadow-lg shadow-cyan-500/20 mt-4"
+                disabled={isSubmitting}
+                className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-4 text-base font-bold text-white hover:opacity-90 transition-opacity shadow-lg shadow-cyan-500/20 mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                문의하기 <ArrowRight className="h-5 w-5" />
+                {isSubmitting ? '전송 중...' : '문의하기'} <ArrowRight className="h-5 w-5" />
               </button>
             </form>
           </motion.div>

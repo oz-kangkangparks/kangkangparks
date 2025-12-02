@@ -1,70 +1,71 @@
-import { NextResponse } from 'next/server'
-import nodemailer from 'nodemailer'
+import { NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
+import { constants } from 'crypto';
 
 export async function POST(request: Request) {
   try {
-    const { name, email, company, message } = await request.json()
+    const body = await request.json();
+    const { name, contact, email, message } = body;
 
-    // 입력 검증
-    if (!name || !email || !message) {
+    // Basic validation
+    if (!name || !contact || !email || !message) {
       return NextResponse.json(
-        { error: '필수 항목을 모두 입력해주세요.' },
+        { error: '모든 항목을 입력해주세요.' },
         { status: 400 }
-      )
+      );
     }
 
-    // 이메일 형식 검증
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { error: '올바른 이메일 형식이 아닙니다.' },
-        { status: 400 }
-      )
-    }
-
-    // SMTP 설정
+    // Nodemailer transporter setup
+    // Support for both Gmail service and custom SMTP
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT),
+      ...(process.env.EMAIL_SERVICE
+        ? { service: process.env.EMAIL_SERVICE }
+        : {
+            host: process.env.EMAIL_HOST,
+            port: Number(process.env.EMAIL_PORT) || 587,
+            secure: process.env.EMAIL_SECURE === 'true', // true for 465, false for other ports
+            tls: {
+              rejectUnauthorized: false,
+              minVersion: 'TLSv1',
+              secureOptions: constants.SSL_OP_LEGACY_SERVER_CONNECT, // Allow legacy renegotiation
+              ciphers: 'DEFAULT@SECLEVEL=0', // Allow legacy signature algorithms
+            },
+          }),
       auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
       },
-    })
+    } as any);
 
-    // 이메일 내용
+    // Email content
     const mailOptions = {
-      from: process.env.SMTP_USER,
+      from: process.env.EMAIL_USER,
       to: 'box@kangkangparks.com',
-      subject: `[강강박스] ${name}님의 문의`,
-      html: `
-        <h2>새로운 문의가 접수되었습니다</h2>
-        <p><strong>이름:</strong> ${name}</p>
-        <p><strong>이메일:</strong> ${email}</p>
-        ${company ? `<p><strong>회사:</strong> ${company}</p>` : ''}
-        <p><strong>메시지:</strong></p>
-        <p style="white-space: pre-wrap;">${message}</p>
-      `,
+      subject: `[프로젝트 문의] ${name}님`,
       text: `
-        새로운 문의가 접수되었습니다
-
         이름: ${name}
+        연락처: ${contact}
         이메일: ${email}
-        ${company ? `회사: ${company}` : ''}
-        메시지:
+        
+        내용
         ${message}
       `,
+    };
+
+    // Send email
+    // Only attempt to send if credentials are provided, otherwise log for dev
+    if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+      await transporter.sendMail(mailOptions);
+    } else {
+      console.log('Email credentials not found. Logging email content:', mailOptions);
     }
 
-    // 이메일 전송
-    await transporter.sendMail(mailOptions)
-
-    return NextResponse.json({ success: true }, { status: 200 })
+    return NextResponse.json({ message: '문의가 성공적으로 접수되었습니다.' }, { status: 200 });
   } catch (error) {
-    console.error('Email send error:', error)
+    console.error('Error sending email:', error);
     return NextResponse.json(
-      { error: '이메일 전송에 실패했습니다. 잠시 후 다시 시도해주세요.' },
+      { error: '메일 발송 중 오류가 발생했습니다.' },
       { status: 500 }
-    )
+    );
   }
 }
