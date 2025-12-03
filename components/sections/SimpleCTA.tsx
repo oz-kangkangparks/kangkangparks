@@ -18,7 +18,6 @@ export default function SimpleCTA() {
                 muted
                 playsInline
                 preload="metadata"
-                poster="/videos/contact.webp"
             >
                 <source src="/videos/contact.webm" type="video/webm" />
                 <source src="/videos/contact.mp4" type="video/mp4" />
