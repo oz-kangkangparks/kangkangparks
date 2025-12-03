@@ -26,16 +26,16 @@ function HeroSection() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="relative max-w-4xl text-center"
+        className="relative text-center"
       >
         <p className="text-xs uppercase tracking-[0.6em] text-neutral-400">
           contact us
         </p>
         <h1 className="mt-3 text-5xl font-bold leading-tight text-white md:text-7xl">
-          함께 만드는 새로운 가치
+          어떤 프로젝트를 구상하고 계신가요?
         </h1>
         <p className="mx-auto mt-4 max-w-3xl text-lg text-neutral-300">
-          당신의 아이디어가 현실이 되는 곳. 강강박스와 함께 혁신적인 프로젝트를 시작해보세요.
+          당신의 아이디어가 현실이 되는 곳. 강강박스와 함께 시작해보세요.
         </p>
       </motion.div>
     </section>
