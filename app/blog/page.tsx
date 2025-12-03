@@ -36,11 +36,10 @@ function HeroSection() {
                     Blog
                 </p>
                 <h1 className="mt-3 text-5xl font-bold leading-tight text-white md:text-7xl">
-                    집요하게 기록하는 제작 노트
+                    강강박스의 생각과 경험을 공유합니다
                 </h1>
                 <p className="mx-auto mt-4 max-w-3xl text-lg text-neutral-300">
-                    강강박스 팀이 직접 경험한 제작 과정, 대외활동 후기, 배운
-                    인사이트를 단계별로 공유합니다.
+                    기술적인 이슈부터 서비스 운영 이야기까지, 차곡차곡 기록합니다.
                 </p>
             </motion.div>
         </Section>
