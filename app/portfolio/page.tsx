@@ -573,7 +573,7 @@ function WhyUsSection() {
                             <h3 className="mt-6 text-xl font-bold text-white">
                                 {item.title}
                             </h3>
-                            <p className="mt-2 text-neutral-400">
+                            <p className="mt-2 text-neutral-400 whitespace-pre-wrap">
                                 {item.description}
                             </p>
                         </motion.div>
@@ -592,7 +592,7 @@ function CtaSection() {
             className="flex min-h-screen items-center justify-center"
         >
             <motion.div
-                className="mx-auto max-w-3xl text-center"
+                className="mx-auto text-center"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}

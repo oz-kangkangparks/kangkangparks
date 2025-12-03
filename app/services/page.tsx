@@ -269,7 +269,7 @@ function CtaSection() {
             className="flex min-h-screen items-center justify-center"
         >
             <motion.div
-                className="mx-auto max-w-3xl text-center"
+                className="mx-auto text-center"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false }}
