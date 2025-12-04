@@ -66,6 +66,12 @@ export default function NewHero() {
         return () => window.removeEventListener("resize", checkIsMobile);
     }, []);
 
+    const [isFirstLoad, setIsFirstLoad] = useState(true);
+
+    useEffect(() => {
+        setIsFirstLoad(false);
+    }, []);
+
     const currentSequence = heroSequences[activeIndex];
 
     const mobileHeadingVariants = {
@@ -136,7 +142,7 @@ export default function NewHero() {
                             key={currentSequence.id}
                             className="block text-center font-extrabold tracking-tight text-6xl sm:text-7xl md:absolute md:inset-x-0 md:text-left md:text-[12rem] lg:text-[14rem]"
                             variants={headingVariants}
-                            initial="initial"
+                            initial={isFirstLoad ? false : "initial"}
                             animate="animate"
                             exit="exit"
                             transition={headingTransition}
