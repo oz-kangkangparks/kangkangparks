@@ -9,30 +9,35 @@ const heroSequences = [
         label: "PLAN",
         videoMp4: "/videos/plan.mp4",
         videoWebm: "/videos/plan.webm",
+        poster: "/videos/plan-poster.webp",
     },
     {
         id: "design",
         label: "DESIGN",
         videoMp4: "/videos/design.mp4",
         videoWebm: "/videos/design.webm",
+        poster: "/videos/design-poster.webp",
     },
     {
         id: "build",
         label: "BUILD",
         videoMp4: "/videos/build.mp4",
         videoWebm: "/videos/build.webm",
+        poster: "/videos/build-poster.webp",
     },
     {
         id: "test",
         label: "TEST",
         videoMp4: "/videos/test.mp4",
         videoWebm: "/videos/test.webm",
+        poster: "/videos/test-poster.webp",
     },
     {
         id: "care",
         label: "CARE",
         videoMp4: "/videos/care.mp4",
         videoWebm: "/videos/care.webm",
+        poster: "/videos/care-poster.webp",
     },
 ];
 
@@ -99,6 +104,7 @@ export default function NewHero() {
                         muted
                         playsInline
                         preload="metadata"
+                        poster={currentSequence.poster}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
