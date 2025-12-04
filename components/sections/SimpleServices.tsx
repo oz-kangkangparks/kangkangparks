@@ -11,7 +11,7 @@ const services = [
         titleKo: "웹 서비스 및 SaaS 플랫폼",
         subtitle:
             "아이디어 검증을 위한 MVP부터 대규모 트래픽을 감당하는 상용 플랫폼까지, 비즈니스의 성장을 견인하는 확장 가능한 웹 서비스를 구축합니다.",
-        image: "/images/service-homepage.jpg",
+        image: "/images/service-homepage.webp",
     },
     {
         id: "mobile",
@@ -19,7 +19,7 @@ const services = [
         titleKo: "모바일 및 통합 관리 시스템",
         subtitle:
             "하나의 코드로 iOS와 Android를 동시에 출시하는 크로스 플랫폼 앱과, 이를 효율적으로 관리하는 통합 어드민 시스템을 제공합니다.",
-        image: "/images/service-web-system.jpg",
+        image: "/images/service-web-system.webp",
     },
     {
         id: "ai-service",
@@ -27,7 +27,7 @@ const services = [
         titleKo: "AI 서비스 및 데이터 분석",
         subtitle:
             "GPT 챗봇, 음성/이미지/영상 분석 등 기업의 데이터를 활용한 실용적인 AI 솔루션으로 업무 자동화와 혁신을 실현합니다.",
-        image: "/images/service-mobile.jpg",
+        image: "/images/service-mobile.webp",
     },
     {
         id: "enterprise",
@@ -35,7 +35,7 @@ const services = [
         titleKo: "기업용 업무 시스템 구축",
         subtitle:
             "20년 도메인 지식으로 비즈니스 프로세스를 최적화합니다. ERP, MES, 재고관리 등 현장에 꼭 필요한 맞춤형 시스템을 설계합니다.",
-        image: "/images/service-ai.jpg",
+        image: "/images/service-ai.webp",
     },
 ];
 
