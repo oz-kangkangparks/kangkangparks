@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import { ArrowLeft, Calendar, Share2, ArrowRight } from "lucide-react";
 import { blogPosts } from "../posts";
 
@@ -113,7 +114,7 @@ export default function BlogDetailPage({
                     transition={{ duration: 0.6, delay: 0.2 }}
                     className="prose prose-invert prose-lg max-w-none prose-headings:font-bold prose-headings:text-white prose-p:text-neutral-300 prose-strong:text-white prose-a:text-cyan-400 prose-a:no-underline hover:prose-a:underline prose-blockquote:border-l-cyan-400 prose-blockquote:bg-white/5 prose-blockquote:py-2 prose-blockquote:pr-4 prose-li:text-neutral-300"
                 >
-                    <ReactMarkdown>{post.content}</ReactMarkdown>
+                    <ReactMarkdown rehypePlugins={[rehypeRaw]}>{post.content}</ReactMarkdown>
                 </motion.div>
             </article>
 

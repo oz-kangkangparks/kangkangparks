@@ -10,6 +10,7 @@ import { post_8 } from "./posts/post_8";
 import { post_9 } from "./posts/post_9";
 import { post_10 } from "./posts/post_10";
 import { post_11 } from "./posts/post_11";
+import { post_12 } from "./posts/post_12";
 
 export type { BlogPost };
 
@@ -25,4 +26,5 @@ export const blogPosts: BlogPost[] = [
   post_9,
   post_10,
   post_11,
+  post_12,
 ];
