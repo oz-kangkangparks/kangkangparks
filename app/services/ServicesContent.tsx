@@ -105,16 +105,14 @@ export default function ServicesContent() {
 
 function HeroSection() {
     return (
-        <Section
-            className="relative isolate flex min-h-screen flex-col items-center justify-center overflow-hidden text-center"
-            sectionClassName="bg-gradient-to-b from-neutral-900 to-black"
-        >
+        <section className="relative isolate flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-neutral-900 to-black px-6 text-center">
             <div className="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-purple-500/20 blur-3xl" />
             <div className="absolute bottom-0 right-10 h-40 w-40 rounded-full bg-green-500/20 blur-3xl" />
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
+                className="relative z-10"
             >
                 <p className="text-xs uppercase tracking-[0.6em] text-neutral-400">
                     our services
@@ -127,7 +125,7 @@ function HeroSection() {
                     비즈니스로 만듭니다.
                 </p>
             </motion.div>
-        </Section>
+        </section>
     );
 }
 

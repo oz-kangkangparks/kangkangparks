@@ -19,10 +19,7 @@ export default function BlogContent() {
 
 function HeroSection() {
     return (
-        <Section
-            className="relative isolate flex min-h-screen items-center justify-center overflow-hidden text-center"
-            sectionClassName="bg-gradient-to-b from-neutral-900 to-black"
-        >
+        <section className="relative isolate flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-b from-neutral-900 to-black px-6 text-center">
             <div className="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-cyan-500/20 blur-3xl" />
             <div className="absolute bottom-0 right-10 h-40 w-40 rounded-full bg-purple-500/20 blur-3xl" />
             <motion.div
@@ -41,7 +38,7 @@ function HeroSection() {
                     기술적인 이슈부터 서비스 운영 이야기까지, 차곡차곡 기록합니다.
                 </p>
             </motion.div>
-        </Section>
+        </section>
     );
 }
 
