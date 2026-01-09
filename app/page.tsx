@@ -1,22 +1,15 @@
-'use client'
+import { Metadata } from 'next';
+import HomeContent from './HomeContent';
 
-import React from 'react';
-import NewHero from '@/components/sections/NewHero';
-import SimpleServices from '@/components/sections/SimpleServices';
-import Achievements from '@/components/sections/Achievements';
-import FeaturedProjects from '@/components/sections/FeaturedProjects';
-import Process from '@/components/sections/Process';
-import SimpleCTA from '@/components/sections/SimpleCTA';
+export const metadata: Metadata = {
+  title: '강강박스 | 웹 개발 전문 기업',
+  description: '강강박스 - 20년 경력의 시니어 개발자가 이끄는 웹 개발 전문 기업. 웹사이트, 웹앱, AI 솔루션까지 원스톱 개발 서비스를 제공합니다.',
+  openGraph: {
+    title: '강강박스 | 웹 개발 전문 기업',
+    description: '20년 경력의 시니어 개발자가 이끄는 웹 개발 전문 기업',
+  },
+};
 
 export default function HomePage() {
-  return (
-    <>
-      <NewHero />
-      <SimpleServices />
-      <Achievements />
-      <FeaturedProjects />
-      <Process />
-      <SimpleCTA />
-    </>
-  );
+  return <HomeContent />;
 }
